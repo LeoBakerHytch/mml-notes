@@ -19,6 +19,9 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\del}{\partial}
 
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\mat}[1]{\bm{#1}}
+
 \DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Img}{Im}
@@ -94,5 +97,24 @@ Let \( \C^\N \) denote the set of all complex sequences.
 \end{itemize}
 
 Then we have: \( c_0 \subset \ell^\infty \subset \C^\N \), and each is a subspace of the next.
+
+\section{Matrices and linear maps}
+
+\begin{definition}
+    Let \( \mat{A} \in \R^{m \times n} \). The \emph{rank} of \( \mat{A} \), denoted \( \rank(\mat{A}) \), is the dimension of the column
+    space of \( \mat{A} \).
+\end{definition}
+
+\begin{theorem}[Rank-Nullity Theorem]
+    Let \( \mat{T}: V \to W \) be a linear transformation between finite-dimensional vector spaces. Then:
+    \[
+        \dim(\Ker(\mat{T})) + \dim(\Img(\mat{T})) = \dim(V)
+    \]
+\end{theorem}
+
+\begin{proof}
+    Sketch: Represent \( \mat{T} \) as a matrix. Then the null space corresponds to the solution set of \( \mat{A}\vect{x} = 0 \), and the
+    image corresponds to the span of the columns. Apply Gaussian elimination to count free variables and pivot columns.
+\end{proof}
 
 \end{document}
