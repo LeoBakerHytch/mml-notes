@@ -1,0 +1,42 @@
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.run.xml
+*.nav
+*.snm
+*.vrb
+
+# LaTeX Workshop and temp files
+*.xdv
+*.bcf
+__latexindent_temp_*.tex
+indent.log
+
+# VSCode project files
+.vscode/
+
+# Output PDF (optional — keep if you want to version the output)
+*.pdf
+
+# OS/system junk
+.DS_Store
+Thumbs.db
