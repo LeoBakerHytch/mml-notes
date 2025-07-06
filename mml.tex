@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{mathtools}       % For extra math tools
+\usepackage{bm}              % Bold math symbols
+\usepackage{enumitem}        % Better control over lists
+\usepackage{geometry}        % Better margins
+\geometry{margin=1in}
+
+% --- Custom Commands ---
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\del}{\partial}
+
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+
+% --- Theorem Environments ---
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+
+% --- Title Info ---
+\title{Mathematics for Machine Learning}
+\author{Leo Baker-Hytch}
+\date{\today}
+
+% --- Begin Document ---
+\begin{document}
+
+\maketitle
+\tableofcontents
+\vspace{1em}
+
+\section{Vector spaces and subspaces}
+
+\begin{definition}
+    A \emph{vector space} over a field \( \F \) is a set \( V \) equipped with two operations: vector addition and
+    scalar multiplication, satisfying the usual axioms.
+\end{definition}
+
+\begin{definition}
+    A subset \( U \subseteq V \) is a \emph{subspace} of a vector space \( V \) if:
+    \begin{itemize}
+        \item \( 0 \in U \)
+        \item \( u, w \in U \Rightarrow u + w \in U \)
+        \item \( a \in \mathbb{F}, u \in U \Rightarrow a u \in U \)
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    The set of continuous real-valued functions \( C(\R) \) is a subspace of \( \R^\R \).
+\end{example}
+
+\section{Function spaces}
+
+Let \( \R^\R \) denote the set of all functions from \( \R \) to \( \R \). We define:
+
+\begin{itemize}
+    \item \( C(\R) \): continuous functions
+    \item \( C^1(\R) \): continuously differentiable functions
+    \item \( C^\infty(\R) \): smooth functions
+\end{itemize}
+
+Clearly, \( C^\infty(\R) \subset C^1(\R) \subset C(\R) \subset \R^\R \).
+
+\section{Sequence spaces}
+
+Let \( \C^\N \) denote the set of all complex sequences.
+
+\begin{itemize}
+    \item \( c_0 \): sequences converging to zero
+    \item \( \ell^\infty \): bounded sequences
+    \item \( \ell^2 \): square-summable sequences
+\end{itemize}
+
+Then we have: \( c_0 \subset \ell^\infty \subset \C^\N \), and each is a subspace of the next.
+
+\end{document}
