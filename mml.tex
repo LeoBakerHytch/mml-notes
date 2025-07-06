@@ -17,6 +17,12 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Xcal}{\mathcal{X}}  % Input space
+\newcommand{\Ycal}{\mathcal{Y}}  % Output / label space
+\newcommand{\Hcal}{\mathcal{H}}  % Hypothesis space
+\newcommand{\Dcal}{\mathcal{D}}  % Distribution or dataset
+
 \newcommand{\eps}{\varepsilon}
 \newcommand{\del}{\partial}
 
@@ -120,5 +126,33 @@ Then we have: \( c_0 \subset \ell^\infty \subset \C^\N \), and each is a subspac
     \mat{A}\vect{x} = 0 \), and the image corresponds to the span of the columns. Apply Gaussian elimination to count
     free variables and pivot columns.
 \end{proof}
+
+
+\section{Machine learning notation}
+
+In machine learning, we often work with datasets of input-output pairs \( (\vect{x}_i, y_i) \), where each input \(
+\vect{x}_i \in \Xcal \subset \R^d \) and each label \( y_i \in \Ycal \subset \R \) or \( \Ycal = \{0,1\} \) for
+classification.
+
+\begin{definition}
+    Let \( \Xcal \subset \R^d \) be the input space and \( \Ycal \) the output space. A \emph{hypothesis} is a
+    function \( h: \Xcal \to \Ycal \).
+\end{definition}
+
+\begin{example}
+    In linear regression, we model the hypothesis as a linear function:
+    \[
+        h(\vect{x}) = \vect{w}^\top \vect{x} + b,
+    \]
+    where \( \vect{w} \in \R^d \) is the weight vector and \( b \in \R \) is a bias term.
+\end{example}
+
+\begin{definition}
+    Given a dataset \( \{(\vect{x}_i, y_i)\}_{i=1}^n \), the empirical risk under squared loss is:
+    \[
+        R(\vect{w}) = \frac{1}{n} \sum_{i=1}^n \left( h(\vect{x}_i) - y_i \right)^2.
+    \]
+    Minimizing this objective corresponds to least-squares regression.
+\end{definition}
 
 \end{document}
