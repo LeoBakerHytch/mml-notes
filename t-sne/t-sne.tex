@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+
+% --- Packages ---
+\usepackage{mathpazo}        % Loads Palatino + math support
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{mathtools}       % For extra math tools
+\usepackage{bm}              % Bold math symbols
+\usepackage{enumitem}        % Better control over lists
+\usepackage{geometry}        % Better margins
+\usepackage{titlesec}        % Title formatting
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
+\geometry{margin=1in}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+
+\title{t-SNE: A Guide}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+
+t-SNE (t-distributed Stochastic Neighbor Embedding) is a nonlinear dimensionality reduction technique for embedding
+high-dimensional data in a low-dimensional space (typically 2D or 3D) for visualization. It focuses on preserving local
+structure.
+
+\section{High-Dimensional Similarities}
+
+For each data point \( \mathbf{x}_i \), define conditional probabilities:
+
+\[
+  p_{j|i} = \frac{\exp\left(-\frac{\|\mathbf{x}_i - \mathbf{x}_j\|^2}{2\sigma_i^2}\right)}{\sum_{k \ne i} \exp\left(-\frac{\|\mathbf{x}_i - \mathbf{x}_k\|^2}{2\sigma_i^2}\right)}
+\]
+
+These describe how likely point \( \mathbf{x}_j \) is to be a neighbor of \( \mathbf{x}_i \), based on a Gaussian
+centered at \( \mathbf{x}_i \).
+
+\subsection*{Perplexity}
+
+\[
+  \text{Perp}(P_i) = 2^{H(P_i)}, \quad \text{where} \quad H(P_i) = -\sum_j p_{j|i} \log_2 p_{j|i}
+\]
+
+A binary search over \( \sigma_i \) ensures the perplexity matches a user-defined target (e.g., 30).
+
+Note: \( H(P_i) \) is the Shannon entropy.
+
+\subsection*{Symmetrization}
+
+\[
+  p_{ij} = \frac{p_{j|i} + p_{i|j}}{2N}
+\]
+
+\section{Low-Dimensional Similarities}
+
+Define joint probabilities \( q_{ij} \) in 2D/3D space:
+
+\[
+  q_{ij} = \frac{\left(1 + \|\mathbf{y}_i - \mathbf{y}_j\|^2\right)^{-1}}{\sum_{k \ne l} \left(1 + \|\mathbf{y}_k - \mathbf{y}_l\|^2\right)^{-1}}
+\]
+
+This uses a Student-t distribution with 1 degree of freedom (Cauchy) to allow heavy tails.
+
+\section{Loss Function}
+
+KL divergence between high- and low-dimensional similarities:
+
+\[
+  \mathcal{L} = \sum_{i \ne j} p_{ij} \log \left(\frac{p_{ij}}{q_{ij}}\right)
+\]
+
+This emphasizes preserving local structure. Discrepancies between distant pairs are penalized less.
+
+\section{Optimization}
+
+Initialize \( \mathbf{y}_i \in \mathbb{R}^2 \) randomly. Then perform gradient descent with momentum (which helps smooth convergence in a non-convex loss landscape):
+
+\[
+  \Delta \mathbf{y}_i^{(t)} = \eta \cdot \nabla_i \mathcal{L} + \alpha \cdot \Delta \mathbf{y}_i^{(t-1)}
+\]
+\[
+  \mathbf{y}_i^{(t+1)} = \mathbf{y}_i^{(t)} + \Delta \mathbf{y}_i^{(t)}
+\]
+
+\subsection*{Gradient}
+
+\[
+  \nabla_i \mathcal{L} = 4 \sum_{j \ne i} (p_{ij} - q_{ij}) \cdot \frac{(\mathbf{y}_i - \mathbf{y}_j)}{1 + \|\mathbf{y}_i - \mathbf{y}_j\|^2}
+\]
+
+\subsection*{Early exaggeration}
+
+Multiply \( p_{ij} \) by \( \gamma \) (e.g. 4 or 12) during early iterations (e.g., first 250) to strengthen attractive
+forces and help cluster formation.
+
+\section{Practical Notes}
+
+\begin{itemize}
+  \item Good for visualizing clusters and manifold unfolding
+  \item Not suitable for preserving global distances
+  \item Highly sensitive to perplexity and initialization
+\end{itemize}
+
+\section{Common Applications}
+
+\begin{itemize}
+  \item Bioinformatics (e.g., single-cell RNA-seq)
+  \item Visualizing CNN embeddings
+  \item Exploring latent space in NLP
+  \item ML model debugging and interpretability
+\end{itemize}
+
+\end{document}
