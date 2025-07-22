@@ -9,6 +9,16 @@
 \usepackage{enumitem}        % Better control over lists
 \usepackage{geometry}        % Better margins
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
+\usepackage{siunitx}         % Alignment in matrices
+\sisetup{
+  table-align-text-post=false,
+  table-number-alignment = center,
+  table-space-text-post = none,
+  tight-spacing = true,
+  detect-weight = true,
+  detect-family = true
+}
+\newcolumntype{i}[1]{S[table-format=#1]} % columns of right-aligned integers
 \geometry{margin=1in}
 
 % --- Custom commands ---
@@ -41,6 +51,7 @@
 \DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\Null}{Null}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\diag}{diag}
 
@@ -438,6 +449,448 @@
           \]
           as desired.  We saw above that, in general, multiplication of \(\mathbf{A}, \mathbf{B} \in \G\) does not commute.
           We therefore conclude that \((\G, \cdot)\) is a group, but not Abelian.
+
+          \pagebreak
+
+    \item[2.4]
+
+    \item[a.]
+          \[
+              \begin{bmatrix}
+                  1 & 2 \\
+                  4 & 5 \\
+                  7 & 8
+              \end{bmatrix}
+              \begin{bmatrix}
+                  1 & 1 & 0 \\
+                  0 & 1 & 1 \\
+                  1 & 0 & 1
+              \end{bmatrix}
+          \]
+          is not defined.
+
+    \item[b.]
+          \[
+              \begin{bmatrix}
+                  1 & 2 & 3 \\
+                  4 & 5 & 6 \\
+                  7 & 8 & 9
+              \end{bmatrix}
+              \begin{bmatrix}
+                  1 & 1 & 0 \\
+                  0 & 1 & 1 \\
+                  1 & 0 & 1
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                  4  & 3  & 5  \\
+                  10 & 9  & 11 \\
+                  16 & 15 & 17
+              \end{bmatrix}
+          \]
+
+    \item[c.]
+          \[
+              \begin{bmatrix}
+                  1 & 1 & 0 \\
+                  0 & 1 & 1 \\
+                  1 & 0 & 1
+              \end{bmatrix}
+              \begin{bmatrix}
+                  1 & 2 & 3 \\
+                  4 & 5 & 6 \\
+                  7 & 8 & 9
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                  5  & 7  & 9  \\
+                  11 & 13 & 15 \\
+                  8  & 10 & 12
+              \end{bmatrix}
+          \]
+
+    \item[d.]
+          \[
+              \begin{bmatrix}
+                  1 & 2 & 1  & 2  \\
+                  4 & 1 & -1 & -4 \\
+              \end{bmatrix}
+              \begin{bmatrix}
+                  0 & 3  \\
+                  1 & -1 \\
+                  2 & 1  \\
+                  5 & 2
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                  14  & 2 \\
+                  -21 & 2 \\
+              \end{bmatrix}
+          \]
+
+    \item[e.]
+          \[
+              \begin{bmatrix}
+                  0 & 3  \\
+                  1 & -1 \\
+                  2 & 1  \\
+                  5 & 2
+              \end{bmatrix}
+              \begin{bmatrix}
+                  1 & 2 & 1  & 2  \\
+                  4 & 1 & -1 & -4 \\
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                  12 & 3  & -3 & -12 \\
+                  -3 & 1  & 2  & 6   \\
+                  6  & 5  & 1  & 0   \\
+                  13 & 12 & 3  & 2
+              \end{bmatrix}
+          \]
+
+          \pagebreak
+
+    \item[2.5] Find the set \(\mathcal{S}\) of all solutions in \(x\) of the following inhomogeneous systems
+          \(\mathbf{A}\mathbf{x} = \mathbf{b}\), where \(\mathbf{A}\) and \(\mathbf{b}\) are defined as follows:
+
+    \item[a.]
+          \[
+              \mathbf{A} =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{2}i{3}i{3}i{3}@{\;\;}}
+                      1 & 1  & -1 & -1 \\
+                      2 & 5  & -7 & -5 \\
+                      2 & -1 & 1  & 3  \\
+                      5 & 2  & -4 & 2
+                  \end{array}
+              \end{bmatrix}
+              \quad
+              \mathbf{b} =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;\;}}
+                      1 \\ -2 \\ 4  \\ 6
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          Constructing the augmented matrix, \(\tilde{\mathbf{A}}\), and row-reducing,
+          \[
+              \begin{aligned}
+                  \tilde{\mathbf{A}} =
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{2}i{3}i{3}i{3}|i{3}@{\;\;}}
+                          1 & 1  & -1 & -1 & 1  \\
+                          2 & 5  & -7 & -5 & -2 \\
+                          2 & -1 & 1  & 3  & 4  \\
+                          5 & 2  & -4 & 2  & 6
+                      \end{array}
+                  \end{bmatrix}
+                   & \quad
+                  \begin{array}{l}
+                      r_2 \mapsto r_2 - 2r_1 \\
+                      r_3 \mapsto r_3 - r_2  \\
+                      r_4 \mapsto r_4 - 5r_1
+                  \end{array}
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{2}i{3}i{3}i{3}|i{3}@{\;\;}}
+                          1 & 1  & -1 & -1 & 1  \\
+                          0 & 3  & -5 & -3 & -4 \\
+                          0 & -6 & 8  & 8  & 6  \\
+                          0 & -3 & 1  & 7  & 1
+                      \end{array}
+                  \end{bmatrix}
+                   & \quad
+                  \begin{array}{l}
+                      r_3 \mapsto r_3 + 2r_2 \\
+                      r_4 \mapsto r_4 + r_2
+                  \end{array}
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{2}i{3}i{3}i{3}|i{3}@{\;\;}}
+                          1 & 1 & -1 & -1 & 1  \\
+                          0 & 3 & -5 & -3 & -4 \\
+                          0 & 0 & -2 & 2  & -2 \\
+                          0 & 0 & -4 & 4  & 2
+                      \end{array}
+                  \end{bmatrix}
+                   & \quad
+                  \begin{array}{l}
+                      r_4 \mapsto r_4 - 2r_3
+                  \end{array}
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{2}i{3}i{3}i{3}|i{3}@{\;\;}}
+                          1 & 1 & -1 & -1 & 1  \\
+                          0 & 3 & -5 & -3 & -4 \\
+                          0 & 0 & -2 & 2  & -2 \\
+                          0 & 0 & 0  & 0  & 6
+                      \end{array}
+                  \end{bmatrix}
+                   & \quad
+              \end{aligned}
+          \]
+          we find that this system \(\mathbf{A}\mathbf{x} = \mathbf{b}\), has no solutions for \(\mathbf{x}\), since the
+          final row of the augmented matrix corresponds to the inconsistent equation in the entries of \(\mathbf{x}\),
+          \(0 = 6\).  This tells us that \(\mathbf{b} \notin \Img(\mathbf{A})\).
+
+          If instead we were solving the \emph{homogeneous} system, \(\mathbf{A}\mathbf{x} = \mathbf{0}\), then we
+          \emph{would} find solutions for \(\mathbf{x}\), namely the null space of \(\mathbf{A}\), which is nontrivial
+          since we know \(\mathbf{A}\) is less than full rank.
+
+          Similarly, if instead \(\mathbf{b} \in \Img(\mathbf{A})\), the solutions for \(\mathbf{x}\) in
+          \(\mathbf{A}\mathbf{x} = \mathbf{b}\) would form an affine subspace in \(\R^4\), namely the null space of
+          \(\mathbf{A}\) shifted by any particular solution; that is
+          \[
+              \left \{ \mathbf{x} \in \R^4 \mid \mathbf{A}\mathbf{x} = \mathbf{b} \right \} =  \mathbf{x}_0 + \Null(\mathbf{A})
+          \]
+
+          \pagebreak
+
+    \item[b.]
+          \[
+              \mathbf{A} =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}i{3}i{2}i{3}i{3}@{\;\;}}
+                      1  & -1 & 0 & 0  & 1  \\
+                      1  & 1  & 0 & -3 & 0  \\
+                      2  & -1 & 0 & 1  & -1 \\
+                      -1 & 2  & 0 & -2 & -1
+                  \end{array}
+              \end{bmatrix}
+              \quad
+              \mathbf{b} =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;\;}}
+                      3 \\ 6 \\ 5 \\ -1
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          Constructing the augmented matrix, \(\tilde{\mathbf{A}}\), and row-reducing,
+          \[
+              \begin{aligned}
+                  \tilde{\mathbf{A}} =
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}i{3}i{3}i{3}i{3}|i{3}@{\;\;}}
+                          1  & -1 & 0 & 0  & 1  & 3  \\
+                          1  & 1  & 0 & -3 & 0  & 6  \\
+                          2  & -1 & 0 & 1  & -1 & 5  \\
+                          -1 & 2  & 0 & -2 & -1 & -1
+                      \end{array}
+                  \end{bmatrix}
+                   & \quad
+                  \begin{array}{l}
+                      r_2 \mapsto r_2 - r_1   \\
+                      r_3 \mapsto r_3 - 2 r_2 \\
+                      r_4 \mapsto r_4 + r_2
+                  \end{array}
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}i{3}i{3}i{3}i{3}|i{3}@{\;\;}}
+                          1 & -1 & 0 & 0  & 1  & 3  \\
+                          0 & 2  & 0 & -3 & -1 & 3  \\
+                          0 & -3 & 0 & 7  & -1 & -7 \\
+                          0 & 3  & 0 & -5 & -1 & 5
+                      \end{array}
+                  \end{bmatrix}
+                   & \quad
+                  \begin{array}{l}
+                      r_3 \mapsto (2r_3 + 3r_2) / 5 \\
+                      r_4 \mapsto (r_4 + r_3) / 2
+                  \end{array}
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}i{3}i{3}i{3}i{3}|i{3}@{\;\;}}
+                          1 & -1 & 0 & 0  & 1  & 3  \\
+                          0 & 2  & 0 & -3 & -1 & 3  \\
+                          0 & 0  & 0 & 1  & -1 & -1 \\
+                          0 & 0  & 0 & 1  & -1 & -1
+                      \end{array}
+                  \end{bmatrix}
+                   & \quad
+                  \begin{array}{l}
+                      r_4 \mapsto r_4 - r_3
+                  \end{array}
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}i{3}i{3}i{3}i{3}|i{3}@{\;\;}}
+                          1 & -1 & 0 & 0  & 1  & 3  \\
+                          0 & 2  & 0 & -3 & -1 & 3  \\
+                          0 & 0  & 0 & 1  & -1 & -1 \\
+                          0 & 0  & 0 & 0  & 0  & 0
+                      \end{array}
+                  \end{bmatrix}
+                   & \quad
+                  \begin{array}{l}
+                  \end{array}
+              \end{aligned}
+          \]
+
+          Equivalently, in the components of \(\mathbf{x}\),
+          \[
+              x_1
+              \begin{bmatrix}
+                  \begin{array}{@{\;}i{1}@{\;}}
+                      1 \\ 0 \\ 0 \\ 0
+                  \end{array}
+              \end{bmatrix}
+              +
+              x_2
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      -1 \\ 2  \\ 0  \\ 0
+                  \end{array}
+              \end{bmatrix}
+              +
+              x_3
+              \begin{bmatrix}
+                  \begin{array}{@{\;}i{1}@{\;}}
+                      0 \\ 0 \\ 0 \\ 0
+                  \end{array}
+              \end{bmatrix}
+              +
+              x_4
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      0 \\ -3 \\ 1  \\ 0
+                  \end{array}
+              \end{bmatrix}
+              +
+              x_5
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      1 \\ -1 \\ -1 \\ 0
+                  \end{array}
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      3 \\ 3  \\ -1 \\ 0
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          This gives us the following particular solution and solution set,
+          \[
+              \mathbf{x}_0 =
+              \begin{bmatrix}
+                  \begin{array}{@{\,}i{1}@{\,}}
+                      6 \\ 6 \\ 0 \\ 2 \\ 3
+                  \end{array}
+              \end{bmatrix}
+              \quad
+              \left \{
+              \mathbf{x} \in \R^5
+              \; \middle | \;
+              \mathbf{x} =
+              \mathbf{x}_0
+              + \lambda_1
+              \begin{bmatrix}
+                  \begin{array}{@{\,}i{1}@{\,}}
+                      0 \\ 0 \\ 1 \\ 0 \\ 0
+                  \end{array}
+              \end{bmatrix}
+              +
+              \lambda_2
+              \begin{bmatrix}
+                  \begin{array}{@{\,}i{1}@{\,}}
+                      1 \\ 2 \\ 0 \\ 1 \\ 1
+                  \end{array}
+              \end{bmatrix}
+              ,\;
+              \lambda_1, \lambda_2 \in \R
+              \right \}
+          \]
+
+          \pagebreak
+
+    \item[2.6] Using Gaussian elimination, find all solutions of the inhomogeneous system
+          \(\mathbf{A}\mathbf{x} = \mathbf{b}\), where
+          \[
+              \mathbf{A} =
+              \begin{bmatrix}
+                  \begin{array}{@{\,}i{1}i{1}i{1}i{1}i{1}i{1}@{\,}}
+                      0 & 1 & 0 & 0 & 1 & 0 \\
+                      0 & 0 & 0 & 1 & 1 & 0 \\
+                      0 & 1 & 0 & 0 & 0 & 1
+                  \end{array}
+              \end{bmatrix}
+              \quad
+              \mathbf{b} =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\,\;}}
+                      2 \\ -1 \\ 1
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          Constructing the augmented matrix, \(\tilde{\mathbf{A}}\), and eliminating,
+          \[
+              \begin{aligned}
+                  \tilde{\mathbf{A}} =
+                  \begin{bmatrix}
+                      \begin{array}{@{\,}i{2}i{3}i{3}i{3}i{3}i{3}@{\quad}|i{3}@{\;\;}}
+                          0 & 1 & 0 & 0 & 1 & 0 & 2  \\
+                          0 & 0 & 0 & 1 & 1 & 0 & -1 \\
+                          0 & 1 & 0 & 0 & 0 & 1 & 1
+                      \end{array}
+                  \end{bmatrix}
+                   & \quad
+                  \begin{array}{l}
+                      r_3 \mapsto r_1 - r_3
+                  \end{array}
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\,}i{2}i{3}i{3}i{3}i{3}i{3}@{\quad}|i{3}@{\;\;}}
+                          0 & 1 & 0 & 0 & 1 & 0  & 2  \\
+                          0 & 0 & 0 & 1 & 1 & 0  & -1 \\
+                          0 & 0 & 0 & 0 & 1 & -1 & 1
+                      \end{array}
+                  \end{bmatrix}
+              \end{aligned}
+          \]
+          yields the following solution set
+          \[
+              \left \{
+              \mathbf{x} \in \R^6
+              \; \middle | \;
+              \mathbf{x} =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\,\;}}
+                      0 \\ 2  \\ 0  \\ -1 \\ 0  \\ -1
+                  \end{array}
+              \end{bmatrix}
+              + \lambda_1
+              \begin{bmatrix}
+                  \begin{array}{@{\,}i{1}@{\,}}
+                      1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0
+                  \end{array}
+              \end{bmatrix}
+              + \lambda_2
+              \begin{bmatrix}
+                  \begin{array}{@{\,}i{1}@{\,}}
+                      0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0
+                  \end{array}
+              \end{bmatrix}
+              + \lambda_3
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\,\;}}
+                      0 \\ 1  \\ 0  \\ 1  \\ -1 \\ 1
+                  \end{array}
+              \end{bmatrix}
+              ,\;
+              \lambda_1, \lambda_2, \lambda_3 \in \R
+              \right \}
+          \]
 
 \end{enumerate}
 
