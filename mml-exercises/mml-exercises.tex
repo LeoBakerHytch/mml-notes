@@ -991,6 +991,220 @@
               \right \}.
           \]
 
+    \item[2.8]
+
+    \item[a.]
+          Given
+          \[
+              \mathbf{A} =
+              \begin{bmatrix}
+                  2 & 3 & 4 \\
+                  3 & 4 & 5 \\
+                  4 & 5 & 6
+              \end{bmatrix}
+          \]
+          we find that \(\mathbf{A}\) has no inverse, since \(\det(\mathbf{A}) = 0\).
+
+    \item[b.]
+          Given
+          \[
+              \mathbf{A} =
+              \begin{bmatrix}
+                  1 & 0 & 1 & 0 \\
+                  0 & 1 & 1 & 0 \\
+                  1 & 1 & 0 & 1 \\
+                  1 & 1 & 1 & 0
+              \end{bmatrix}
+          \]
+          we find
+          \[
+              \det(\mathbf{A}) = \det \left (
+              \begin{bmatrix}
+                      1 & 1 & 0 \\
+                      1 & 0 & 1 \\
+                      1 & 1 & 0
+                  \end{bmatrix}
+              \right )
+              + \det \left (
+              \begin{bmatrix}
+                      0 & 0 & 1 \\
+                      1 & 1 & 1 \\
+                      0 & 1 & 1
+                  \end{bmatrix}
+              \right )
+              = 0 + 1
+              = 1.
+          \]
+
+          We look for solutions to the following:
+          \[
+              \begin{bmatrix}
+                  1 & 0 & 1 & 0 \\
+                  0 & 1 & 1 & 0 \\
+                  1 & 1 & 0 & 1 \\
+                  1 & 1 & 1 & 0
+              \end{bmatrix}
+              \begin{bmatrix}
+                  a & b & c & d \\
+                  e & f & g & h \\
+                  i & j & k & l \\
+                  m & n & o & p
+              \end{bmatrix}
+              \\
+              =
+              \begin{bmatrix}
+                  a + i     & b + j     & c + k     & d + l     \\
+                  e + i     & f + j     & g + k     & h + l     \\
+                  a + e + m & b + f + n & c + g + o & d + h + p \\
+                  a + e + i & b + f + j & c + g + k & d + h + l
+              \end{bmatrix}
+              =
+              \mathbf{I}
+          \]
+
+          Solving each system of four equations in four variables gives us:
+          \[
+              \mathbf{A}^{-1} =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}i{3}i{3}i{3}@{\;\;}}
+                      0  & -1 & 0 & 1  \\
+                      -1 & 0  & 0 & 1  \\
+                      1  & 1  & 0 & -1 \\
+                      1  & 1  & 1 & -2
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          Alternatively, we can augment \(\mathbf{A}\) with the identity matrix \(\mathbf{I}\) and reduce:
+          \[
+              \begin{aligned}
+                  \tilde{\mathbf{A}} =
+                  \begin{bmatrix}
+                      \begin{array}{@{\negmedspace}i{3}i{3}i{3}i{3}@{\quad}|@{\quad}i{3}i{3}i{3}i{3}@{\;\;\;}}
+                          1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 \\
+                          0 & 1 & 1 & 0 & 0 & 1 & 0 & 0 \\
+                          1 & 1 & 0 & 1 & 0 & 0 & 1 & 0 \\
+                          1 & 1 & 1 & 0 & 0 & 0 & 0 & 1
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\negmedspace}i{3}i{3}i{3}i{3}@{\quad}|@{\quad}i{3}i{3}i{3}i{3}@{\;\;\;}}
+                          1 & 0 & 1  & 0  & 1  & 0 & 0  & 0 \\
+                          0 & 1 & 1  & 0  & 0  & 1 & 0  & 0 \\
+                          0 & 1 & -1 & 1  & -1 & 0 & 1  & 0 \\
+                          0 & 0 & 1  & -1 & 0  & 0 & -1 & 1
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\negmedspace}i{3}i{3}i{3}i{3}@{\quad}|@{\quad}i{3}i{3}i{3}i{3}@{\;\;\;}}
+                          1 & 0 & 1 & 0  & 1 & 0 & 0  & 0  \\
+                          0 & 1 & 1 & 0  & 0 & 1 & 0  & 0  \\
+                          0 & 0 & 2 & -1 & 1 & 1 & -1 & 0  \\
+                          0 & 0 & 0 & 1  & 1 & 1 & 1  & -2
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                  \\
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\negmedspace}i{3}i{3}i{3}i{3}@{\quad}|@{\quad}i{3}i{3}i{3}i{3}@{\;\;\;}}
+                          1 & 0 & 0 & 0 & 0  & -1 & 0 & 1  \\
+                          0 & 1 & 0 & 0 & -1 & 0  & 0 & 1  \\
+                          0 & 0 & 1 & 0 & 1  & 1  & 0 & -1 \\
+                          0 & 0 & 0 & 1 & 1  & 1  & 1 & -2
+                      \end{array}
+                  \end{bmatrix}
+                   & = \begin{bmatrix}
+                           \;\mathbf{I} \;|\; \mathbf{A}^{-1} \,
+                       \end{bmatrix}
+              \end{aligned}
+          \]
+
+          \pagebreak
+
+    \item[2.9] Which of the following are subspaces of \(\R^3\)?
+
+          \(A = \{ (\lambda, \lambda + \mu^3, \lambda - \mu^3 ) \mid \lambda, \mu \in \R \}\)
+
+          \(B = \{ (\lambda^2, -\lambda^2, 0) \mid \lambda \in \R \}\)
+
+          \(C = \{ (\eta_1, \eta_2, \eta_3) \in \R^3 \mid \eta_1 - 2 \eta_2 + 3 \eta_3 = \gamma, \; \gamma \in \R \}\)
+
+          \(D = \{ (\kappa_1, \kappa_2, \kappa_3) \in \R^3 \mid \kappa_2 \in \Z \}\)
+
+          \begin{enumerate}
+              \item[a.] \(A\) is \emph{not} a subspace of \(\R^3\), since it is not possible to express all members of \(A\) as a
+                    linear combination of a basis.
+
+              \item[b.] \(B\) is also \emph{not} a subspace of \(\R^3\), for the same reason.
+
+              \item[c.] \(C\) is a subspace of \(\R^3\) if and only if \(\gamma = 0\), since otherwise \(C\) does not contain the
+                    origin.  In the case that \(\gamma\) \emph{does} equal \(0\), then \(C = \Span((1, 2, 1))\).
+
+              \item[d.] \(D\) is \emph{not} a subspace of \(\R^3\), since \(D\) is not closed under scalar multiplication by
+                    \(\lambda \in \R\).
+
+          \end{enumerate}
+
+    \item[2.10]
+
+          \begin{enumerate}
+              \item[a.] The set of vectors \(\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3\) is linearly dependent, as found
+                    by constructing the matrix \(\begin{bmatrix}
+                        \mathbf{x}_1 \; \mathbf{x}_2 \; \mathbf{x}_3
+                    \end{bmatrix}\) and row-reducing:
+
+                    \[
+                        \begin{bmatrix}
+                            \begin{array}{@{\negthinspace}i{3}i{3}i{3}@{\;\;}}
+                                2  & 1  & 3  \\
+                                -1 & 1  & -3 \\
+                                3  & -2 & 8
+                            \end{array}
+                        \end{bmatrix}
+                        \rightsquigarrow
+                        \begin{bmatrix}
+                            \begin{array}{@{\negthickspace}i{3}i{3}i{3}@{\;\;}}
+                                1 & 2 & 0  \\
+                                0 & 1 & -1 \\
+                                0 & 0 & 0
+                            \end{array}
+                        \end{bmatrix}
+                    \]
+                    The final row of all zeros indicates the matrix has rank $2 < 3$, so the columns are linearly dependent.
+
+              \item[b.] The set of vectors \(\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3\) is linearly independent, as found
+                    by constructing the matrix \(\begin{bmatrix}
+                        \mathbf{x}_1 \; \mathbf{x}_2 \; \mathbf{x}_3
+                    \end{bmatrix}\) and row-reducing:
+                    \[
+                        \begin{bmatrix}
+                            1 & 1 & 1 \\
+                            2 & 1 & 0 \\
+                            1 & 0 & 0 \\
+                            0 & 1 & 1 \\
+                            0 & 1 & 1
+                        \end{bmatrix}
+                        \rightsquigarrow
+                        \begin{bmatrix}
+                            1 & 0 & 0 \\
+                            0 & 1 & 0 \\
+                            0 & 0 & 1 \\
+                            0 & 0 & 0 \\
+                            0 & 0 & 0
+                        \end{bmatrix}
+                    \]
+                    revealing three pivot columns. The matrix therefore has full column rank \(3\), and its column
+                    vectors are linearly independent.
+
+          \end{enumerate}
+
 \end{enumerate}
 
 \end{document}
