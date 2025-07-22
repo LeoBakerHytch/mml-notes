@@ -164,6 +164,281 @@
           \]
           which yields the solutions \(x \in \{1, -3\} \subset \R \setminus \{-1\}\).
 
+    \item[\textbf{2.1}]
+
+          Let \(n\) be in \(\N \setminus \{0\}\). Let \(k, x\) be in \(\Z\). We define the congruence class \(\cls{k}\) of the
+          integer \(k\) as the set
+          \[
+              \begin{aligned}
+                  \cls{k} & = \{ x \in \Z \mid x - k \equiv 0 \mod n \}               \\
+                          & = \{ x \in \Z \mid \exists a \in \Z: x - k = n \cdot a \}
+              \end{aligned}
+          \]
+
+          We now define \(\Z / n\Z\) (also \(\Z_n\)) as the set of all congruence classes modulo \(n\).
+          Euclidean division implies that this is a finite set of \(n\) elements:
+          \[
+              \Z_n = \left \{ \cls{0}, \cls{1}, \ldots, \cls{n - 1} \right \}.
+          \]
+
+          For all \(a, b \in \Z_n\), we define:
+          \[
+              \cls{a} \oplus \cls{b} = \cls{a + b}
+          \]
+
+    \item[a.] Show that (\(\Z_n, \oplus\)) is a group. Is it Abelian?
+
+          \subsubsection*{Neutral element}
+
+          We have \(\cls{0} \in \Z_n\) such that:
+          \[
+              \begin{aligned}
+                  \cls{a} \oplus \cls{0} = \cls{a + 0} = \cls{a}, & \quad \textrm{and} \\
+                  \cls{0} \oplus \cls{a} = \cls{0 + a} = \cls{a}.
+              \end{aligned}
+          \]
+
+          \subsubsection*{Commutativity}
+
+          For all \(\cls{a}, \cls{b} \in \Z_n\), we have:
+          \[
+              \begin{aligned}
+                  \cls{a} \oplus \cls{b} & = \cls{a + b}             \\
+                                         & = \cls{b + a}             \\
+                                         & = \cls{b} \oplus \cls{a}.
+              \end{aligned}
+          \]
+
+          \subsubsection*{Associativity}
+
+          For all \(a, b, c \in \Z_n\), we have:
+          \[
+              \begin{aligned}
+                  (\cls{a} \oplus \cls{b}) \oplus \cls{c} & = \cls{a + b} \oplus \cls{c}               \\
+                                                          & = \cls{(a + b) + c}                        \\
+                                                          & = \cls{a + (b + c)}                        \\
+                                                          & = \cls{a} \oplus \cls{b + c}               \\
+                                                          & = \cls{a} \oplus (\cls{b} \oplus \cls{c}).
+              \end{aligned}
+          \]
+
+          \subsubsection*{Existence of inverse}
+
+
+          For all \(\cls{a} \in \Z_n\), we require the existence of an element, \(\cls{b} \in \Z_n\), such that:
+          \[
+              \cls{a} \oplus \cls{b} = \cls{b} \oplus \cls{a} = \cls{0}.
+          \]
+          We first note that in \(\Z_n\), \(\cls{n} = \cls{0}\), and since \(n - a \in \Z\), its congruence class \(\cls{n - a} \in \Z_n\).
+
+          Supposing then that \(\cls{b} = \cls{n - a}\), we have:
+          \[
+              \begin{aligned}
+                  \cls{a} \oplus \cls{b} & = \cls{a} \oplus \cls{n - a} \\
+                                         & = \cls{a + n - a}            \\
+                                         & = \cls{n}                    \\
+                                         & =       \cls{0}
+              \end{aligned}
+          \]
+          as required, and commutativity gives us \(\cls{b} \oplus \cls{a} = \cls{0}\).
+
+          \subsubsection*{Closure under \(\oplus\)}
+
+          By definition, we have that
+          \[
+              \cls{a} \oplus \cls{b} = \cls{a + b}
+          \]
+
+          Since \(\Z_n\) is the set of congruence classes \(\cls{0}, \cls{1}, \ldots, \cls{n-1}\), and
+          every integer has a unique representation modulo \(n\), then given \(a + b \in \Z\), their congruence class
+          \(\cls{a + b} \in \Z_n\).
+
+    \item[b.]
+
+          We now define another operation \(\otimes\) for all \(\cls{a}, \cls{b} \in \Z_n\),
+          \[
+              \cls{a} \otimes \cls{b} = \cls{a \times b},
+          \]
+          where \(\times\) represents the usual multiplication in \(\Z\).
+
+          We then have the following multiplication table for \(\Z_5 \setminus \{\cls{0}\}\) under \(\otimes\):
+          \[
+              \begingroup
+              \renewcommand{\arraystretch}{1.3}
+              \begin{array}{c|ccccc}
+                  \otimes & \cls{1} & \cls{2} & \cls{3} & \cls{4} \\
+                  \hline
+                  \cls{1} & \cls{1} & \cls{2} & \cls{3} & \cls{4} \\
+                  \cls{2} & \cls{2} & \cls{4} & \cls{1} & \cls{3} \\
+                  \cls{3} & \cls{3} & \cls{1} & \cls{4} & \cls{2} \\
+                  \cls{4} & \cls{4} & \cls{3} & \cls{2} & \cls{1} \\
+              \end{array}
+              \endgroup
+          \]
+
+          It follows that \(\Z_5 \setminus \{\cls{0}\}\) is closed under \(\otimes\), with the neutral element
+          \(\cls{1}\). From the symmetry about the diagonal, we can immediately conclude that \(\otimes\) commutes.  For
+          the inverse, we find the column (resp. row) that yields \(\cls{1}\) for a given row (resp. column), noting
+          that \(\cls{1}\) appears in every row (resp. column).  For associativity, we note that for any three
+          \(\cls{a}, \cls{b}, \cls{c} \in \Z_n \setminus \{\cls{0}\}\), both \(\cls{a} \otimes (\cls{b} \otimes
+          \cls{c})\) and \((\cls{a} \otimes \cls{b}) \otimes \cls{c}\) yield the same result.  Hence, \((\Z_5 \setminus
+          \{\cls{0}\}, \otimes)\) forms an Abelian group.
+
+    \item[c.] We find that \((\Z_8 \setminus \{\cls{0}\}, \otimes)\) does not form a group, since \( \cls{2} \otimes
+          \cls{4} = \cls{0} \), so closure is not satisfied.
+
+    \item[d.] Bézout's lemma tells us that two integers \(a\) and \(b\) are relatively prime (that is, \(\gcd(a, b) = 1\)) if
+          and only if there exist two integers \(u\) and \(v\) such that \(au + bv = 1\).
+
+          Show that \((\Z_n \setminus \{\cls{0}\}, \otimes)\) is a group if and only if \(n \in \N \setminus \{0\}\) is
+          prime.
+
+          \begin{proof}[Proof]
+              The neutral element is \(\cls{1} \in \Z_n \setminus \{\cls{0}\}\), given that for all \(\cls{a} \in \Z_n
+              \setminus \{\cls{0}\}\):
+              \[
+                  \begin{aligned}
+                      \cls{a} \otimes \cls{1} = \cls{a \times 1} = \cls{a} & \quad \textrm{and} \\
+                      \cls{1} \otimes \cls{a} = \cls{1 \times a} = \cls{a} & .
+                  \end{aligned}
+              \]
+
+              For all \(\cls{a}, \cls{b}, \cls{c} \in \Z_n \setminus \{\cls{0}\}\), we have associativity (which follows
+              directly from associativity of integer multiplication):
+              \[
+                  \begin{aligned}
+                      (\cls{a} \otimes \cls{b}) \otimes \cls{c}
+                      = \cls{a \times b \times c}
+                      = \cls{a} \otimes (\cls{b} \otimes \cls{c}).
+                  \end{aligned}
+              \]
+
+              If \(n\) is composite, then there exist \(\cls{p}, \cls{q} \in \Z_n \setminus \{\cls{0}\}\) such that
+              \(\cls{p} \otimes \cls{q} = \cls{0}\); that is, \(\Z_n \setminus \{\cls{0}\}\) contains zero divisors, and
+              is not closed under \(\otimes\).  Conversely, if \(n\) is prime then no such \(\cls{p}\) or \(\cls{q}\)
+              exist; \(\Z_n \setminus \{\cls{0}\}\) contains no zero divisors and is closed under \(\otimes\).
+
+              Finally, for the existence of an inverse for all \(\cls{a} \in \Z_n \setminus \{\cls{0}\}\), we have from
+              Bézout's lemma that \(a\) and \(n\) are relatively prime if and only if there exist two integers \(u\) and
+              \(v\) such that \(au + nv = 1\).  Reducing both sides modulo \(n\), we have
+              \[
+                  au \equiv 1 \mod n,
+              \]
+              which tells us that \(u\) exists if and only if \(n\) is prime.  Restated:
+              \[
+                  \left (
+                  \forall\, \cls{a} \in \Z_n \setminus \{ \cls{0} \},\quad
+                  \exists\, \cls{u} \in \Z_n \setminus \{ \cls{0} \}:\quad
+                  \cls{a} \otimes \cls{u} = \cls{1}
+                  \right )
+                  \iff n \text{ is prime}.
+              \]
+
+              Concluding, a neutral element always exists; associativity always holds; closure and the existence of
+              inverses hold if and only if \(n\) is prime.  Therefore, \((\Z_n \setminus \{\cls{0}\}, \otimes)\) forms a
+              group if and only if \(n\) is prime.
+
+          \end{proof}
+
+    \item[2.3] Consider the set \(\G\) of \(3 \times 3\) matrices, defined as follows
+          \[
+              \G = \left \{
+              \begin{bmatrix}
+                  1 & x & z \\
+                  0 & 1 & y \\
+                  0 & 0 & 1
+              \end{bmatrix}
+              \in \R^3
+              \;\middle|\;
+              x, y, z \in \R
+              \right \}
+          \]
+          We define \(\cdot\) as the standard matrix multiplication.  Is \((\G, \cdot)\) a group?  If yes, is it
+          Abelian?
+
+          For \(a, b, c, x, y, z \in \R\), let:
+          \[
+              \mathbf{A} =
+              \begin{bmatrix}
+                  1 & a & c \\
+                  0 & 1 & b \\
+                  0 & 0 & 1
+              \end{bmatrix}
+              \quad
+              \mathbf{B} =
+              \begin{bmatrix}
+                  1 & x & z \\
+                  0 & 1 & y \\
+                  0 & 0 & 1
+              \end{bmatrix}
+          \]
+          Then we have closure:
+          \[
+              \mathbf{B} \cdot \mathbf{A} =
+              \begin{bmatrix}
+                  1 & a + x & c + bx + z \\
+                  0 & 1     & b + y      \\
+                  0 & 0     & 1
+              \end{bmatrix}
+              \in \G,
+          \]
+          and
+          \[
+              \mathbf{A} \cdot \mathbf{B} =
+              \begin{bmatrix}
+                  1 & a + x & c + ay + z \\
+                  0 & 1     & b + y      \\
+                  0 & 0     & 1
+              \end{bmatrix}
+              \in \G.
+          \]
+
+          Associativity follows from associativity of standard matrix multiplication.  Similarly, we have the standard identity
+          matrix, \(\mathbf{I} \in \G\).  For \(\mathbf{A}\) defined as above, we have its inverse:
+          \[
+              \mathbf{A}^{-1} =
+              \begin{bmatrix}
+                  1 & -a & ab - c \\
+                  0 & 1  & -b     \\
+                  0 & 0  & 1
+              \end{bmatrix}
+              \in \G.
+          \]
+          Verifying, we have
+          \[
+              \mathbf{A} \cdot \mathbf{A}^{-1} =
+              \begin{bmatrix}
+                  1 & a - a & ab -c -ab + c \\
+                  0 & 1     & b - b         \\
+                  0 & 0     & 1
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                  1 & 0 & 0 \\
+                  0 & 1 & 0 \\
+                  0 & 0 & 1
+              \end{bmatrix}
+              = \mathbf{I}
+          \]
+          and
+          \[
+              \mathbf{A}^{-1} \cdot \mathbf{A} =
+              \begin{bmatrix}
+                  1 & a - a & c - ab + ab - c \\
+                  0 & 1     & b - b           \\
+                  0 & 0     & 1
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                  1 & 0 & 0 \\
+                  0 & 1 & 0 \\
+                  0 & 0 & 1
+              \end{bmatrix}
+              = \mathbf{I}
+          \]
+          as desired.  We saw above that, in general, multiplication of \(\mathbf{A}, \mathbf{B} \in \G\) does not commute.
+          We therefore conclude that \((\G, \cdot)\) is a group, but not Abelian.
+
 \end{enumerate}
 
 \end{document}
