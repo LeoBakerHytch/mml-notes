@@ -2211,6 +2211,172 @@
                     \[
                         \Ker(f) \cap \Img(g) = \{ \mathbf{0}_E \} \cap E = \{ \mathbf{0}_E \}.
                     \]
+          \end{enumerate}
+
+          \pagebreak
+
+    \item[2.19] Consider an endomorphism \(\Phi : \R^3 \rightarrow \R^3\) whose transformation matrix (with respect to the
+          standard basis in \(\R^3\)) is
+          \[
+              \mathbf{A}_\Phi =
+              \begin{bmatrix}
+                  \begin{array}{@{\negthickspace}i{3}i{3}i{3}@{\;\;}}
+                      1 & 1  & 0 \\
+                      1 & -1 & 0 \\
+                      1 & 1  & 1 \\
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          \begin{enumerate}
+              \item[a.] Determine \(\Ker(\Phi)\) and \(\Img(\Phi)\)
+
+                    \(\mathbf{A}_\Phi\) row-reduces to \(\mathbf{I} \in \R^3\):
+                    \[
+                        \begin{bmatrix}
+                            1 & 1  & 0 \\
+                            1 & -1 & 0 \\
+                            1 & 1  & 1 \\
+                        \end{bmatrix}
+                        \rightsquigarrow
+                        \begin{bmatrix}
+                            1 & 1  & 0 \\
+                            1 & -1 & 0 \\
+                            0 & 0  & 1 \\
+                        \end{bmatrix}
+                        \rightsquigarrow
+                        \begin{bmatrix}
+                            1 & 1  & 0 \\
+                            0 & -2 & 0 \\
+                            0 & 0  & 1 \\
+                        \end{bmatrix}
+                        \rightsquigarrow
+                        \begin{bmatrix}
+                            1 & 1 & 0 \\
+                            0 & 1 & 0 \\
+                            0 & 0 & 1 \\
+                        \end{bmatrix}
+                        \rightsquigarrow
+                        \begin{bmatrix}
+                            1 & 0 & 0 \\
+                            0 & 1 & 0 \\
+                            0 & 0 & 1 \\
+                        \end{bmatrix}
+                    \]
+                    Therefore \(\Ker(\Phi) = \{ \mathbf{0} \} \in \R^3\) and \(\Img(\Phi) = \R^3\)
+
+              \item[b.] Determine the transformation matrix \(\tilde{\mathbf{A}}_\Phi\) with respect to the basis
+                    \[
+                        B = \left (
+                        \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}\!,\!
+                        \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix}\!,\!
+                        \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+                        \right )
+                    \]
+
+                    Construct and row-reduce the augmented matrix, \([ \; \mathbf{S}_B \mid \mathbf{I} \; ] \rightsquigarrow [ \;
+                    \mathbf{I} \mid \mathbf{S}_B^{-1} \; ]\) (where \(\mathbf{S}_B\) is the change-of-basis matrix for \(B\)) as follows
+                    \[
+                        \begin{aligned}
+                            \begin{bmatrix}
+                                \begin{array}{i{1}i{1}i{1}@{\;\;}|@{\;\;}i{1}i{1}i{1}}
+                                    1 & 1 & 1 & 1 & 0 & 0 \\
+                                    1 & 2 & 0 & 0 & 1 & 0 \\
+                                    1 & 1 & 0 & 0 & 0 & 1 \\
+                                \end{array}
+                            \end{bmatrix}
+                             & \rightsquigarrow
+                            \begin{bmatrix}
+                                \begin{array}{i{1}i{1}i{1}@{\;\;}|@{\negmedspace}i{3}i{3}i{3}}
+                                    0 & 0 & 1 & 1 & 0 & -1 \\
+                                    1 & 2 & 0 & 0 & 1 & 0  \\
+                                    1 & 1 & 0 & 0 & 0 & 1  \\
+                                \end{array}
+                            \end{bmatrix}
+                            \\
+                             & \rightsquigarrow
+                            \begin{bmatrix}
+                                \begin{array}{i{1}i{1}i{1}@{\;\;}|@{\negmedspace}i{3}i{3}i{3}}
+                                    0 & 0 & 1 & 1 & 0 & -1 \\
+                                    0 & 1 & 0 & 0 & 1 & -1 \\
+                                    1 & 1 & 0 & 0 & 0 & 1  \\
+                                \end{array}
+                            \end{bmatrix}
+                            \\
+                             & \rightsquigarrow
+                            \begin{bmatrix}
+                                \begin{array}{i{1}i{1}i{1}@{\;\;}|@{\negmedspace}i{3}i{3}i{3}}
+                                    0 & 0 & 1 & 1 & 0  & -1 \\
+                                    0 & 1 & 0 & 0 & 1  & -1 \\
+                                    1 & 0 & 0 & 0 & -1 & 2  \\
+                                \end{array}
+                            \end{bmatrix}
+                            \\
+                             & \rightsquigarrow
+                            \begin{bmatrix}
+                                \begin{array}{i{1}i{1}i{1}@{\;\;}|@{\negmedspace}i{3}i{3}i{3}}
+                                    1 & 0 & 0 & 0 & -1 & 2  \\
+                                    0 & 1 & 0 & 0 & 1  & -1 \\
+                                    0 & 0 & 1 & 1 & 0  & -1 \\
+                                \end{array}
+                            \end{bmatrix}
+                            \\
+                        \end{aligned}
+                    \]
+
+                    This gives us
+                    \[
+                        \mathbf{S}_B =
+                        \begin{bmatrix}
+                            \begin{array}{i{1}i{1}i{1}}
+                                1 & 1 & 1 \\
+                                1 & 2 & 0 \\
+                                1 & 1 & 0 \\
+                            \end{array}
+                        \end{bmatrix}
+                        \quad
+                        \mathbf{S}_B^{-1} =
+                        \begin{bmatrix}
+                            \begin{array}{@{\!\!\!\!}i{3}i{3}i{3}@{\;}}
+                                0 & -1 & 2  \\
+                                0 & 1  & -1 \\
+                                1 & 0  & -1 \\
+                            \end{array}
+                        \end{bmatrix}
+                    \]
+
+                    The transformation matrix with respect to the basis \(B\), is given by
+                    \[
+                        \begin{aligned}
+                            \tilde{\mathbf{A}}_\Phi = \mathbf{S}_B^{-1} \mathbf{A}_\Phi \mathbf{S}_B \\
+                        \end{aligned}
+                    \]
+
+                    So composing,
+                    \[
+                        \tilde{\mathbf{A}}_\Phi =
+                        \begin{bmatrix}
+                            1 & 1 & 1 \\
+                            1 & 2 & 0 \\
+                            1 & 1 & 0 \\
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            0 & -1 & 2  \\
+                            0 & 1  & -1 \\
+                            1 & 0  & -1 \\
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            1 & 1  & 0 \\
+                            1 & -1 & 0 \\
+                            1 & 1  & 1 \\
+                        \end{bmatrix}
+                        =
+                        \begin{bmatrix}
+                            1 & 1  & 0 \\
+                            1 & -1 & 0 \\
+                            1 & 1  & 1 \\
+                        \end{bmatrix}
+                    \]
 
           \end{enumerate}
 
