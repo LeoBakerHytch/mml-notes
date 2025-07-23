@@ -10,6 +10,7 @@
 \usepackage{geometry}        % Better margins
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
 \usepackage{siunitx}         % Alignment in matrices
+\usepackage{titlesec}        % Heading spacing control
 \sisetup{
   table-align-text-post=false,
   table-number-alignment = center,
@@ -68,6 +69,26 @@
 \theoremstyle{remark}
 \newtheorem{remark}[definition]{Remark}
 \newtheorem{example}[definition]{Example}
+
+% --- Headings ---
+
+% Define a new heading level (subsubsubsection)
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
+
+% Set formatting: italic, own line, similar spacing
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+
+\titleformat{\subsubsubsection}
+  {\normalfont\itshape} % style: italics, normal font
+  {}                    % no label
+  {0pt}                 % no indentation before text
+  {}                    % no extra formatting before text
+
+\titlespacing*{\subsubsubsection}
+  {0pt}   % left margin
+  {0.75em plus 0.25em} % space before
+  {0.25em} % space after
 
 % --- Title Info ---
 \title{Mathematics for Machine Learning}
