@@ -56,6 +56,7 @@
 \DeclareMathOperator{\Null}{Null}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\id}{id}
 
 % --- Theorem environments ---
 \theoremstyle{definition}
@@ -2157,6 +2158,38 @@
               \dim(\Dom \Phi) = \dim(\Img \Phi) + \dim(\Ker \Phi)
           \]
           so \(\dim(\Ker \Phi) = 0\) gives \(\dim(\Img \Phi) = 3\).
+
+          \pagebreak
+
+    \item[2.18] Let \(E\) be a vector space.
+
+          Let \(f\) and \(g\) be two automorphisms on \(E\) such that \(f \circ g = \id_E\) (the identity mapping on E).
+
+          Show that:
+          \begin{enumerate}
+              \item[a.] \(\Ker(f) = \Ker(g \circ f)\)
+              \item[b.] \(\Img(g) = \Img(g \circ f)\)
+              \item[c.] \(\Ker(f) \cap \Img(g) = \{ \mathbf{0}_E \}\)
+          \end{enumerate}
+
+          Given \(f \circ g = \id_E\), \(g\) must be invertible, and specifically \(f\) is its inverse (and vice versa).
+
+          It follows that \(g \circ f = \id_E\) and
+          \[
+              \Ker(f \circ g) = \Ker(g \circ f) = \Ker(f) = \Ker(g) = \{ \mathbf{0}_E \}
+          \]
+          Put another way, if either \(\Ker(f)\) or \(\Ker(g)\) were nontrivial, \(f \circ g = \id_E\) could not hold.
+
+          By the same line of reasoning,
+          \[
+              \Img(f) = \Img(g) = \Img(f \circ g) = \Img(g \circ f) = E
+          \]
+          (each mapping and the respective compositions must map to the whole space to preserve invertibility).
+
+          Finally,
+          \[
+              \Ker(f) \cap \Img(g) = \Ker(g) \cap \Img(f) = \{ \mathbf{0}_E \} \cap E = \{ \mathbf{0}_E \}.
+          \]
 
 \end{enumerate}
 
