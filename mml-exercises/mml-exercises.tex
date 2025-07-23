@@ -2172,24 +2172,47 @@
               \item[c.] \(\Ker(f) \cap \Img(g) = \{ \mathbf{0}_E \}\)
           \end{enumerate}
 
-          Given \(f \circ g = \id_E\), \(g\) must be invertible, and specifically \(f\) is its inverse (and vice versa).
+          Since \(f \circ g = \id_E\), both \(f\) and \(g\) are invertible: \(g = f^{-1}\) and \(f = g^{-1}\).
 
-          It follows that \(g \circ f = \id_E\) and
-          \[
-              \Ker(f \circ g) = \Ker(g \circ f) = \Ker(f) = \Ker(g) = \{ \mathbf{0}_E \}
-          \]
-          Put another way, if either \(\Ker(f)\) or \(\Ker(g)\) were nontrivial, \(f \circ g = \id_E\) could not hold.
+          \begin{enumerate}
+              \item[a.] \(\Ker(f) = \Ker(g \circ f)\)
 
-          By the same line of reasoning,
-          \[
-              \Img(f) = \Img(g) = \Img(f \circ g) = \Img(g \circ f) = E
-          \]
-          (each mapping and the respective compositions must map to the whole space to preserve invertibility).
+                    Since \(f\) is invertible, it is surjective (maps onto all of \(E\)), so
+                    \[
+                        \Ker(f) = \{ \mathbf{0}_E \}.
+                    \]
+                    Similarly, \(g \circ f = \id_E\), so
+                    \[
+                        \Ker(g \circ f) = \Ker(\id_E) = \{ \mathbf{0}_E \}.
+                    \]
+                    Therefore
+                    \[
+                        \Ker(f) = \Ker(g \circ f) = \{ \mathbf{0}_E \}.
+                    \]
 
-          Finally,
-          \[
-              \Ker(f) \cap \Img(g) = \Ker(g) \cap \Img(f) = \{ \mathbf{0}_E \} \cap E = \{ \mathbf{0}_E \}.
-          \]
+              \item[b.] \(\Img(g) = \Img(g \circ f)\)
+
+                    Since \(g\) is invertible, it is surjective, so
+                    \[
+                        \Img(g) = E.
+                    \]
+                    Likewise, \(g \circ f = \id_E\), so
+                    \[
+                        \Img(g \circ f) = \Img(\id_E) = E.
+                    \]
+                    Therefore,
+                    \[
+                        \Img(g) = \Img(g \circ f) = E.
+                    \]
+
+              \item[c.] \(\Ker(f) \cap \Img(g) = \{ \mathbf{0}_E \}\)
+
+                    Taking the results from a. and b.,
+                    \[
+                        \Ker(f) \cap \Img(g) = \{ \mathbf{0}_E \} \cap E = \{ \mathbf{0}_E \}.
+                    \]
+
+          \end{enumerate}
 
 \end{enumerate}
 
