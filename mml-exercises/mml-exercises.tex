@@ -1530,6 +1530,257 @@
               \right )
           \]
 
+    \item[2.14] Consider two subspaces \(U\) and \(V\), where \(U\) is spanned by the columns of \(\mathbf{A}\), and
+          \(V\) is spanned by the columns of \(\mathbf{B}\), with
+          \[
+              \mathbf{A} =
+              \begin{bmatrix}
+                  \begin{array}{@{\;\;}i{1}i{3}i{3}}
+                      1 & 0  & 1  \\
+                      1 & -2 & -1 \\
+                      2 & 1  & 3  \\
+                      1 & 0  & 1  \\
+                  \end{array}
+              \end{bmatrix}
+              \quad
+              \mathbf{B} =
+              \begin{bmatrix}
+                  \begin{array}{@{\;\;}i{1}i{3}i{3}}
+                      3 & -3 & 0 \\
+                      1 & 2  & 3 \\
+                      7 & -5 & 2 \\
+                      3 & -1 & 2 \\
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          \begin{enumerate}
+              \item[a.] Determine the dimension of \(U\) and of \(V\).
+              \item[b.] Determine the bases of \(U\) and \(V\).
+              \item[c.] Determine a basis of \(U \cap V\).
+          \end{enumerate}
+
+          We can reformulate \(\mathbf{A}\) as follows
+          \[
+              \begin{alignedat}{2}
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{3}}
+                          1 & 0  & 1  \\
+                          1 & -2 & -1 \\
+                          2 & 1  & 3  \\
+                          1 & 0  & 1  \\
+                      \end{array}
+                  \end{bmatrix}
+                   & \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{3}}
+                          1 & 0  & 0  \\
+                          1 & -2 & -2 \\
+                          2 & 1  & 1  \\
+                          1 & 0  & 0  \\
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                   & \quad
+                  \begin{array}{l}
+                      c_3 \mapsto c_3 - c_1
+                  \end{array}
+                  \\
+                   & \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{3}}
+                          1 & 0  & 0 \\
+                          5 & -2 & 0 \\
+                          0 & 1  & 0 \\
+                          1 & 0  & 0 \\
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                   & \quad
+                  \begin{array}{l}
+                      c_1 \mapsto c_1 - 2c_2 \\
+                      c_3 \mapsto c_3 - c_2  \\
+                  \end{array}
+              \end{alignedat}
+          \]
+          which is to say, \(\dim(U) = 2\), since the two remaining non-zero columns cannot be expressed as a
+          linear combination of each other, and these two column vectors form a basis of \(U\).
+
+          Similarly, we reformulate \(\mathbf{B}\) as follows
+          \[
+              \begin{alignedat}{2}
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{3}}
+                          3 & -3 & 0 \\
+                          1 & 2  & 3 \\
+                          7 & -5 & 2 \\
+                          3 & -1 & 2 \\
+                      \end{array}
+                  \end{bmatrix}
+                   & \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{3}}
+                          3 & 0 & 0 \\
+                          1 & 3 & 3 \\
+                          7 & 2 & 2 \\
+                          3 & 2 & 2 \\
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                   & \quad
+                  \begin{array}{l}
+                      c_2 \mapsto c_2 + c_1
+                  \end{array}
+                  \\
+                   & \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{3}}
+                          3 & 0 & 0 \\
+                          1 & 3 & 0 \\
+                          7 & 2 & 0 \\
+                          3 & 2 & 0 \\
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                   & \quad
+                  \begin{array}{l}
+                      c_3 \mapsto c_3 - c_2
+                  \end{array}
+              \end{alignedat}
+          \]
+          and likewise, the two remaining non-zero columns form a linearly independent basis for \(V\),
+          and \(\dim(V) = 2\).
+
+          Denoting the respective column vectors of the reduced bases of \(U\) and \(V\) as \(
+          \mathbf{u}_1,
+          \mathbf{u}_2,
+          \mathbf{v}_1,
+          \mathbf{v}_2
+          \), let
+          \[
+              \mathbf{A}' = \begin{bmatrix}\mathbf{u}_1 & \mathbf{u}_2\end{bmatrix}
+              \quad
+              \mathbf{B}' = \begin{bmatrix}\mathbf{v}_1 & \mathbf{v}_2\end{bmatrix}
+              \quad
+              \mathbf{x} = \begin{bmatrix}x_1 \\ x_2\end{bmatrix}
+              \quad
+              \mathbf{y} = \begin{bmatrix}y_1 \\ y_2\end{bmatrix}
+          \]
+
+          Then to determine a basis for the intersection \(U \cap V\), we can solve \(
+          \mathbf{A}' \mathbf{x} -
+          \mathbf{B}' \mathbf{y} =
+          \mathbf{0}
+          \).  That is, we look for solutions where some linear combination of the basis of \(U\) equals some linear combination of the basis of \(V\).
+          We do this by forming a single augmented matrix \(\begin{bmatrix}
+              \;
+              \mathbf{A}'
+               &
+              \negthickspace
+              -\mathbf{B}'
+              \;
+          \end{bmatrix}\) and row-reducing:
+          \[
+              \begin{alignedat}{2}
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{3}i{3}}
+                          1 & 0  & -3 & -0 \\
+                          5 & -2 & -1 & -3 \\
+                          0 & 1  & -7 & -2 \\
+                          1 & 0  & -3 & -2 \\
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{4}i{3}}
+                          1 & 0 & -3  & -0 \\
+                          0 & 2 & -14 & 3  \\
+                          0 & 1 & -7  & -2 \\
+                          0 & 0 & 0   & 1  \\
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                   & \quad
+                  \begin{array}{l}
+                      r_2 \mapsto -(r_2 - 5 r_1) \\
+                      r_4 \mapsto -\tfrac{1}{2}(r_4 - r_1)
+                  \end{array}
+                  \\
+                   &
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{4}i{3}}
+                          1 & 0 & -3 & -0 \\
+                          0 & 1 & -7 & 5  \\
+                          0 & 1 & -7 & -2 \\
+                          0 & 0 & 0  & 1  \\
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                   & \quad
+                  \begin{array}{l}
+                      r_2 \mapsto r_2 - r_3
+                  \end{array}
+                  \\
+                   &
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{4}i{3}}
+                          1 & 0 & -3 & -0 \\
+                          0 & 1 & -7 & 0  \\
+                          0 & 0 & 0  & 1  \\
+                          0 & 0 & 0  & 1  \\
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                   & \quad
+                  \begin{array}{l}
+                      r_2 \mapsto r_2 - 5r_4 \\
+                      r_3 \mapsto -\tfrac{1}{7} (r_3 - r_2)
+                  \end{array}
+                  \\
+                   &
+                  \rightsquigarrow
+                  \begin{bmatrix}
+                      \begin{array}{@{\;\;}i{1}i{3}i{4}i{3}}
+                          1 & 0 & -3 & -0 \\
+                          0 & 1 & -7 & 0  \\
+                          0 & 0 & 0  & 1  \\
+                          0 & 0 & 0  & 0  \\
+                      \end{array}
+                  \end{bmatrix}
+                   &
+                   & \quad
+                  \begin{array}{l}
+                      r_4 \mapsto r_4 - r_3
+                  \end{array}
+              \end{alignedat}
+          \]
+
+          Seeking to determine the intersection of the two planes \(U\) and \(V\), we find three pivot variables (\(x_1,
+          x_2, y_2\)) and one free variable (\(y_1\)) as expected, and the following solution set
+          \[
+              \left \{
+              \mathbf{v} \in \R^4 \;\middle |\; \mathbf{v} = \lambda
+              \begin{bmatrix}
+                  3 \\ 7 \\ 1 \\ 0
+              \end{bmatrix}
+              ,\;
+              \lambda \in \R
+              \right \}
+              \quad
+              \text{and}
+              \quad
+              U \cap V =
+              \Span \left (
+              \begin{bmatrix}
+                      3 \\ 7 \\ 1 \\ 0
+                  \end{bmatrix}
+              \right )
+          \]
+
+
 \end{enumerate}
 
 \end{document}
