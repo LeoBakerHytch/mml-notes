@@ -1978,8 +1978,81 @@
           \]
           which are always defined.  It follows that \(G = \R^3\).
 
+    \item[2.16] Are the following mappings linear?
 
+          \begin{enumerate}
+              \item[a.] Let \(a, b \in \R^3\).
+                    \[
+                        \begin{aligned}
+                            \Phi : L^1([a, b]) & \rightarrow \R                            \\
+                            f                  & \mapsto \Phi(f) = \int_{a}^{b} f(x) \, dx
+                        \end{aligned}
+                    \]
+                    where \(L^1([a, b])\) denotes the set of integrable functions on \([a, b]\).
 
+                    \textbf{Linear}.
+
+                    \textit{Additivity}: \(\int_{a}^{b} f + g = \int_{a}^{b} f + \int_{a}^{b} g \)
+
+                    \textit{Homogeneity}: \(\int_{a}^{b} \lambda f = \lambda \int_{a}^{b} f \)
+
+              \item[b.]
+                    \[
+                        \begin{aligned}
+                            \Phi : C^1 & \rightarrow C^0      \\
+                            f          & \mapsto \Phi(f) = f'
+                        \end{aligned}
+                    \]
+                    where for \(k \geq 1\), \(C^k\) denotes the set of \(k\) times continuously differentiable
+                    functions, and \(C^0\) denotes the set of continuous functions.
+
+                    \textbf{Linear}.
+
+                    \textit{Additivity}: \((f + g)' = f' + g'\).
+
+                    \textit{Homogeneity}: \((\lambda f)' = \lambda f'\).
+
+              \item[c.]
+                    \[
+                        \begin{aligned}
+                            \Phi : \R & \rightarrow \R            \\
+                            x         & \mapsto \Phi(x) = \cos(x)
+                        \end{aligned}
+                    \]
+                    \textbf{Non-linear}.  Additivity required, but in general,
+                    \[
+                        \cos(x + y) \neq \cos(x) + \cos(y).
+                    \]
+
+              \item[d.]
+                    \[
+                        \begin{aligned}
+                            \Phi : \R^3 & \rightarrow \R^2 \\
+                            \mathbf{x}  & \mapsto
+                            \begin{bmatrix}
+                                1 & 2 & 3 \\
+                                1 & 4 & 3 \\
+                            \end{bmatrix}
+                            \mathbf{x}
+                        \end{aligned}
+                    \]
+                    \textbf{Linear}. Matrix multiplication is linear.
+
+              \item[e.] Let \(\theta \in [0, 2\pi]\) and
+                    \[
+                        \begin{aligned}
+                            \Phi : \R^2 & \rightarrow \R^2 \\
+                            \mathbf{x}  & \mapsto
+                            \begin{bmatrix}
+                                \cos(\theta)  & \sin(\theta) \\
+                                -\sin(\theta) & \cos(\theta) \\
+                            \end{bmatrix}
+                            \mathbf{x}
+                        \end{aligned}
+                    \]
+                    \textbf{Linear}. Matrix multiplication is linear.
+
+          \end{enumerate}
 
 \end{enumerate}
 
