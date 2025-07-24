@@ -31,23 +31,24 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 
-\newcommand{\G}{\mathcal{G}}
-
 \newcommand{\Xcal}{\mathcal{X}}  % Input space
 \newcommand{\Ycal}{\mathcal{Y}}  % Output / label space
 \newcommand{\Hcal}{\mathcal{H}}  % Hypothesis space
 \newcommand{\Dcal}{\mathcal{D}}  % Distribution or dataset
+\newcommand{\Gcal}{\mathcal{G}}  % Generic set variable
+\newcommand{\Scal}{\mathcal{S}}  % Generic set variable
 
 \newcommand{\eps}{\varepsilon}
 \newcommand{\del}{\partial}
 
 \newcommand{\vect}[1]{\bm{#1}}      % Vector
 \newcommand{\mat}[1]{\mathbf{#1}}   % Matrix
-\newcommand{\x}{\vect{x}}
 
 \newcommand{\abs}[1]{\left|#1\right|}                    % Absolute value
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}         % Norm
 \newcommand{\set}[1]{\left\{#1\right\}}                  % Generic set
+\newcommand{\args}[1]{\!\left(#1\right)}                 % Generic arguments
+\newcommand{\tuple}[1]{\left(#1\right)}                  % Generic tuple
 \newcommand{\inner}[2]{\left\langle#1, #2\right\rangle}  % Inner product
 \newcommand{\cls}[1]{\overline{#1}}                      % Congruence class
 
@@ -112,16 +113,16 @@
 
     \item[\textbf{2.1}]
 
-          We consider \(\left(\R \setminus \{-1\}, \star \right)\), where:
+          We consider $\tuple{ \R \setminus \{-1\}, \star }$, where:
           \[
               a \star b = ab + a + b \qquad a, b \in \R \setminus \{-1\}.
           \]
 
-    \item[a.] Show that \(\left(\R \setminus \{-1\}, \star \right)\) is an Abelian group.
+    \item[a.] Show that $\tuple{ \R \setminus \{-1\}, \star }$ is an Abelian group.
 
           \subsubsection*{Neutral element}
 
-          We have \( 0 \in \R \setminus \{-1\} \), and for all \(a \in \R \setminus \{-1\}\):
+          We have $0 \in \R \setminus \{-1\}$, and for all $a \in \R \setminus \{-1\}$:
           \[
               \begin{aligned}
                   a \star 0 = a0 + a + 0 = a, & \quad \textrm{and} \\
@@ -131,7 +132,7 @@
 
           \subsubsection*{Commutativity}
 
-          For all \(a, b \in \R \setminus \{-1\}\), we have:
+          For all $a, b \in \R \setminus \{-1\}$, we have:
           \[
               \begin{aligned}
                   a \star b & = ab + a + b \\
@@ -142,7 +143,7 @@
 
           \subsubsection*{Associativity}
 
-          For all \(a, b, c \in \R \setminus \{-1\}\), we have:
+          For all $a, b, c \in \R \setminus \{-1\}$, we have:
           \[
               \begin{aligned}
                   (a \star b) \star c & = (ab + a + b) \star c               \\
@@ -155,7 +156,7 @@
 
           \subsubsection*{Existence of inverses}
 
-          For all \(a \in \R \setminus \{-1\}\), we require the existence of an element \(b\) such that:
+          For all $a \in \R \setminus \{-1\}$, we require the existence of an element $b$ such that:
           \[
               \begin{alignedat}{3}
                             &  & a \star b = b \star a & \; =\; &  & 0                 \\
@@ -164,11 +165,11 @@
                   \iff\quad &  & b                     & \; =\; &  & \dfrac{-a}{a + 1}
               \end{alignedat}
           \]
-          This expression for \(b\) is always defined, since \(a\) cannot be \(-1\), and the denominator is always non-zero.
+          This expression for $b$ is always defined, since $a$ cannot be $-1$, and the denominator is always non-zero.
 
-          \subsubsection*{Closure under \(\star\)}
+          \subsubsection*{Closure under $\star$}
 
-          For contradiction, assume that there exist \(a, b \in \R \setminus \{-1\}\), such that:
+          For contradiction, assume that there exist $a, b \in \R \setminus \{-1\}$, such that:
           \[
               \begin{alignedat}{3}
                             &  & a \star b  & \; = \; &  & -1                    \\
@@ -179,7 +180,7 @@
               \end{alignedat}
           \]
 
-    \item[b.] In the Abelian group \(\left(\R \setminus \{-1\}, \star \right)\), solve
+    \item[b.] In the Abelian group $\tuple{ \R \setminus \{-1\}, \star }$, solve
           \[
               3 \star x \star x = 15.
           \]
@@ -198,35 +199,35 @@
                   \iff\quad &  & (x + 3) (x - 1)            &  & \; =\;  & 0
               \end{alignedat}
           \]
-          which yields the solutions \(x \in \{1, -3\} \subset \R \setminus \{-1\}\).
+          which yields the solutions $x \in \{1, -3\} \subset \R \setminus \{-1\}$.
 
     \item[\textbf{2.1}]
 
-          Let \(n\) be in \(\N \setminus \{0\}\). Let \(k, x\) be in \(\Z\). We define the congruence class \(\cls{k}\) of the
-          integer \(k\) as the set
+          Let $n$ be in $\N \setminus \{0\}$. Let $k, x$ be in $\Z$. We define the congruence class $\cls{k}$ of the
+          integer $k$ as the set
           \[
               \begin{aligned}
-                  \cls{k} & = \{ x \in \Z \mid x - k \equiv 0 \mod n \}               \\
-                          & = \{ x \in \Z \mid \exists a \in \Z: x - k = n \cdot a \}
+                  \cls{k} & = \set{ x \in \Z \mid x - k \equiv 0 \mod n }               \\
+                          & = \set{ x \in \Z \mid \exists a \in \Z: x - k = n \cdot a }
               \end{aligned}
           \]
 
-          We now define \(\Z / n\Z\) (also \(\Z_n\)) as the set of all congruence classes modulo \(n\).
-          Euclidean division implies that this is a finite set of \(n\) elements:
+          We now define $\Z / n\Z$ (also $\Z_n$) as the set of all congruence classes modulo $n$.
+          Euclidean division implies that this is a finite set of $n$ elements:
           \[
-              \Z_n = \left \{ \cls{0}, \cls{1}, \ldots, \cls{n - 1} \right \}.
+              \Z_n = \set{ \cls{0}, \cls{1}, \ldots, \cls{n - 1} }.
           \]
 
-          For all \(a, b \in \Z_n\), we define:
+          For all $a, b \in \Z_n$, we define:
           \[
               \cls{a} \oplus \cls{b} = \cls{a + b}
           \]
 
-    \item[a.] Show that (\(\Z_n, \oplus\)) is a group. Is it Abelian?
+    \item[a.] Show that ($\Z_n, \oplus$) is a group. Is it Abelian?
 
           \subsubsection*{Neutral element}
 
-          We have \(\cls{0} \in \Z_n\) such that:
+          We have $\cls{0} \in \Z_n$ such that:
           \[
               \begin{aligned}
                   \cls{a} \oplus \cls{0} = \cls{a + 0} = \cls{a}, & \quad \textrm{and} \\
@@ -236,7 +237,7 @@
 
           \subsubsection*{Commutativity}
 
-          For all \(\cls{a}, \cls{b} \in \Z_n\), we have:
+          For all $\cls{a}, \cls{b} \in \Z_n$, we have:
           \[
               \begin{aligned}
                   \cls{a} \oplus \cls{b} & = \cls{a + b}             \\
@@ -247,7 +248,7 @@
 
           \subsubsection*{Associativity}
 
-          For all \(a, b, c \in \Z_n\), we have:
+          For all $a, b, c \in \Z_n$, we have:
           \[
               \begin{aligned}
                   (\cls{a} \oplus \cls{b}) \oplus \cls{c} & = \cls{a + b} \oplus \cls{c}               \\
@@ -261,13 +262,13 @@
           \subsubsection*{Existence of inverses}
 
 
-          For all \(\cls{a} \in \Z_n\), we require the existence of an element, \(\cls{b} \in \Z_n\), such that:
+          For all $\cls{a} \in \Z_n$, we require the existence of an element, $\cls{b} \in \Z_n$, such that:
           \[
               \cls{a} \oplus \cls{b} = \cls{b} \oplus \cls{a} = \cls{0}.
           \]
-          We first note that in \(\Z_n\), \(\cls{n} = \cls{0}\), and since \(n - a \in \Z\), its congruence class \(\cls{n - a} \in \Z_n\).
+          We first note that in $\Z_n$, $\cls{n} = \cls{0}$, and since $n - a \in \Z$, its congruence class $\cls{n - a} \in \Z_n$.
 
-          Supposing then that \(\cls{b} = \cls{n - a}\), we have:
+          Supposing then that $\cls{b} = \cls{n - a}$, we have:
           \[
               \begin{aligned}
                   \cls{a} \oplus \cls{b} & = \cls{a} \oplus \cls{n - a} \\
@@ -276,28 +277,28 @@
                                          & =       \cls{0}
               \end{aligned}
           \]
-          as required, and commutativity gives us \(\cls{b} \oplus \cls{a} = \cls{0}\).
+          as required, and commutativity gives us $\cls{b} \oplus \cls{a} = \cls{0}$.
 
-          \subsubsection*{Closure under \(\oplus\)}
+          \subsubsection*{Closure under $\oplus$}
 
           By definition, we have that
           \[
               \cls{a} \oplus \cls{b} = \cls{a + b}
           \]
 
-          Since \(\Z_n\) is the set of congruence classes \(\cls{0}, \cls{1}, \ldots, \cls{n-1}\), and
-          every integer has a unique representation modulo \(n\), then given \(a + b \in \Z\), their congruence class
-          \(\cls{a + b} \in \Z_n\).
+          Since $\Z_n$ is the set of congruence classes $\cls{0}, \cls{1}, \ldots, \cls{n-1}$, and
+          every integer has a unique representation modulo $n$, then given $a + b \in \Z$, their congruence class
+          $\cls{a + b} \in \Z_n$.
 
     \item[b.]
 
-          We now define another operation \(\otimes\) for all \(\cls{a}, \cls{b} \in \Z_n\),
+          We now define another operation $\otimes$ for all $\cls{a}, \cls{b} \in \Z_n$,
           \[
               \cls{a} \otimes \cls{b} = \cls{a \times b},
           \]
-          where \(\times\) represents the usual multiplication in \(\Z\).
+          where $\times$ represents the usual multiplication in $\Z$.
 
-          We then have the following multiplication table for \(\Z_5 \setminus \{\cls{0}\}\) under \(\otimes\):
+          We then have the following multiplication table for $\Z_5 \setminus \{\cls{0}\}$ under $\otimes$:
           \[
               \begingroup
               \renewcommand{\arraystretch}{1.3}
@@ -312,26 +313,26 @@
               \endgroup
           \]
 
-          It follows that \(\Z_5 \setminus \{\cls{0}\}\) is closed under \(\otimes\), with the neutral element
-          \(\cls{1}\). From the symmetry about the diagonal, we can immediately conclude that \(\otimes\) commutes.  For
-          the inverse, we find the column (resp. row) that yields \(\cls{1}\) for a given row (resp. column), noting
-          that \(\cls{1}\) appears in every row (resp. column).  For associativity, we note that for any three
-          \(\cls{a}, \cls{b}, \cls{c} \in \Z_n \setminus \{\cls{0}\}\), both \(\cls{a} \otimes (\cls{b} \otimes
-          \cls{c})\) and \((\cls{a} \otimes \cls{b}) \otimes \cls{c}\) yield the same result.  Hence, \((\Z_5 \setminus
-          \{\cls{0}\}, \otimes)\) forms an Abelian group.
+          It follows that $\Z_5 \setminus \{\cls{0}\}$ is closed under $\otimes$, with the neutral element $\cls{1}$.
+          From the symmetry about the diagonal, we can immediately conclude that $\otimes$ commutes.  For the inverse,
+          we find the column (resp. row) that yields $\cls{1}$ for a given row (resp. column), noting that $\cls{1}$
+          appears in every row (resp. column).  For associativity, we note that for any three $\cls{a}, \cls{b}, \cls{c}
+              \in \Z_n \setminus \{\cls{0}\}$, both $\cls{a} \otimes (\cls{b} \otimes \cls{c})$ and $(\cls{a} \otimes
+              \cls{b}) \otimes \cls{c}$ yield the same result.  Hence, $(\Z_5 \setminus \{\cls{0}\}, \otimes)$ forms an
+          Abelian group.
 
-    \item[c.] We find that \((\Z_8 \setminus \{\cls{0}\}, \otimes)\) does not form a group, since \( \cls{2} \otimes
-          \cls{4} = \cls{0} \), so closure is not satisfied.
+    \item[c.] We find that $(\Z_8 \setminus \{\cls{0}\}, \otimes)$ does not form a group, since $ \cls{2} \otimes
+              \cls{4} = \cls{0} $, so closure is not satisfied.
 
-    \item[d.] Bézout's lemma tells us that two integers \(a\) and \(b\) are relatively prime (that is, \(\gcd(a, b) = 1\)) if
-          and only if there exist two integers \(u\) and \(v\) such that \(au + bv = 1\).
+    \item[d.] Bézout's lemma tells us that two integers $a$ and $b$ are relatively prime (that is, $\gcd(a, b) = 1$) if
+          and only if there exist two integers $u$ and $v$ such that $au + bv = 1$.
 
-          Show that \((\Z_n \setminus \{\cls{0}\}, \otimes)\) is a group if and only if \(n \in \N \setminus \{0\}\) is
+          Show that $(\Z_n \setminus \{\cls{0}\}, \otimes)$ is a group if and only if $n \in \N \setminus \{0\}$ is
           prime.
 
           \begin{proof}[Proof]
-              The neutral element is \(\cls{1} \in \Z_n \setminus \{\cls{0}\}\), given that for all \(\cls{a} \in \Z_n
-              \setminus \{\cls{0}\}\):
+              The neutral element is $\cls{1} \in \Z_n \setminus \{\cls{0}\}$, given that for all $\cls{a} \in \Z_n
+                  \setminus \{\cls{0}\}$:
               \[
                   \begin{aligned}
                       \cls{a} \otimes \cls{1} = \cls{a \times 1} = \cls{a} & \quad \textrm{and} \\
@@ -339,7 +340,7 @@
                   \end{aligned}
               \]
 
-              For all \(\cls{a}, \cls{b}, \cls{c} \in \Z_n \setminus \{\cls{0}\}\), we have associativity (which follows
+              For all $\cls{a}, \cls{b}, \cls{c} \in \Z_n \setminus \{\cls{0}\}$, we have associativity (which follows
               directly from associativity of integer multiplication):
               \[
                   \begin{aligned}
@@ -349,59 +350,58 @@
                   \end{aligned}
               \]
 
-              If \(n\) is composite, then there exist \(\cls{p}, \cls{q} \in \Z_n \setminus \{\cls{0}\}\) such that
-              \(\cls{p} \otimes \cls{q} = \cls{0}\); that is, \(\Z_n \setminus \{\cls{0}\}\) contains zero divisors, and
-              is not closed under \(\otimes\).  Conversely, if \(n\) is prime then no such \(\cls{p}\) or \(\cls{q}\)
-              exist; \(\Z_n \setminus \{\cls{0}\}\) contains no zero divisors and is closed under \(\otimes\).
+              If $n$ is composite, then there exist $\cls{p}, \cls{q} \in \Z_n \setminus \{\cls{0}\}$ such that
+              $\cls{p} \otimes \cls{q} = \cls{0}$; that is, $\Z_n \setminus \{\cls{0}\}$ contains zero divisors, and
+              is not closed under $\otimes$.  Conversely, if $n$ is prime then no such $\cls{p}$ or $\cls{q}$
+              exist; $\Z_n \setminus \{\cls{0}\}$ contains no zero divisors and is closed under $\otimes$.
 
-              Finally, for the existence of an inverse for all \(\cls{a} \in \Z_n \setminus \{\cls{0}\}\), we have from
-              Bézout's lemma that \(a\) and \(n\) are relatively prime if and only if there exist two integers \(u\) and
-              \(v\) such that \(au + nv = 1\).  Reducing both sides modulo \(n\), we have
+              Finally, for the existence of an inverse for all $\cls{a} \in \Z_n \setminus \{\cls{0}\}$, we have from
+              Bézout's lemma that $a$ and $n$ are relatively prime if and only if there exist two integers $u$ and
+              $v$ such that $au + nv = 1$.  Reducing both sides modulo $n$, we have
               \[
                   au \equiv 1 \mod n,
               \]
-              which tells us that \(u\) exists if and only if \(n\) is prime.  Restated:
+              which tells us that $u$ exists if and only if $n$ is prime.  Restated:
               \[
-                  \left (
-                  \forall\, \cls{a} \in \Z_n \setminus \{ \cls{0} \},\quad
-                  \exists\, \cls{u} \in \Z_n \setminus \{ \cls{0} \}:\quad
+                  \forall\, \cls{a} \in \Z_n \setminus \{ \cls{0} \} , \:
+                  \exists\, \cls{u} \in \Z_n \setminus \{ \cls{0} \} : \:
                   \cls{a} \otimes \cls{u} = \cls{1}
-                  \right )
-                  \iff n \text{ is prime}.
+                  \quad \iff \quad
+                  n \text{ is prime}.
               \]
 
               Concluding, a neutral element always exists; associativity always holds; closure and the existence of
-              inverses hold if and only if \(n\) is prime.  Therefore, \((\Z_n \setminus \{\cls{0}\}, \otimes)\) forms a
-              group if and only if \(n\) is prime.
+              inverses hold if and only if $n$ is prime.  Therefore, $(\Z_n \setminus \{\cls{0}\}, \otimes)$ forms a
+              group if and only if $n$ is prime.
 
           \end{proof}
 
-    \item[2.3] Consider the set \(\G\) of \(3 \times 3\) matrices, defined as follows
+    \item[2.3] Consider the set $\Gcal$ of $3 \times 3$ matrices, defined as follows
           \[
-              \G = \left \{
-              \begin{bmatrix}
-                  1 & x & z \\
-                  0 & 1 & y \\
-                  0 & 0 & 1
-              \end{bmatrix}
-              \in \R^3
-              \;\middle|\;
-              x, y, z \in \R
-              \right \}
+              \Gcal = \set{
+                  \begin{bmatrix}
+                      1 & x & z \\
+                      0 & 1 & y \\
+                      0 & 0 & 1
+                  \end{bmatrix}
+                  \in \R^3
+                  \;\middle|\;
+                  x, y, z \in \R
+              }
           \]
-          We define \(\cdot\) as the standard matrix multiplication.  Is \((\G, \cdot)\) a group?  If yes, is it
+          We define $\cdot$ as the standard matrix multiplication.  Is $(\Gcal, \cdot)$ a group?  If yes, is it
           Abelian?
 
-          For \(a, b, c, x, y, z \in \R\), let:
+          For $a, b, c, x, y, z \in \R$, let:
           \[
-              \mathbf{A} =
+              \mat{A} =
               \begin{bmatrix}
                   1 & a & c \\
                   0 & 1 & b \\
                   0 & 0 & 1
               \end{bmatrix}
               \quad
-              \mathbf{B} =
+              \mat{B} =
               \begin{bmatrix}
                   1 & x & z \\
                   0 & 1 & y \\
@@ -410,39 +410,39 @@
           \]
           Then we have closure:
           \[
-              \mathbf{B} \cdot \mathbf{A} =
+              \mat{B} \cdot \mat{A} =
               \begin{bmatrix}
                   1 & a + x & c + bx + z \\
                   0 & 1     & b + y      \\
                   0 & 0     & 1
               \end{bmatrix}
-              \in \G,
+              \in \Gcal,
           \]
           and
           \[
-              \mathbf{A} \cdot \mathbf{B} =
+              \mat{A} \cdot \mat{B} =
               \begin{bmatrix}
                   1 & a + x & c + ay + z \\
                   0 & 1     & b + y      \\
                   0 & 0     & 1
               \end{bmatrix}
-              \in \G.
+              \in \Gcal.
           \]
 
           Associativity follows from associativity of standard matrix multiplication.  Similarly, we have the standard identity
-          matrix, \(\mathbf{I} \in \G\).  For \(\mathbf{A}\) defined as above, we have its inverse:
+          matrix, $\mat{I} \in \Gcal$.  For $\mat{A}$ defined as above, we have its inverse:
           \[
-              \mathbf{A}^{-1} =
+              \mat{A}^{-1} =
               \begin{bmatrix}
                   1 & -a & ab - c \\
                   0 & 1  & -b     \\
                   0 & 0  & 1
               \end{bmatrix}
-              \in \G.
+              \in \Gcal.
           \]
           Verifying, we have
           \[
-              \mathbf{A} \cdot \mathbf{A}^{-1} =
+              \mat{A} \cdot \mat{A}^{-1} =
               \begin{bmatrix}
                   1 & a - a & ab -c -ab + c \\
                   0 & 1     & b - b         \\
@@ -454,11 +454,11 @@
                   0 & 1 & 0 \\
                   0 & 0 & 1
               \end{bmatrix}
-              = \mathbf{I}
+              = \mat{I}
           \]
           and
           \[
-              \mathbf{A}^{-1} \cdot \mathbf{A} =
+              \mat{A}^{-1} \cdot \mat{A} =
               \begin{bmatrix}
                   1 & a - a & c - ab + ab - c \\
                   0 & 1     & b - b           \\
@@ -470,10 +470,10 @@
                   0 & 1 & 0 \\
                   0 & 0 & 1
               \end{bmatrix}
-              = \mathbf{I}
+              = \mat{I}
           \]
-          as desired.  We saw above that, in general, multiplication of \(\mathbf{A}, \mathbf{B} \in \G\) does not commute.
-          We therefore conclude that \((\G, \cdot)\) is a group, but not Abelian.
+          as desired.  We saw above that, in general, multiplication of $\mat{A}, \mat{B} \in \Gcal$ does not commute.
+          We therefore conclude that $(\Gcal, \cdot)$ is a group, but not Abelian.
 
           \pagebreak
 
@@ -578,12 +578,12 @@
           \end{enumerate}
           \pagebreak
 
-    \item[2.5] Find the set \(\mathcal{S}\) of all solutions in \(x\) of the following inhomogeneous systems
-          \(\mathbf{A}\mathbf{x} = \mathbf{b}\), where \(\mathbf{A}\) and \(\mathbf{b}\) are defined as follows:
+    \item[2.5] Find the set $\Scal$ of all solutions in $x$ of the following inhomogeneous systems
+          $\mat{A}\vect{x} = \vect{b}$, where $\mat{A}$ and $\vect{b}$ are defined as follows:
 
     \item[a.]
           \[
-              \mathbf{A} =
+              \mat{A} =
               \begin{bmatrix}
                   \begin{array}{@{}i{2}i{3}i{3}i{3}@{\;\;}}
                       1 & 1  & -1 & -1 \\
@@ -593,7 +593,7 @@
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{b} =
+              \vect{b} =
               \begin{bmatrix}
                   \begin{array}{@{}i{3}@{\;\;}}
                       1 \\ -2 \\ 4  \\ 6
@@ -601,10 +601,10 @@
               \end{bmatrix}
           \]
 
-          Constructing the augmented matrix, \(\tilde{\mathbf{A}}\), and row-reducing,
+          Constructing the augmented matrix, $\tilde{\mat{A}}$, and row-reducing,
           \[
               \begin{aligned}
-                  \tilde{\mathbf{A}} =
+                  \tilde{\mat{A}} =
                   \begin{bmatrix}
                       \begin{array}{@{}i{2}i{3}i{3}i{3}|i{3}@{\;\;}}
                           1 & 1  & -1 & -1 & 1  \\
@@ -661,26 +661,26 @@
                    & \quad
               \end{aligned}
           \]
-          we find that this system \(\mathbf{A}\mathbf{x} = \mathbf{b}\), has no solutions for \(\mathbf{x}\), since the
-          final row of the augmented matrix corresponds to the inconsistent equation in the entries of \(\mathbf{x}\),
-          \(0 = 6\).  This tells us that \(\mathbf{b} \notin \Img(\mathbf{A})\).
+          we find that this system $\mat{A}\vect{x} = \vect{b}$, has no solutions for $\vect{x}$, since the
+          final row of the augmented matrix corresponds to the inconsistent equation in the entries of $\vect{x}$,
+          $0 = 6$.  This tells us that $\vect{b} \notin \Img(\mat{A})$.
 
-          If instead we were solving the \emph{homogeneous} system, \(\mathbf{A}\mathbf{x} = \mathbf{0}\), then we
-          \emph{would} find solutions for \(\mathbf{x}\), namely the null space of \(\mathbf{A}\), which is nontrivial
-          since we know \(\mathbf{A}\) is less than full rank.
+          If instead we were solving the \emph{homogeneous} system, $\mat{A}\vect{x} = \vect{0}$, then we
+          \emph{would} find solutions for $\vect{x}$, namely the null space of $\mat{A}$, which is nontrivial
+          since we know $\mat{A}$ is less than full rank.
 
-          Similarly, if instead \(\mathbf{b} \in \Img(\mathbf{A})\), the solutions for \(\mathbf{x}\) in
-          \(\mathbf{A}\mathbf{x} = \mathbf{b}\) would form an affine subspace in \(\R^4\), namely the null space of
-          \(\mathbf{A}\) shifted by any particular solution; that is
+          Similarly, if instead $\vect{b} \in \Img(\mat{A})$, the solutions for $\vect{x}$ in
+          $\mat{A}\vect{x} = \vect{b}$ would form an affine subspace in $\R^4$, namely the null space of
+          $\mat{A}$ shifted by any particular solution; that is
           \[
-              \left \{ \mathbf{x} \in \R^4 \mid \mathbf{A}\mathbf{x} = \mathbf{b} \right \} =  \mathbf{x}_0 + \Null(\mathbf{A})
+              \set{ \vect{x} \in \R^4 \mid \mat{A}\vect{x} = \vect{b} } =  \vect{x}_0 + \Null(\mat{A})
           \]
 
           \pagebreak
 
     \item[b.]
           \[
-              \mathbf{A} =
+              \mat{A} =
               \begin{bmatrix}
                   \begin{array}{@{}i{3}i{3}i{2}i{3}i{3}@{\;\;}}
                       1  & -1 & 0 & 0  & 1  \\
@@ -690,7 +690,7 @@
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{b} =
+              \vect{b} =
               \begin{bmatrix}
                   \begin{array}{@{}i{3}@{\;\;}}
                       3 \\ 6 \\ 5 \\ -1
@@ -698,10 +698,10 @@
               \end{bmatrix}
           \]
 
-          Constructing the augmented matrix, \(\tilde{\mathbf{A}}\), and row-reducing,
+          Constructing the augmented matrix, $\tilde{\mat{A}}$, and row-reducing,
           \[
               \begin{aligned}
-                  \tilde{\mathbf{A}} =
+                  \tilde{\mat{A}} =
                   \begin{bmatrix}
                       \begin{array}{@{}i{3}i{3}i{3}i{3}i{3}|i{3}@{\;\;}}
                           1  & -1 & 0 & 0  & 1  & 3  \\
@@ -761,7 +761,7 @@
               \end{aligned}
           \]
 
-          Equivalently, in the components of \(\mathbf{x}\),
+          Equivalently, in the components of $\vect{x}$,
           \[
               x_1
               \begin{bmatrix}
@@ -807,42 +807,42 @@
 
           This gives us the following particular solution and solution set,
           \[
-              \mathbf{x}_0 =
+              \vect{x}_0 =
               \begin{bmatrix}
                   \begin{array}{@{\,}i{1}@{\,}}
                       6 \\ 6 \\ 0 \\ 2 \\ 3
                   \end{array}
               \end{bmatrix}
               \quad
-              \left \{
-              \mathbf{x} \in \R^5
-              \; \middle | \;
-              \mathbf{x} =
-              \mathbf{x}_0
-              + \lambda_1
-              \begin{bmatrix}
-                  \begin{array}{@{\,}i{1}@{\,}}
-                      0 \\ 0 \\ 1 \\ 0 \\ 0
-                  \end{array}
-              \end{bmatrix}
-              +
-              \lambda_2
-              \begin{bmatrix}
-                  \begin{array}{@{\,}i{1}@{\,}}
-                      1 \\ 2 \\ 0 \\ 1 \\ 1
-                  \end{array}
-              \end{bmatrix}
-              ,\;
-              \lambda_1, \lambda_2 \in \R
-              \right \}
+              \set{
+                  \vect{x} \in \R^5
+                  \; \middle | \;
+                  \vect{x} =
+                  \vect{x}_0
+                  + \lambda_1
+                  \begin{bmatrix}
+                      \begin{array}{@{\,}i{1}@{\,}}
+                          0 \\ 0 \\ 1 \\ 0 \\ 0
+                      \end{array}
+                  \end{bmatrix}
+                  +
+                  \lambda_2
+                  \begin{bmatrix}
+                      \begin{array}{@{\,}i{1}@{\,}}
+                          1 \\ 2 \\ 0 \\ 1 \\ 1
+                      \end{array}
+                  \end{bmatrix}
+                  \!,\;
+                  \lambda_1, \lambda_2 \in \R
+              }
           \]
 
           \pagebreak
 
     \item[2.6] Using Gaussian elimination, find all solutions of the inhomogeneous system
-          \(\mathbf{A}\mathbf{x} = \mathbf{b}\), where
+          $\mat{A}\vect{x} = \vect{b}$, where
           \[
-              \mathbf{A} =
+              \mat{A} =
               \begin{bmatrix}
                   \begin{array}{@{\,}i{1}i{1}i{1}i{1}i{1}i{1}@{\,}}
                       0 & 1 & 0 & 0 & 1 & 0 \\
@@ -851,7 +851,7 @@
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{b} =
+              \vect{b} =
               \begin{bmatrix}
                   \begin{array}{@{}i{3}@{\,\;}}
                       2 \\ -1 \\ 1
@@ -859,10 +859,10 @@
               \end{bmatrix}
           \]
 
-          Constructing the augmented matrix, \(\tilde{\mathbf{A}}\), and eliminating,
+          Constructing the augmented matrix, $\tilde{\mat{A}}$, and eliminating,
           \[
               \begin{aligned}
-                  \tilde{\mathbf{A}} =
+                  \tilde{\mat{A}} =
                   \begin{bmatrix}
                       \begin{array}{@{\,}i{2}i{3}i{3}i{3}i{3}i{3}@{\quad}|i{3}@{\;\;}}
                           0 & 1 & 0 & 0 & 1 & 0 & 2  \\
@@ -887,44 +887,44 @@
           \]
           yields the following solution set
           \[
-              \left \{
-              \mathbf{x} \in \R^6
-              \; \middle | \;
-              \mathbf{x} =
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\,\;}}
-                      0 \\ 2  \\ 0  \\ -1 \\ 0  \\ -1
-                  \end{array}
-              \end{bmatrix}
-              + \lambda_1
-              \begin{bmatrix}
-                  \begin{array}{@{\,}i{1}@{\,}}
-                      1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0
-                  \end{array}
-              \end{bmatrix}
-              + \lambda_2
-              \begin{bmatrix}
-                  \begin{array}{@{\,}i{1}@{\,}}
-                      0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0
-                  \end{array}
-              \end{bmatrix}
-              + \lambda_3
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\,\;}}
-                      0 \\ 1  \\ 0  \\ 1  \\ -1 \\ 1
-                  \end{array}
-              \end{bmatrix}
-              ,\;
-              \lambda_1, \lambda_2, \lambda_3 \in \R
-              \right \}
+              \set{
+                  \vect{x} \in \R^6
+                  \; \middle | \;
+                  \vect{x} =
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}@{\,\;}}
+                          0 \\ 2  \\ 0  \\ -1 \\ 0  \\ -1
+                      \end{array}
+                  \end{bmatrix}
+                  + \lambda_1
+                  \begin{bmatrix}
+                      \begin{array}{@{\,}i{1}@{\,}}
+                          1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0
+                      \end{array}
+                  \end{bmatrix}
+                  + \lambda_2
+                  \begin{bmatrix}
+                      \begin{array}{@{\,}i{1}@{\,}}
+                          0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0
+                      \end{array}
+                  \end{bmatrix}
+                  + \lambda_3
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}@{\,\;}}
+                          0 \\ 1  \\ 0  \\ 1  \\ -1 \\ 1
+                      \end{array}
+                  \end{bmatrix}
+                  \!,\;
+                  \lambda_1, \lambda_2, \lambda_3 \in \R
+              }
           \]
 
           \pagebreak
 
-    \item[2.7] Find all solutions in \(\mathbf{x} = \begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} \in \R^3\) of the
-          equation system \(\mathbf{A}\mathbf{x} = 12\mathbf{x}\), where
+    \item[2.7] Find all solutions in $\vect{x} = \begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} \in \R^3$ of the
+          equation system $\mat{A}\vect{x} = 12\vect{x}$, where
           \[
-              \mathbf{A} =
+              \mat{A} =
               \begin{bmatrix}
                   6 & 4 & 3 \\
                   6 & 0 & 9 \\
@@ -934,13 +934,13 @@
               \sum_{i = 1}^{3} x_i = 1.
           \]
 
-          Rearranging, we wish to solve \((\mathbf{A} - 12 \mathbf{I}) \mathbf{x} = \mathbf{0}\), subject to the sum
-          over the components of \(\mathbf{x}\). Let \(\mathbf{B} = \mathbf{A} - 12 \mathbf{I}\), then we can construct
-          an augmented matrix, \(\tilde{\mathbf{B}}\), which captures all the constraints (in particular, the first row
-          encodes the constraint that \(x_1 + x_2 + x_3 = 1\)):
+          Rearranging, we wish to solve $(\mat{A} - 12 \mat{I}) \vect{x} = \vect{0}$, subject to the sum over the
+          components of $\vect{x}$. Let $\mat{B} = \mat{A} - 12 \mat{I}$, then we can construct an augmented matrix,
+          $\tilde{\mat{B}}$, which captures all the constraints (in particular, the first row encodes the constraint
+          that $x_1 + x_2 + x_3 = 1$):
           \[
               \begin{aligned}
-                  \tilde{\mathbf{B}} =
+                  \tilde{\mat{B}} =
                   \begin{bmatrix}
                       \begin{array}{@{}i{4}i{4}i{4}@{\quad}|i{2}@{\;\;}}
                           1  & 1   & 1   & 1 \\
@@ -997,25 +997,27 @@
           \]
 
           From this, we find a single solution,
-          \(
-          \mathbf{x}_0 =
-          \dfrac{1}{8}
-          \begin{bmatrix}
-              3 & 3 & 2
-          \end{bmatrix}^{\top}.
-          \)
-
-          Examining the last three rows of the reduced \(\tilde{\mathbf{B}}\), we can conclude that \(\rank(\mathbf{B}) =
-          2\), and therefore \(\dim(\Null(\mathbf{B})) = 1\).  That is, the null space of \(\mathbf{B}\) is a line,
-          which intersects with \(\mathbf{1} \in \R^3\) at a single point, \(\mathbf{x}_0\).  Specifically, we have
-          \[
-              \Null(\mathbf{B}) = \left \{ \mathbf{x} \in \R^3: \mathbf{x} = \lambda
+          $
+              \vect{x}_0 =
+              \dfrac{1}{8}
               \begin{bmatrix}
-                  3 \\ 3 \\ 2
-              \end{bmatrix}
-              ,\;
-              \lambda \in \R
-              \right \}.
+                  3 & 3 & 2
+              \end{bmatrix}^{\top}.
+          $
+
+          Examining the last three rows of the reduced $\tilde{\mat{B}}$, we can conclude that $\rank(\mat{B}) = 2$, and
+          therefore $\dim(\Null(\mat{B})) = 1$.  That is, the null space of $\mat{B}$ is a line, which intersects with
+          $\vect{1} \in \R^3$ at a single point, $\vect{x}_0$.  Specifically, we have
+          \[
+              \Null(\mat{B}) = \set{
+                  \vect{x} \in \R^3 :
+                  \vect{x} = \lambda
+                  \begin{bmatrix}
+                      3 \\ 3 \\ 2
+                  \end{bmatrix}
+                  \!,\;
+                  \lambda \in \R
+              }.
           \]
 
     \item[2.8]
@@ -1023,19 +1025,19 @@
     \item[a.]
           Given
           \[
-              \mathbf{A} =
+              \mat{A} =
               \begin{bmatrix}
                   2 & 3 & 4 \\
                   3 & 4 & 5 \\
                   4 & 5 & 6
               \end{bmatrix}
           \]
-          we find that \(\mathbf{A}\) has no inverse, since \(\det(\mathbf{A}) = 0\).
+          we find that $\mat{A}$ has no inverse, since $\det(\mat{A}) = 0$.
 
     \item[b.]
           Given
           \[
-              \mathbf{A} =
+              \mat{A} =
               \begin{bmatrix}
                   1 & 0 & 1 & 0 \\
                   0 & 1 & 1 & 0 \\
@@ -1045,20 +1047,20 @@
           \]
           we find
           \[
-              \det(\mathbf{A}) = \det \left (
-              \begin{bmatrix}
+              \det(\mat{A}) = \det \args{
+                  \begin{bmatrix}
                       1 & 1 & 0 \\
                       1 & 0 & 1 \\
                       1 & 1 & 0
                   \end{bmatrix}
-              \right )
-              + \det \left (
-              \begin{bmatrix}
+              }
+              + \det \args{
+                  \begin{bmatrix}
                       0 & 0 & 1 \\
                       1 & 1 & 1 \\
                       0 & 1 & 1
                   \end{bmatrix}
-              \right )
+              }
               = 0 + 1
               = 1.
           \]
@@ -1086,12 +1088,12 @@
                   a + e + i & b + f + j & c + g + k & d + h + l
               \end{bmatrix}
               =
-              \mathbf{I}
+              \mat{I}
           \]
 
           Solving each system of four equations in four variables gives us:
           \[
-              \mathbf{A}^{-1} =
+              \mat{A}^{-1} =
               \begin{bmatrix}
                   \begin{array}{@{}i{3}i{3}i{3}i{3}@{\;\;}}
                       0  & -1 & 0 & 1  \\
@@ -1102,10 +1104,10 @@
               \end{bmatrix}
           \]
 
-          Alternatively, we can augment \(\mathbf{A}\) with the identity matrix \(\mathbf{I}\) and reduce:
+          Alternatively, we can augment $\mat{A}$ with the identity matrix $\mat{I}$ and reduce:
           \[
               \begin{aligned}
-                  \tilde{\mathbf{A}} =
+                  \tilde{\mat{A}} =
                   \begin{bmatrix}
                       \begin{array}{@{\negmedspace}i{3}i{3}i{3}i{3}@{\quad}|@{\quad}i{3}i{3}i{3}i{3}@{\;\;\;}}
                           1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 \\
@@ -1148,44 +1150,44 @@
                       \end{array}
                   \end{bmatrix}
                    & = \begin{bmatrix}
-                           \;\mathbf{I} \;|\; \mathbf{A}^{-1} \,
+                           \;\mat{I} \;|\; \mat{A}^{-1} \,
                        \end{bmatrix}
               \end{aligned}
           \]
 
           \pagebreak
 
-    \item[2.9] Which of the following are subspaces of \(\R^3\)?
+    \item[2.9] Which of the following are subspaces of $\R^3$?
 
-          \(A = \{ (\lambda, \lambda + \mu^3, \lambda - \mu^3 ) \mid \lambda, \mu \in \R \}\)
+          $A = \{ (\lambda, \lambda + \mu^3, \lambda - \mu^3 ) \mid \lambda, \mu \in \R \}$
 
-          \(B = \{ (\lambda^2, -\lambda^2, 0) \mid \lambda \in \R \}\)
+          $B = \{ (\lambda^2, -\lambda^2, 0) \mid \lambda \in \R \}$
 
-          \(C = \{ (\eta_1, \eta_2, \eta_3) \in \R^3 \mid \eta_1 - 2 \eta_2 + 3 \eta_3 = \gamma, \; \gamma \in \R \}\)
+          $C = \{ (\eta_1, \eta_2, \eta_3) \in \R^3 \mid \eta_1 - 2 \eta_2 + 3 \eta_3 = \gamma, \; \gamma \in \R \}$
 
-          \(D = \{ (\kappa_1, \kappa_2, \kappa_3) \in \R^3 \mid \kappa_2 \in \Z \}\)
+          $D = \{ (\kappa_1, \kappa_2, \kappa_3) \in \R^3 \mid \kappa_2 \in \Z \}$
 
           \begin{enumerate}
-              \item[a.] \(A\) is \emph{not} a subspace of \(\R^3\), since it is not possible to express all members of \(A\) as a
+              \item[a.] $A$ is \emph{not} a subspace of $\R^3$, since it is not possible to express all members of $A$ as a
                     linear combination of a basis.
 
-              \item[b.] \(B\) is also \emph{not} a subspace of \(\R^3\), for the same reason.
+              \item[b.] $B$ is also \emph{not} a subspace of $\R^3$, for the same reason.
 
-              \item[c.] \(C\) is a subspace of \(\R^3\) if and only if \(\gamma = 0\), since otherwise \(C\) does not contain the
-                    origin.  In the case that \(\gamma\) \emph{does} equal \(0\), then \(C = \Span((1, 2, 1))\).
+              \item[c.] $C$ is a subspace of $\R^3$ if and only if $\gamma = 0$, since otherwise $C$ does not contain the
+                    origin.  In the case that $\gamma$ \emph{does} equal $0$, then $C = \Span((1, 2, 1))$.
 
-              \item[d.] \(D\) is \emph{not} a subspace of \(\R^3\), since \(D\) is not closed under scalar multiplication by
-                    \(\lambda \in \R\).
+              \item[d.] $D$ is \emph{not} a subspace of $\R^3$, since $D$ is not closed under scalar multiplication by
+                    $\lambda \in \R$.
 
           \end{enumerate}
 
     \item[2.10]
 
           \begin{enumerate}
-              \item[a.] The set of vectors \(\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3\) is linearly dependent, as found
-                    by constructing the matrix \(\begin{bmatrix}
-                        \mathbf{x}_1 \; \mathbf{x}_2 \; \mathbf{x}_3
-                    \end{bmatrix}\) and row-reducing:
+              \item[a.] The set of vectors $\vect{x}_1, \vect{x}_2, \vect{x}_3$ is linearly dependent, as found
+                    by constructing the matrix $\begin{bmatrix}
+                            \vect{x}_1 \; \vect{x}_2 \; \vect{x}_3
+                        \end{bmatrix}$ and row-reducing:
 
                     \[
                         \begin{bmatrix}
@@ -1206,10 +1208,10 @@
                     \]
                     The final row of all zeros indicates the matrix has rank $2 < 3$, so the columns are linearly dependent.
 
-              \item[b.] The set of vectors \(\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3\) is linearly independent, as found
-                    by constructing the matrix \(\begin{bmatrix}
-                        \mathbf{x}_1 \; \mathbf{x}_2 \; \mathbf{x}_3
-                    \end{bmatrix}\) and row-reducing:
+              \item[b.] The set of vectors $\vect{x}_1, \vect{x}_2, \vect{x}_3$ is linearly independent, as found
+                    by constructing the matrix $\begin{bmatrix}
+                            \vect{x}_1 \; \vect{x}_2 \; \vect{x}_3
+                        \end{bmatrix}$ and row-reducing:
                     \[
                         \begin{bmatrix}
                             1 & 1 & 1 \\
@@ -1227,58 +1229,57 @@
                             0 & 0 & 0
                         \end{bmatrix}
                     \]
-                    revealing three pivot columns. The matrix therefore has full column rank \(3\), and its column
+                    revealing three pivot columns. The matrix therefore has full column rank $3$, and its column
                     vectors are linearly independent.
 
           \end{enumerate}
 
     \item[2.11] Given the following
           \[
-              \mathbf{y} = \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}}1 \\ -2 \\ 5\end{array}\end{bmatrix} \quad
-              \mathbf{x}_1 = \begin{bmatrix}\begin{array}{i{1}}1 \\ 1 \\ 1\end{array}\end{bmatrix} \quad
-              \mathbf{x}_2 = \begin{bmatrix}\begin{array}{i{1}}1 \\ 2 \\ 3\end{array}\end{bmatrix} \quad
-              \mathbf{x}_3 = \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}}2 \\ -1 \\ 1\end{array}\end{bmatrix}
+              \vect{y} = \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}}1 \\ -2 \\ 5\end{array}\end{bmatrix} \quad
+              \vect{x}_1 = \begin{bmatrix}\begin{array}{i{1}}1 \\ 1 \\ 1\end{array}\end{bmatrix} \quad
+              \vect{x}_2 = \begin{bmatrix}\begin{array}{i{1}}1 \\ 2 \\ 3\end{array}\end{bmatrix} \quad
+              \vect{x}_3 = \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}}2 \\ -1 \\ 1\end{array}\end{bmatrix}
           \]
           we can express
           \[
-              \mathbf{y} = -6 \mathbf{x}_1 + 3 \mathbf{x}_2 + 2 \mathbf{x}_3.
+              \vect{y} = -6 \vect{x}_1 + 3 \vect{x}_2 + 2 \vect{x}_3.
           \]
           as found by forming the augmented matrix
           \[
-              \begin{bmatrix}\; \mathbf{x}_1 \; \mathbf{x}_2 \; \mathbf{x}_3 \mid \mathbf{y} \;\end{bmatrix} =
-              \begin{bmatrix}\mathbf{A} \mid \mathbf{y}\end{bmatrix}
+              [ \; \vect{x}_1 \; \vect{x}_2 \; \vect{x}_3 \mid \vect{y} \; ]=
+              [ \; \mat{A} \mid \vect{y} \; ]
           \]
-          and row-reducing to \(\begin{bmatrix}\mathbf{I} \mid \mathbf{v}\end{bmatrix}\),
-          where \(\mathbf{A} \mathbf{v} = \mathbf{y}\).
+          and row-reducing to $[ \; \mat{I} \mid \vect{v} \; ]$, where $\mat{A} \vect{v} = \vect{y}$.
 
           \pagebreak
 
-    \item[2.12] Consider two subspaces of \(\R^4\):
+    \item[2.12] Consider two subspaces of $\R^4$:
           \[
-              U = \Span \left (
-              \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} 1 \\ 1 \\ -3 \\ 1  \end{array}\end{bmatrix},
-              \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} 2 \\ -1 \\ 0 \\ -1 \end{array}\end{bmatrix},
-              \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} -1 \\ 1 \\ -1 \\ 1 \end{array}\end{bmatrix}
-              \right ), \quad
-              V = \Span \left (
-              \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} -1 \\ -2 \\ 2 \\ 1  \end{array}\end{bmatrix},
-              \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} 2 \\ -2 \\ 0 \\ 0   \end{array}\end{bmatrix},
-              \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} -3 \\ 6 \\ -2 \\ -1 \end{array}\end{bmatrix}
-              \right ).
+              U = \Span \args{
+                  \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} 1 \\ 1 \\ -3 \\ 1  \end{array}\end{bmatrix},
+                  \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} 2 \\ -1 \\ 0 \\ -1 \end{array}\end{bmatrix},
+                  \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} -1 \\ 1 \\ -1 \\ 1 \end{array}\end{bmatrix}
+              }, \quad
+              V = \Span \args{
+                  \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} -1 \\ -2 \\ 2 \\ 1  \end{array}\end{bmatrix},
+                  \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} 2 \\ -2 \\ 0 \\ 0   \end{array}\end{bmatrix},
+                  \begin{bmatrix}\begin{array}{@{\negthinspace}i{3}} -3 \\ 6 \\ -2 \\ -1 \end{array}\end{bmatrix}
+              }.
           \]
-          Determine a basis of \(U \cap V\).
+          Determine a basis of $U \cap V$.
 
-          If we denote the spanning vectors of \(U\) as \(u_1, u_2, u_3\), we find \(u_1 = 2 u_2 + 3 u_3\), and likewise
-          denoting the spanning vectors of \(V\) as \(v_1, v_2, v_3\), we find \(v_1 = -2v_2 - v_3\), so
+          If we denote the spanning vectors of $U$ as $u_1, u_2, u_3$, we find $u_1 = 2 u_2 + 3 u_3$, and likewise
+          denoting the spanning vectors of $V$ as $v_1, v_2, v_3$, we find $v_1 = -2v_2 - v_3$, so
           \[
               U = \Span(u_2, u_3)
               \quad
               V = \Span(v_2, v_3).
           \]
-          We therefore wish to find the intersection of two planes, which amounts to solving \(\mathbf{U}\mathbf{x} =
-          \mathbf{V}\mathbf{y}\), where
+          We therefore wish to find the intersection of two planes, which amounts to solving $\mat{U}\vect{x} = \mat{V}\vect{y}$,
+          where
           \[
-              \mathbf{U} =
+              \mat{U} =
               \begin{bmatrix}
                   \begin{array}{@{\negthinspace}i{3}i{3}}
                       2  & -1 \\
@@ -1288,9 +1289,9 @@
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
+              \vect{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
               \quad
-              \mathbf{V} =
+              \mat{V} =
               \begin{bmatrix}
                   \begin{array}{@{\negthinspace}i{3}i{3}}
                       2  & -3 \\
@@ -1300,7 +1301,7 @@
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \\ \end{bmatrix}
+              \vect{y} = \begin{bmatrix} y_1 \\ y_2 \\ \end{bmatrix}
           \]
           We can reframe this as solving
           \[
@@ -1313,7 +1314,7 @@
                   \end{array}
               \end{bmatrix}
               \begin{bmatrix} x_1 \\ x_2 \\ -y_1 \\ -y_2 \\ \end{bmatrix}
-              = \mathbf{0}
+              = \vect{0}
           \]
           allowing us to row-reduce:
           \[
@@ -1376,22 +1377,22 @@
                   \end{array}
               \end{aligned}
           \]
-          From which we can determine that \(6 u_2 + 4 u_3 = 7v_2 + 2v_3\), and that
+          From which we can determine that $6 u_2 + 4 u_3 = 7v_2 + 2v_3$, and that
           \[
-              U \cap V = \Span \left (
-              \begin{bmatrix}
+              U \cap V = \Span \args{
+                  \begin{bmatrix}
                       \begin{array}{@{}i{3}@{\,\;}}
                           6 \\ 4  \\ -7  \\ -2
                       \end{array}
                   \end{bmatrix}
-              \right )
+              }
           \]
 
-    \item[2.13] Consider two subspaces \(U\) and \(V\), where \(U\) is the solution of the homogeneous equation system
-          \(\mathbf{A}\mathbf{x} = \mathbf{0}\) and \(V\) is the solution of the homogeneous equation system
-          \(\mathbf{B}\mathbf{x} = \mathbf{0}\), with
+    \item[2.13] Consider two subspaces $U$ and $V$, where $U$ is the solution of the homogeneous equation system
+          $\mat{A}\vect{x} = \vect{0}$ and $V$ is the solution of the homogeneous equation system
+          $\mat{B}\vect{x} = \vect{0}$, with
           \[
-              \mathbf{A} =
+              \mat{A} =
               \begin{bmatrix}
                   \begin{array}{@{\;\;}i{1}i{3}i{3}}
                       1 & 0  & 1  \\
@@ -1401,7 +1402,7 @@
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{B} =
+              \mat{B} =
               \begin{bmatrix}
                   \begin{array}{@{\;\;}i{1}i{3}i{3}}
                       3 & -3 & 0 \\
@@ -1413,12 +1414,12 @@
           \]
 
           \begin{enumerate}
-              \item[a.] Determine the dimension of \(U\) and of \(V\).
-              \item[b.] Determine the bases of \(U\) and \(V\).
-              \item[c.] Determine a basis of \(U \cap V\).
+              \item[a.] Determine the dimension of $U$ and of $V$.
+              \item[b.] Determine the bases of $U$ and $V$.
+              \item[c.] Determine a basis of $U \cap V$.
           \end{enumerate}
 
-          We first row-reduce \(\mathbf{A}\):
+          We first row-reduce $\mat{A}$:
           \[
               \begin{alignedat}{2}
                   \begin{bmatrix}
@@ -1462,10 +1463,10 @@
                   \end{array}
               \end{alignedat}
           \]
-          finding that \(\mathbf{A}\) is of rank 2.  Since \(\mathbf{x} \in \R^3\), we have
-          \(\dim(U) = 3 - \rank(\mathbf{A}) = 1\).
+          finding that $\mat{A}$ is of rank 2.  Since $\vect{x} \in \R^3$, we have
+          $\dim(U) = 3 - \rank(\mat{A}) = 1$.
 
-          Row-reducing \(\mathbf{B}\),
+          Row-reducing $\mat{B}$,
           \[
               \begin{alignedat}{2}
                   \begin{bmatrix}
@@ -1527,38 +1528,38 @@
                   \end{array}
               \end{alignedat}
           \]
-          we find an identical reduced form as we found for \(\mathbf{A}\), so likewise \(\dim(V) = 1\).
+          we find an identical reduced form as we found for $\mat{A}$, so likewise $\dim(V) = 1$.
 
-          We therefore find the same solution set to both systems, \(\mathbf{A}\mathbf{x} = \mathbf{0}\) and
-          \(\mathbf{B}\mathbf{x} = \mathbf{0}\),
+          We therefore find the same solution set to both systems, $\mat{A}\vect{x} = \vect{0}$ and
+          $\mat{B}\vect{x} = \vect{0}$,
           \[
-              \left \{
-              \mathbf{x} \in \R^3 \;\middle |\; \mathbf{x} = \lambda
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}}
-                      1 \\ 1 \\ -1
-                  \end{array}
-              \end{bmatrix}
-              ,\;
-              \lambda \in \R
-              \right \}
-          \]
-
-          Finally, we conclude that \(U\) and \(V\) span the same line in \(\R^3\):
-          \[
-              U = V = U \cap V = \Span \left (
-              \begin{bmatrix}
+              \set{
+                  \vect{x} \in \R^3 \;\middle |\; \vect{x} = \lambda
+                  \begin{bmatrix}
                       \begin{array}{@{}i{3}}
                           1 \\ 1 \\ -1
                       \end{array}
                   \end{bmatrix}
-              \right )
+                  \!,\;
+                  \lambda \in \R
+              }
           \]
 
-    \item[2.14] Consider two subspaces \(U\) and \(V\), where \(U\) is spanned by the columns of \(\mathbf{A}\), and
-          \(V\) is spanned by the columns of \(\mathbf{B}\), with
+          Finally, we conclude that $U$ and $V$ span the same line in $\R^3$:
           \[
-              \mathbf{A} =
+              U = V = U \cap V = \Span \args{
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}}
+                          1 \\ 1 \\ -1
+                      \end{array}
+                  \end{bmatrix}
+              }
+          \]
+
+    \item[2.14] Consider two subspaces $U$ and $V$, where $U$ is spanned by the columns of $\mat{A}$, and
+          $V$ is spanned by the columns of $\mat{B}$, with
+          \[
+              \mat{A} =
               \begin{bmatrix}
                   \begin{array}{@{\;\;}i{1}i{3}i{3}}
                       1 & 0  & 1  \\
@@ -1568,7 +1569,7 @@
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{B} =
+              \mat{B} =
               \begin{bmatrix}
                   \begin{array}{@{\;\;}i{1}i{3}i{3}}
                       3 & -3 & 0 \\
@@ -1580,12 +1581,12 @@
           \]
 
           \begin{enumerate}
-              \item[a.] Determine the dimension of \(U\) and of \(V\).
-              \item[b.] Determine the bases of \(U\) and \(V\).
-              \item[c.] Determine a basis of \(U \cap V\).
+              \item[a.] Determine the dimension of $U$ and of $V$.
+              \item[b.] Determine the bases of $U$ and $V$.
+              \item[c.] Determine a basis of $U \cap V$.
           \end{enumerate}
 
-          We can reformulate \(\mathbf{A}\) as follows
+          We can reformulate $\mat{A}$ as follows
           \[
               \begin{alignedat}{2}
                   \begin{bmatrix}
@@ -1628,10 +1629,10 @@
                   \end{array}
               \end{alignedat}
           \]
-          which is to say, \(\dim(U) = 2\), since the two remaining non-zero columns cannot be expressed as a
-          linear combination of each other, and these two column vectors form a basis of \(U\).
+          which is to say, $\dim(U) = 2$, since the two remaining non-zero columns cannot be expressed as a
+          linear combination of each other, and these two column vectors form a basis of $U$.
 
-          Similarly, we reformulate \(\mathbf{B}\) as follows
+          Similarly, we reformulate $\mat{B}$ as follows
           \[
               \begin{alignedat}{2}
                   \begin{bmatrix}
@@ -1673,38 +1674,26 @@
                   \end{array}
               \end{alignedat}
           \]
-          and likewise, the two remaining non-zero columns form a linearly independent basis for \(V\),
-          and \(\dim(V) = 2\).
+          and likewise, the two remaining non-zero columns form a linearly independent basis for $V$,
+          and $\dim(V) = 2$.
 
-          Denoting the respective column vectors of the reduced bases of \(U\) and \(V\) as \(
-          \mathbf{u}_1,
-          \mathbf{u}_2,
-          \mathbf{v}_1,
-          \mathbf{v}_2
-          \), let
+          Denoting the respective column vectors of the reduced bases of $U$ and $V$ as
+          $\vect{u}_1, \vect{u}_2, \vect{v}_1, \vect{v}_2$, let
           \[
-              \mathbf{A}' = \begin{bmatrix}\mathbf{u}_1 & \mathbf{u}_2\end{bmatrix}
+              \mat{A}' = \begin{bmatrix}\vect{u}_1 & \vect{u}_2\end{bmatrix}
               \quad
-              \mathbf{B}' = \begin{bmatrix}\mathbf{v}_1 & \mathbf{v}_2\end{bmatrix}
+              \mat{B}' = \begin{bmatrix}\vect{v}_1 & \vect{v}_2\end{bmatrix}
               \quad
-              \mathbf{x} = \begin{bmatrix}x_1 \\ x_2\end{bmatrix}
+              \vect{x} = \begin{bmatrix}x_1 \\ x_2\end{bmatrix}
               \quad
-              \mathbf{y} = \begin{bmatrix}y_1 \\ y_2\end{bmatrix}
+              \vect{y} = \begin{bmatrix}y_1 \\ y_2\end{bmatrix}
           \]
 
-          Then to determine a basis for the intersection \(U \cap V\), we can solve \(
-          \mathbf{A}' \mathbf{x} -
-          \mathbf{B}' \mathbf{y} =
-          \mathbf{0}
-          \).  That is, we look for solutions where some linear combination of the basis of \(U\) equals some linear combination of the basis of \(V\).
-          We do this by forming a single augmented matrix \(\begin{bmatrix}
-              \;
-              \mathbf{A}'
-               &
-              \negthickspace
-              -\mathbf{B}'
-              \;
-          \end{bmatrix}\) and row-reducing:
+          Then to determine a basis for the intersection $U \cap V$, we can solve
+          $\mat{A}' \vect{x} - \mat{B}' \vect{y} = \vect{0}$.
+          That is, we look for solutions where some linear combination of the basis of $U$ equals some linear
+          combination of the basis of $V$.  We do this by forming a single augmented matrix
+          $\begin{bmatrix} \; \mat{A}' & \negthickspace -\mat{B}' \; \end{bmatrix}$ and row-reducing:
           \[
               \begin{alignedat}{2}
                   \begin{bmatrix}
@@ -1783,123 +1772,124 @@
               \end{alignedat}
           \]
 
-          Seeking to determine the intersection of the two planes \(U\) and \(V\), we find three pivot variables (\(x_1,
-          x_2, y_2\)) and one free variable (\(y_1\)) as expected, and the following solution set
+          Seeking to determine the intersection of the two planes $U$ and $V$, we find three pivot variables ($x_1,
+              x_2, y_2$) and one free variable ($y_1$) as expected, and the following solution set
           \[
-              \left \{
-              \mathbf{v} \in \R^4 \;\middle |\; \mathbf{v} = \lambda
-              \begin{bmatrix}
-                  3 \\ 7 \\ 1 \\ 0
-              \end{bmatrix}
-              ,\;
-              \lambda \in \R
-              \right \}
-              \quad
-              \text{and}
-              \quad
-              U \cap V =
-              \Span \left (
-              \begin{bmatrix}
+              \set{
+                  \vect{v} \in \R^4
+                  \; \middle | \;
+                  \vect{v} = \lambda
+                  \begin{bmatrix}
                       3 \\ 7 \\ 1 \\ 0
                   \end{bmatrix}
-              \right )
+                  \! , \;
+                  \lambda \in \R
+              }
+              \qquad
+              \text{and}
+              \qquad
+              U \cap V =
+              \Span \args{
+                  \begin{bmatrix}
+                      3 \\ 7 \\ 1 \\ 0
+                  \end{bmatrix}
+              }
           \]
 
           \pagebreak
 
-    \item[2.15] Let \(F = \left \{ (x, y, z) \in \R^3 \mid x + y - z = 0 \right \}\) and
-          \(G = \left \{ (a - b, a + b, a - 3b) \mid a, b \in \R \right \}\).
+    \item[2.15] Let $F = \set{ (x, y, z) \in \R^3 \mid x + y - z = 0 }$ and
+          $G = \set{ (a - b, a + b, a - 3b) \mid a, b \in \R }$.
 
           \begin{enumerate}
-              \item[a.] Show that \(F\) and \(G\) are subspaces of \(\R^3\).
+              \item[a.] Show that $F$ and $G$ are subspaces of $\R^3$.
 
-              \item[b.] Calculate \(F \cap G\) without resorting to any basis vector.
+              \item[b.] Calculate $F \cap G$ without resorting to any basis vector.
 
-              \item[c.] Find one basis for \(F\) and one basis for \(G\).  Calculate \(F \cap G\) using the basis vectors
+              \item[c.] Find one basis for $F$ and one basis for $G$.  Calculate $F \cap G$ using the basis vectors
                     previously found and check your result with the previous question.
           \end{enumerate}
 
-          \subsubsection*{\(F\) is a subspace of \(\R^3\)}
+          \subsubsection*{$F$ is a subspace of $\R^3$}
 
           \subsubsubsection{Additive identity}
 
-          \(F\) contains \((0, 0, 0)\), since \(0 + 0 - 0 = 0\).
+          $F$ contains $(0, 0, 0)$, since $0 + 0 - 0 = 0$.
 
           \subsubsubsection{Closure under scalar multiplication}
 
-          Let \((a, b, c) \in F\), \(\lambda \in \R\).
+          Let $(a, b, c) \in F$, $\lambda \in \R$.
 
-          Then \(\lambda (a, b, c) = (\lambda a, \lambda b, \lambda c)\)
+          Then $\lambda (a, b, c) = (\lambda a, \lambda b, \lambda c)$
 
-          Since \(a + b - c = 0\), it follows that \(\lambda a + \lambda b - \lambda c = 0\), as required.
+          Since $a + b - c = 0$, it follows that $\lambda a + \lambda b - \lambda c = 0$, as required.
 
           \subsubsubsection{Closure under addition}
 
-          Let \((a, b, c), (x, y, z) \in F\).
+          Let $(a, b, c), (x, y, z) \in F$.
 
-          Then \( (a, b, c) + (x, y, z) = (a + x, b + y, c + z) \).
+          Then $ (a, b, c) + (x, y, z) = (a + x, b + y, c + z) $.
 
-          Since \(a + b - c = 0\) and \(x + y - z = 0\), it follows that \((a + x) + (b + y) - (c + y) = 0\).
+          Since $a + b - c = 0$ and $x + y - z = 0$, it follows that $(a + x) + (b + y) - (c + y) = 0$.
 
-          \subsubsection*{\(G\) is a subspace of \(\R^3\)}
+          \subsubsection*{$G$ is a subspace of $\R^3$}
 
           \subsubsubsection{Additive identity}
 
-          Given \((a - b, a + b, a - 3b) \in G\), choose \(a = b = 0\):
+          Given $(a - b, a + b, a - 3b) \in G$, choose $a = b = 0$:
           \[
               (0 - 0, 0 + 0, 0 - 3 \cdot 0) = (0, 0, 0) \in G.
           \]
 
           \subsubsubsection{Closure under scalar multiplication}
 
-          Let \((\alpha - \beta, \alpha + \beta, \alpha - 3\beta) \in G\), \(\lambda \in \R\).  Then
+          Let $(\alpha - \beta, \alpha + \beta, \alpha - 3\beta) \in G$, $\lambda \in \R$.  Then
           \[
               \lambda (\alpha - \beta, \alpha + \beta, \alpha - 3\beta) = (\lambda \alpha - \lambda \beta, \lambda \alpha + \lambda \beta, \lambda \alpha - 3\lambda \beta)
           \]
-          which is in \(G\) with \(a = \lambda \alpha\), \(b = \lambda \beta\).
+          which is in $G$ with $a = \lambda \alpha$, $b = \lambda \beta$.
 
           \subsubsubsection{Closure under addition}
 
-          Let \((\alpha - \beta, \alpha + \beta, \alpha - 3\beta), (\gamma - \delta, \gamma + \delta, \gamma - 3\delta) \in G\).  Then
+          Let $(\alpha - \beta, \alpha + \beta, \alpha - 3\beta), (\gamma - \delta, \gamma + \delta, \gamma - 3\delta) \in G$.  Then
           \[
               \begin{aligned}
                          & (\alpha - \beta, \alpha + \beta, \alpha - 3\beta) + (\gamma - \delta, \gamma + \delta, \gamma - 3\delta)            \\
                   = \;\; & ((\alpha + \gamma) - (\beta + \delta), (\alpha + \gamma) + (\beta + \delta), (\alpha + \gamma) - 3(\beta + \delta))
               \end{aligned}
           \]
-          which is in \(G\) with \(a = \alpha + \gamma\), \(b = \beta + \delta\).
+          which is in $G$ with $a = \alpha + \gamma$, $b = \beta + \delta$.
 
-          \subsubsection*{Intersection \(F \cap G\)}
+          \subsubsection*{Intersection $F \cap G$}
           \[
               \begin{aligned}
                   F \cap G
-                   & = \left \{
-                  (a - b, a + b, a - 3b)
-                  \mid (a - b) + (a + b) - (a - 3b) = 0
-                  \mid a, b \in \R^3
-                  \right \}
+                   & = \set{
+                      (a - b, a + b, a - 3b)
+                      \mid (a - b) + (a + b) - (a - 3b) = 0
+                      \mid a, b \in \R^3
+                  }
                   \\
-                   & = \left \{
-                  (a - b, a + b, a - 3b)
-                  \mid a + 3b = 0
-                  \mid a, b \in \R^3
-                  \right \}
-                  \\
+                   & = \set{
+                      (a - b, a + b, a - 3b)
+                      \mid a + 3b = 0
+                      \mid a, b \in \R^3
+                  }
               \end{aligned}
           \]
 
-          \subsubsection*{Basis for \(F\)}
+          \subsubsection*{Basis for $F$}
 
-          Let \(\mathbf{f}_1 = (1, 0, 1)\), \(\mathbf{f}_2 = (0, 1, 1)\); both \(\mathbf{f}_1,\mathbf{f}_2 \in F\).
+          Let $\vect{f}_1 = (1, 0, 1)$, $\vect{f}_2 = (0, 1, 1)$; both $\vect{f}_1,\vect{f}_2 \in F$.
 
-          Given any \((a, b, c) \in F\), \(c = a + b\), and \(a \mathbf{f}_1 + b \mathbf{f}_2 = (a, b, a + b) = (a, b, c)\).
+          Given any $(a, b, c) \in F$, $c = a + b$, and $a \vect{f}_1 + b \vect{f}_2 = (a, b, a + b) = (a, b, c)$.
 
-          So \(F = \Span ( \mathbf{f}_1, \mathbf{f}_2 )\).
+          So $F = \Span ( \vect{f}_1, \vect{f}_2 )$.
 
-          \subsubsection*{Basis for \(G\)}
+          \subsubsection*{Basis for $G$}
 
-          Choose three members of \(G\), \((1, 2, -2), (1, 1, 1), (2, 4, 0) \in G\) (for \((a, b)\), choose \((1, 1)\), \((1, 0)\),
-          \((1, 3)\), respectively).
+          Choose three members of $G$, $(1, 2, -2), (1, 1, 1), (2, 4, 0) \in G$ (for $(a, b)$, choose $(1, 1)$, $(1, 0)$,
+          $(1, 3)$, respectively).
 
           Form a matrix with these columns and row-reduce:
           \[
@@ -1964,41 +1954,41 @@
                   \end{array}
               \end{aligned}
           \]
-          The result has full rank, so \(G = \R^3\).
+          The result has full rank, so $G = \R^3$.
 
-          \subsubsection*{Basis for \(F \cap G\)}
+          \subsubsection*{Basis for $F \cap G$}
 
-          Since \(G = \R^3\) and \(F \subset \R^3\), \(F \cap G = F = \Span(\mathbf{f}_1, \mathbf{f}_2)\).
+          Since $G = \R^3$ and $F \subset \R^3$, $F \cap G = F = \Span(\vect{f}_1, \vect{f}_2)$.
 
-          \subsubsection*{Revisiting \(G\)}
+          \subsubsection*{Revisiting $G$}
 
-          Considering any \((x, y, z) \in \R^3\) and given the definition
+          Considering any $(x, y, z) \in \R^3$ and given the definition
           \[
-              G = \left \{ (a - b, a + b, a - 3b) \mid a, b \in \R \right \}
+              G = \set{ (a - b, a + b, a - 3b) \mid a, b \in \R }
           \]
-          solving for \(a\) and \(b\),
+          solving for $a$ and $b$,
           \[
               a = \tfrac{1}{2}(x + y) \qquad b = \tfrac{1}{6}(x + y - 2z)
           \]
-          which are always defined.  It follows that \(G = \R^3\).
+          which are always defined.  It follows that $G = \R^3$.
 
     \item[2.16] Are the following mappings linear?
 
           \begin{enumerate}
-              \item[a.] Let \(a, b \in \R^3\).
+              \item[a.] Let $a, b \in \R^3$.
                     \[
                         \begin{aligned}
                             \Phi : L^1([a, b]) & \rightarrow \R                            \\
                             f                  & \mapsto \Phi(f) = \int_{a}^{b} f(x) \, dx
                         \end{aligned}
                     \]
-                    where \(L^1([a, b])\) denotes the set of integrable functions on \([a, b]\).
+                    where $L^1([a, b])$ denotes the set of integrable functions on $[a, b]$.
 
                     \textbf{Linear}.
 
-                    \textit{Additivity}: \(\int_{a}^{b} f + g = \int_{a}^{b} f + \int_{a}^{b} g \)
+                    \textit{Additivity}: $\int_{a}^{b} f + g = \int_{a}^{b} f + \int_{a}^{b} g $
 
-                    \textit{Homogeneity}: \(\int_{a}^{b} \lambda f = \lambda \int_{a}^{b} f \)
+                    \textit{Homogeneity}: $\int_{a}^{b} \lambda f = \lambda \int_{a}^{b} f $
 
               \item[b.]
                     \[
@@ -2007,14 +1997,14 @@
                             f          & \mapsto \Phi(f) = f'
                         \end{aligned}
                     \]
-                    where for \(k \geq 1\), \(C^k\) denotes the set of \(k\) times continuously differentiable
-                    functions, and \(C^0\) denotes the set of continuous functions.
+                    where for $k \geq 1$, $C^k$ denotes the set of $k$ times continuously differentiable
+                    functions, and $C^0$ denotes the set of continuous functions.
 
                     \textbf{Linear}.
 
-                    \textit{Additivity}: \((f + g)' = f' + g'\).
+                    \textit{Additivity}: $(f + g)' = f' + g'$.
 
-                    \textit{Homogeneity}: \((\lambda f)' = \lambda f'\).
+                    \textit{Homogeneity}: $(\lambda f)' = \lambda f'$.
 
               \item[c.]
                     \[
@@ -2032,26 +2022,26 @@
                     \[
                         \begin{aligned}
                             \Phi : \R^3 & \rightarrow \R^2 \\
-                            \mathbf{x}  & \mapsto
+                            \vect{x}    & \mapsto
                             \begin{bmatrix}
                                 1 & 2 & 3 \\
                                 1 & 4 & 3 \\
                             \end{bmatrix}
-                            \mathbf{x}
+                            \vect{x}
                         \end{aligned}
                     \]
                     \textbf{Linear}. Matrix multiplication is linear.
 
-              \item[e.] Let \(\theta \in [0, 2\pi]\) and
+              \item[e.] Let $\theta \in [0, 2\pi]$ and
                     \[
                         \begin{aligned}
                             \Phi : \R^2 & \rightarrow \R^2 \\
-                            \mathbf{x}  & \mapsto
+                            \vect{x}    & \mapsto
                             \begin{bmatrix}
                                 \cos(\theta)  & \sin(\theta) \\
                                 -\sin(\theta) & \cos(\theta) \\
                             \end{bmatrix}
-                            \mathbf{x}
+                            \vect{x}
                         \end{aligned}
                     \]
                     \textbf{Linear}. Matrix multiplication is linear.
@@ -2064,11 +2054,11 @@
           \[
               \begin{aligned}
                   \Phi & : \R^3 \rightarrow \R^4 \\
-                  \Phi & \left (
-                  \begin{bmatrix}
-                      x_1 \\ x_2 \\ x_3
-                  \end{bmatrix}
-                  \right )
+                  \Phi & \args{
+                      \begin{bmatrix}
+                          x_1 \\ x_2 \\ x_3
+                      \end{bmatrix}
+                  }
                   = \begin{bmatrix}
                         3x_1 + 2x_2 + x_3 \\
                         x_1 + x_2 + x_3   \\
@@ -2079,13 +2069,13 @@
           \]
 
           \begin{enumerate}
-              \item[a.] Find the transformation matrix \(\mathbf{A}_\Phi\)
-              \item[b.] Determine \(\rank(\mathbf{A}_\Phi)\)
-              \item[c.] Compute the kernel and image of \(\Phi\).  What are \(\dim(\ker(\Phi))\) and \(\dim(\Img(\Phi))\)?
+              \item[a.] Find the transformation matrix $\mat{A}_\Phi$
+              \item[b.] Determine $\rank(\mat{A}_\Phi)$
+              \item[c.] Compute the kernel and image of $\Phi$.  What are $\dim(\Ker(\Phi))$ and $\dim(\Img(\Phi))$?
           \end{enumerate}
 
           \[
-              \mathbf{A}_\Phi =
+              \mat{A}_\Phi =
               \begin{bmatrix}
                   \begin{array}{@{\negthickspace}i{3}i{3}i{3}@{\;\;}}
                       3 & 2  & 1 \\
@@ -2153,52 +2143,52 @@
                   \end{array}
               \end{aligned}
           \]
-          So \(\mathbf{A}_\Phi\) has rank 3, \(\Ker(\Phi) = \{\mathbf{0}\} \in \R^3\).
+          So $\mat{A}_\Phi$ has rank 3, $\Ker(\Phi) = \{\vect{0}\} \subset \R^3$.
 
           By the rank-nullity theorem,
           \[
               \dim(\Dom \Phi) = \dim(\Img \Phi) + \dim(\Ker \Phi)
           \]
-          so \(\dim(\Ker \Phi) = 0\) gives \(\dim(\Img \Phi) = 3\).
+          so $\dim(\Ker \Phi) = 0$ gives $\dim(\Img \Phi) = 3$.
 
           \pagebreak
 
-    \item[2.18] Let \(E\) be a vector space.
+    \item[2.18] Let $E$ be a vector space.
 
-          Let \(f\) and \(g\) be two automorphisms on \(E\) such that \(f \circ g = \id_E\) (the identity mapping on E).
+          Let $f$ and $g$ be two automorphisms on $E$ such that $f \circ g = \id_E$ (the identity mapping on E).
 
           Show that:
           \begin{enumerate}
-              \item[a.] \(\Ker(f) = \Ker(g \circ f)\)
-              \item[b.] \(\Img(g) = \Img(g \circ f)\)
-              \item[c.] \(\Ker(f) \cap \Img(g) = \{ \mathbf{0}_E \}\)
+              \item[a.] $\Ker(f) = \Ker(g \circ f)$
+              \item[b.] $\Img(g) = \Img(g \circ f)$
+              \item[c.] $\Ker(f) \cap \Img(g) = \{ \vect{0}_E \}$
           \end{enumerate}
 
-          Since \(f \circ g = \id_E\), both \(f\) and \(g\) are invertible: \(g = f^{-1}\) and \(f = g^{-1}\).
+          Since $f \circ g = \id_E$, both $f$ and $g$ are invertible: $g = f^{-1}$ and $f = g^{-1}$.
 
           \begin{enumerate}
-              \item[a.] \(\Ker(f) = \Ker(g \circ f)\)
+              \item[a.] $\Ker(f) = \Ker(g \circ f)$
 
-                    Since \(f\) is invertible, it is surjective (maps onto all of \(E\)), so
+                    Since $f$ is invertible, it is surjective (maps onto all of $E$), so
                     \[
-                        \Ker(f) = \{ \mathbf{0}_E \}.
+                        \Ker(f) = \{ \vect{0}_E \}.
                     \]
-                    Similarly, \(g \circ f = \id_E\), so
+                    Similarly, $g \circ f = \id_E$, so
                     \[
-                        \Ker(g \circ f) = \Ker(\id_E) = \{ \mathbf{0}_E \}.
+                        \Ker(g \circ f) = \Ker(\id_E) = \{ \vect{0}_E \}.
                     \]
                     Therefore
                     \[
-                        \Ker(f) = \Ker(g \circ f) = \{ \mathbf{0}_E \}.
+                        \Ker(f) = \Ker(g \circ f) = \{ \vect{0}_E \}.
                     \]
 
-              \item[b.] \(\Img(g) = \Img(g \circ f)\)
+              \item[b.] $\Img(g) = \Img(g \circ f)$
 
-                    Since \(g\) is invertible, it is surjective, so
+                    Since $g$ is invertible, it is surjective, so
                     \[
                         \Img(g) = E.
                     \]
-                    Likewise, \(g \circ f = \id_E\), so
+                    Likewise, $g \circ f = \id_E$, so
                     \[
                         \Img(g \circ f) = \Img(\id_E) = E.
                     \]
@@ -2207,20 +2197,20 @@
                         \Img(g) = \Img(g \circ f) = E.
                     \]
 
-              \item[c.] \(\Ker(f) \cap \Img(g) = \{ \mathbf{0}_E \}\)
+              \item[c.] $\Ker(f) \cap \Img(g) = \{ \vect{0}_E \}$
 
                     Taking the results from a. and b.,
                     \[
-                        \Ker(f) \cap \Img(g) = \{ \mathbf{0}_E \} \cap E = \{ \mathbf{0}_E \}.
+                        \Ker(f) \cap \Img(g) = \{ \vect{0}_E \} \cap E = \{ \vect{0}_E \}.
                     \]
           \end{enumerate}
 
           \pagebreak
 
-    \item[2.19] Consider an endomorphism \(\Phi : \R^3 \rightarrow \R^3\) whose transformation matrix (with respect to the
-          standard basis in \(\R^3\)) is
+    \item[2.19] Consider an endomorphism $\Phi : \R^3 \rightarrow \R^3$ whose transformation matrix (with respect to the
+          standard basis in $\R^3$) is
           \[
-              \mathbf{A}_\Phi =
+              \mat{A}_\Phi =
               \begin{bmatrix}
                   \begin{array}{@{\negthickspace}i{3}i{3}i{3}@{\;\;}}
                       1 & 1  & 0 \\
@@ -2231,9 +2221,9 @@
           \]
 
           \begin{enumerate}
-              \item[a.] Determine \(\Ker(\Phi)\) and \(\Img(\Phi)\)
+              \item[a.] Determine $\Ker(\Phi)$ and $\Img(\Phi)$
 
-                    \(\mathbf{A}_\Phi\) row-reduces to \(\mathbf{I} \in \R^3\):
+                    $\mat{A}_\Phi$ row-reduces to $\mat{I} \in \R^3$:
                     \[
                         \begin{bmatrix}
                             1 & 1  & 0 \\
@@ -2265,19 +2255,20 @@
                             0 & 0 & 1 \\
                         \end{bmatrix}
                     \]
-                    Therefore \(\Ker(\Phi) = \{ \mathbf{0} \} \in \R^3\) and \(\Img(\Phi) = \R^3\)
+                    Therefore $\Ker(\Phi) = \{ \vect{0} \} \in \R^3$ and $\Img(\Phi) = \R^3$
 
-              \item[b.] Determine the transformation matrix \(\tilde{\mathbf{A}}_\Phi\) with respect to the basis
+              \item[b.] Determine the transformation matrix $\tilde{\mat{A}}_\Phi$ with respect to the basis
                     \[
-                        B = \left (
-                        \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}\!,\!
-                        \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix}\!,\!
-                        \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
-                        \right )
+                        B = \args{
+                            \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}\!,\!
+                            \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix}\!,\!
+                            \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+                        }
                     \]
 
-                    Construct and row-reduce the augmented matrix, \([ \; \mathbf{S}_B \mid \mathbf{I} \; ] \rightsquigarrow [ \;
-                    \mathbf{I} \mid \mathbf{S}_B^{-1} \; ]\) (where \(\mathbf{S}_B\) is the change-of-basis matrix for \(B\)) as follows
+                    Construct and row-reduce the augmented matrix,
+                    $[ \; \mat{S}_B \mid \mat{I} \; ] \rightsquigarrow [ \; \mat{I} \mid \mat{S}_B^{-1} \; ]$
+                    (where $\mat{S}_B$ is the change-of-basis matrix for $B$) as follows
                     \[
                         \begin{aligned}
                             \begin{bmatrix}
@@ -2328,7 +2319,7 @@
 
                     This gives
                     \[
-                        \mathbf{S}_B =
+                        \mat{S}_B =
                         \begin{bmatrix}
                             \begin{array}{i{1}i{1}i{1}}
                                 1 & 1 & 1 \\
@@ -2337,7 +2328,7 @@
                             \end{array}
                         \end{bmatrix}
                         \quad
-                        \mathbf{S}_B^{-1} =
+                        \mat{S}_B^{-1} =
                         \begin{bmatrix}
                             \begin{array}{@{\!\!\!\!}i{3}i{3}i{3}@{\;}}
                                 0 & -1 & 2  \\
@@ -2347,14 +2338,14 @@
                         \end{bmatrix}
                     \]
 
-                    The transformation matrix with respect to the basis \(B\), is then given by
+                    The transformation matrix with respect to the basis $B$, is then given by
                     \[
                         \begin{aligned}
-                            \tilde{\mathbf{A}}_\Phi = \mathbf{S}_B^{-1} \mathbf{A}_\Phi \mathbf{S}_B \\
+                            \tilde{\mat{A}}_\Phi = \mat{S}_B^{-1} \mat{A}_\Phi \mat{S}_B \\
                         \end{aligned}
                     \]
                     \[
-                        \tilde{\mathbf{A}}_\Phi =
+                        \tilde{\mat{A}}_\Phi =
                         \begin{bmatrix}
                             \begin{array}{@{\!\!\!\!}i{3}i{3}i{3}@{\;}}
                                 0 & -1 & 2  \\
@@ -2390,94 +2381,94 @@
 
           \pagebreak
 
-    \item[2.20] Let us consider \(\mathbf{b}_1, \mathbf{b}_2, \mathbf{b}'_1, \mathbf{b}'_2\) 4 vectors of \(\R^2\)
-          expressed in the standard basis of \(\R^2\) as
+    \item[2.20] Let us consider $\vect{b}_1, \vect{b}_2, \vect{b}'_1, \vect{b}'_2$ as vectors of $\R^2$,
+          expressed in the standard basis of $\R^2$ as
           \[
-              \mathbf{b}_1 = \begin{bmatrix}
+              \vect{b}_1 = \begin{bmatrix}
                   \begin{array}{c}
                       2 \\ 1
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{b}_2 = \begin{bmatrix}
+              \vect{b}_2 = \begin{bmatrix}
                   \begin{array}{@{\;}i{3}}
                       -1 \\ -1
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{b}'_1 = \begin{bmatrix}
+              \vect{b}'_1 = \begin{bmatrix}
                   \begin{array}{@{\;}i{3}}
                       2 \\ -2
                   \end{array}
               \end{bmatrix}
               \quad
-              \mathbf{b}'_2 = \begin{bmatrix}
+              \vect{b}'_2 = \begin{bmatrix}
                   \begin{array}{c}
                       1 \\ 1
                   \end{array}
               \end{bmatrix}
           \]
-          and let us define two ordered bases \(B = (\mathbf{b}_1, \mathbf{b}_2)\) and \(B' = (\mathbf{b}'_1, \mathbf{b}'_2)\).
+          and let us define two ordered bases $B = (\vect{b}_1, \vect{b}_2)$ and $B' = (\vect{b}'_1, \vect{b}'_2)$.
 
           \begin{enumerate}
-              \item[a.] Show that \(B\) and \(B'\) are two bases of \(\R^2\) and draw those basis vectors.
+              \item[a.] Show that $B$ and $B'$ are two bases of $\R^2$ and draw those basis vectors.
 
-              \item[b.] Compute the matrix \(\mathbf{P}_1\) that performs a basis change from \(B'\) to \(B\).
+              \item[b.] Compute the matrix $\mat{P}_1$ that performs a basis change from $B'$ to $B$.
 
-              \item[c.] We consider \(\mathbf{c}_1, \mathbf{c}_2, \mathbf{c}_2\) three vectors of \(\R^3\) defined in
-                    the standard basis of \(\R^3\) as
+              \item[c.] We consider $\vect{c}_1, \vect{c}_2, \vect{c}_2$ three vectors of $\R^3$ defined in
+                    the standard basis of $\R^3$ as
                     \[
-                        \mathbf{c}_1 = \begin{bmatrix}
+                        \vect{c}_1 = \begin{bmatrix}
                             \begin{array}{@{\,}i{3}}
                                 1 \\ 2 \\ -1
                             \end{array}
                         \end{bmatrix}
                         \quad
-                        \mathbf{c}_2 = \begin{bmatrix}
+                        \vect{c}_2 = \begin{bmatrix}
                             \begin{array}{@{\,}i{3}}
                                 0 \\ -1 \\ 2
                             \end{array}
                         \end{bmatrix}
                         \quad
-                        \mathbf{c}_3 = \begin{bmatrix}
+                        \vect{c}_3 = \begin{bmatrix}
                             \begin{array}{@{\,}i{3}}
                                 1 \\ 0 \\ -1
                             \end{array}
                         \end{bmatrix}
                     \]
-                    and we define \(C = (\mathbf{c}_1, \mathbf{c}_2, \mathbf{c}_3)\).
+                    and we define $C = (\vect{c}_1, \vect{c}_2, \vect{c}_3)$.
 
                     \begin{enumerate}
-                        \item[i.] Show that \(C\) is a basis of \(\R^3\) (for example, by using determinants).
+                        \item[i.] Show that $C$ is a basis of $\R^3$ (for example, by using determinants).
 
-                        \item[ii.] Let us call \(C' = (\mathbf{c}'_1, \mathbf{c}'_2, \mathbf{c}'_3)\) the standard basis of
-                              \(\R^3\).  Determine the matrix \(\mathbf{P}_2\) that performs the change of basis from \(C\) to
-                              \(C'\).
+                        \item[ii.] Let us call $C' = (\vect{c}'_1, \vect{c}'_2, \vect{c}'_3)$ the standard basis of
+                              $\R^3$.  Determine the matrix $\mat{P}_2$ that performs the change of basis from $C$ to
+                              $C'$.
                     \end{enumerate}
 
-              \item[d.] We consider a homomorphism \(\Phi : \R^2 \rightarrow \R^3\), such that
+              \item[d.] We consider a homomorphism $\Phi : \R^2 \rightarrow \R^3$, such that
                     \[
                         \begin{aligned}
-                            \Phi(\mathbf{b}_1 + \mathbf{b}_2) & = \mathbf{c}_2 + \mathbf{c}_3                    \\
-                            \Phi(\mathbf{b}_1 - \mathbf{b}_2) & = 2 \mathbf{c}_1 - \mathbf{c}_2 + 3 \mathbf{c}_3 \\
+                            \Phi(\vect{b}_1 + \vect{b}_2) & = \vect{c}_2 + \vect{c}_3                  \\
+                            \Phi(\vect{b}_1 - \vect{b}_2) & = 2 \vect{c}_1 - \vect{c}_2 + 3 \vect{c}_3 \\
                         \end{aligned}
                     \]
-                    where \(B = (\mathbf{b}_1, \mathbf{b}_2)\) and \(C = (\mathbf{c}_1, \mathbf{c}_2, \mathbf{c}_3)\)
-                    are ordered bases of \(\R^2\) and \(\R^3\), respectively.
+                    where $B = (\vect{b}_1, \vect{b}_2)$ and $C = (\vect{c}_1, \vect{c}_2, \vect{c}_3)$
+                    are ordered bases of $\R^2$ and $\R^3$, respectively.
 
-                    Determine the transformation matrix \(\mathbf{A}_\Phi\) of \(\Phi\) with respect to the ordered
-                    bases \(B\) and \(C\).
+                    Determine the transformation matrix $\mat{A}_\Phi$ of $\Phi$ with respect to the ordered
+                    bases $B$ and $C$.
 
-              \item[e.] Determine \(\mathbf{A}'\), the transformation matrix with respect to the bases \(B'\) and \(C'\).
+              \item[e.] Determine $\mat{A}'$, the transformation matrix with respect to the bases $B'$ and $C'$.
 
-              \item[f.] Let us consider the vector \(\mathbf{x} \in \R^2\), whose coordinates in \(B'\) are
-                    \(\begin{bmatrix}2 & 3\end{bmatrix}^{\top}\).  In other words, \(\mathbf{x} = 2 \mathbf{b}'_1 + 3 \mathbf{b}'_2\).
+              \item[f.] Let us consider the vector $\vect{x} \in \R^2$, whose coordinates in $B'$ are
+                    $\begin{bmatrix}2 & 3\end{bmatrix}^{\top}$.  In other words, $\vect{x} = 2 \vect{b}'_1 + 3 \vect{b}'_2$.
 
                     \begin{enumerate}
-                        \item[i.] Calculate the coordinates of \(\mathbf{x}\) in \(B\).
-                        \item[ii.] Based on that, compute the coordinates of \(\Phi(\mathbf{x})\) expressed in \(C\).
-                        \item[iii.] Then write \(\Phi(\mathbf{x})\) in terms of \(\mathbf{c}'_1, \mathbf{c}'_2, \mathbf{c}'_3\).
-                        \item[iv.] Use the representation of $\x$ in $B'$ and the matrix $\mat{A}'$ to find this result directly.
+                        \item[i.] Calculate the coordinates of $\vect{x}$ in $B$.
+                        \item[ii.] Based on that, compute the coordinates of $\Phi(\vect{x})$ expressed in $C$.
+                        \item[iii.] Then write $\Phi(\vect{x})$ in terms of $\vect{c}'_1, \vect{c}'_2, \vect{c}'_3$.
+                        \item[iv.] Use the representation of $\vect{x}$ in $B'$ and the matrix $\mat{A}'$ to find this result directly.
                     \end{enumerate}
 
           \end{enumerate}
