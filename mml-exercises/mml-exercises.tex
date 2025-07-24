@@ -2325,7 +2325,7 @@
                         \end{aligned}
                     \]
 
-                    This gives us
+                    This gives
                     \[
                         \mathbf{S}_B =
                         \begin{bmatrix}
@@ -2346,36 +2346,42 @@
                         \end{bmatrix}
                     \]
 
-                    The transformation matrix with respect to the basis \(B\), is given by
+                    The transformation matrix with respect to the basis \(B\), is then given by
                     \[
                         \begin{aligned}
                             \tilde{\mathbf{A}}_\Phi = \mathbf{S}_B^{-1} \mathbf{A}_\Phi \mathbf{S}_B \\
                         \end{aligned}
                     \]
-
-                    So composing,
                     \[
                         \tilde{\mathbf{A}}_\Phi =
                         \begin{bmatrix}
-                            1 & 1 & 1 \\
-                            1 & 2 & 0 \\
-                            1 & 1 & 0 \\
+                            \begin{array}{@{\!\!\!\!}i{3}i{3}i{3}@{\;}}
+                                0 & -1 & 2  \\
+                                0 & 1  & -1 \\
+                                1 & 0  & -1 \\
+                            \end{array}
                         \end{bmatrix}
                         \begin{bmatrix}
-                            0 & -1 & 2  \\
-                            0 & 1  & -1 \\
-                            1 & 0  & -1 \\
+                            \begin{array}{@{\!\!\!\!}i{3}@{\;\;}i{3}@{\,\;}i{3}@{\;}}
+                                1 & 1  & 0 \\
+                                1 & -1 & 0 \\
+                                1 & 1  & 1 \\
+                            \end{array}
                         \end{bmatrix}
                         \begin{bmatrix}
-                            1 & 1  & 0 \\
-                            1 & -1 & 0 \\
-                            1 & 1  & 1 \\
+                            \begin{array}{@{\negthinspace}i{2}i{2}i{2}@{\;}}
+                                1 & 1 & 1 \\
+                                1 & 2 & 0 \\
+                                1 & 1 & 0 \\
+                            \end{array}
                         \end{bmatrix}
                         =
                         \begin{bmatrix}
-                            1 & 1  & 0 \\
-                            1 & -1 & 0 \\
-                            1 & 1  & 1 \\
+                            \begin{array}{@{}i{3}i{3}i{3}@{\;\;}}
+                                6  & 9  & 1 \\
+                                -3 & -5 & 0 \\
+                                -1 & -1 & 0 \\
+                            \end{array}
                         \end{bmatrix}
                     \]
 
