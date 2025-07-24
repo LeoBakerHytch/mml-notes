@@ -41,8 +41,9 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\del}{\partial}
 
-\newcommand{\vect}[1]{\bm{#1}}  % Vector
-\newcommand{\mat}[1]{\bm{#1}}   % Matrix
+\newcommand{\vect}[1]{\bm{#1}}      % Vector
+\newcommand{\mat}[1]{\mathbf{#1}}   % Matrix
+\newcommand{\x}{\vect{x}}
 
 \newcommand{\abs}[1]{\left|#1\right|}                    % Absolute value
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}         % Norm
@@ -2392,14 +2393,94 @@
     \item[2.20] Let us consider \(\mathbf{b}_1, \mathbf{b}_2, \mathbf{b}'_1, \mathbf{b}'_2\) 4 vectors of \(\R^2\)
           expressed in the standard basis of \(\R^2\) as
           \[
-              \mathbf{b}_1 = \begin{bmatrix}2 \\ 1\end{bmatrix}
+              \mathbf{b}_1 = \begin{bmatrix}
+                  \begin{array}{c}
+                      2 \\ 1
+                  \end{array}
+              \end{bmatrix}
               \quad
-              \mathbf{b}_2 = \begin{bmatrix}-1 \\ -1\end{bmatrix}
+              \mathbf{b}_2 = \begin{bmatrix}
+                  \begin{array}{@{\;}i{3}}
+                      -1 \\ -1
+                  \end{array}
+              \end{bmatrix}
               \quad
-              \mathbf{b}'_1 = \begin{bmatrix}2 \\ -2\end{bmatrix}
+              \mathbf{b}'_1 = \begin{bmatrix}
+                  \begin{array}{@{\;}i{3}}
+                      2 \\ -2
+                  \end{array}
+              \end{bmatrix}
               \quad
-              \mathbf{b}'_2 = \begin{bmatrix}1 \\ 1\end{bmatrix}
+              \mathbf{b}'_2 = \begin{bmatrix}
+                  \begin{array}{c}
+                      1 \\ 1
+                  \end{array}
+              \end{bmatrix}
           \]
+          and let us define two ordered bases \(B = (\mathbf{b}_1, \mathbf{b}_2)\) and \(B' = (\mathbf{b}'_1, \mathbf{b}'_2)\).
+
+          \begin{enumerate}
+              \item[a.] Show that \(B\) and \(B'\) are two bases of \(\R^2\) and draw those basis vectors.
+
+              \item[b.] Compute the matrix \(\mathbf{P}_1\) that performs a basis change from \(B'\) to \(B\).
+
+              \item[c.] We consider \(\mathbf{c}_1, \mathbf{c}_2, \mathbf{c}_2\) three vectors of \(\R^3\) defined in
+                    the standard basis of \(\R^3\) as
+                    \[
+                        \mathbf{c}_1 = \begin{bmatrix}
+                            \begin{array}{@{\,}i{3}}
+                                1 \\ 2 \\ -1
+                            \end{array}
+                        \end{bmatrix}
+                        \quad
+                        \mathbf{c}_2 = \begin{bmatrix}
+                            \begin{array}{@{\,}i{3}}
+                                0 \\ -1 \\ 2
+                            \end{array}
+                        \end{bmatrix}
+                        \quad
+                        \mathbf{c}_3 = \begin{bmatrix}
+                            \begin{array}{@{\,}i{3}}
+                                1 \\ 0 \\ -1
+                            \end{array}
+                        \end{bmatrix}
+                    \]
+                    and we define \(C = (\mathbf{c}_1, \mathbf{c}_2, \mathbf{c}_3)\).
+
+                    \begin{enumerate}
+                        \item[i.] Show that \(C\) is a basis of \(\R^3\) (for example, by using determinants).
+
+                        \item[ii.] Let us call \(C' = (\mathbf{c}'_1, \mathbf{c}'_2, \mathbf{c}'_3)\) the standard basis of
+                              \(\R^3\).  Determine the matrix \(\mathbf{P}_2\) that performs the change of basis from \(C\) to
+                              \(C'\).
+                    \end{enumerate}
+
+              \item[d.] We consider a homomorphism \(\Phi : \R^2 \rightarrow \R^3\), such that
+                    \[
+                        \begin{aligned}
+                            \Phi(\mathbf{b}_1 + \mathbf{b}_2) & = \mathbf{c}_2 + \mathbf{c}_3                    \\
+                            \Phi(\mathbf{b}_1 - \mathbf{b}_2) & = 2 \mathbf{c}_1 - \mathbf{c}_2 + 3 \mathbf{c}_3 \\
+                        \end{aligned}
+                    \]
+                    where \(B = (\mathbf{b}_1, \mathbf{b}_2)\) and \(C = (\mathbf{c}_1, \mathbf{c}_2, \mathbf{c}_3)\)
+                    are ordered bases of \(\R^2\) and \(\R^3\), respectively.
+
+                    Determine the transformation matrix \(\mathbf{A}_\Phi\) of \(\Phi\) with respect to the ordered
+                    bases \(B\) and \(C\).
+
+              \item[e.] Determine \(\mathbf{A}'\), the transformation matrix with respect to the bases \(B'\) and \(C'\).
+
+              \item[f.] Let us consider the vector \(\mathbf{x} \in \R^2\), whose coordinates in \(B'\) are
+                    \(\begin{bmatrix}2 & 3\end{bmatrix}^{\top}\).  In other words, \(\mathbf{x} = 2 \mathbf{b}'_1 + 3 \mathbf{b}'_2\).
+
+                    \begin{enumerate}
+                        \item[i.] Calculate the coordinates of \(\mathbf{x}\) in \(B\).
+                        \item[ii.] Based on that, compute the coordinates of \(\Phi(\mathbf{x})\) expressed in \(C\).
+                        \item[iii.] Then write \(\Phi(\mathbf{x})\) in terms of \(\mathbf{c}'_1, \mathbf{c}'_2, \mathbf{c}'_3\).
+                        \item[iv.] Use the representation of $\x$ in $B'$ and the matrix $\mat{A}'$ to find this result directly.
+                    \end{enumerate}
+
+          \end{enumerate}
 
 \end{enumerate}
 
