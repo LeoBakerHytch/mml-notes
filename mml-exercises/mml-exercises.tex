@@ -10,8 +10,11 @@
 \usepackage{geometry}        % Better margins
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
 \usepackage[tracking=true]{microtype}
-\usepackage{siunitx}         % Alignment in matrices
+\usepackage{xfrac}
+\usepackage{tikz}            % Plots
+\usetikzlibrary{arrows.meta, positioning}
 \usepackage{titlesec}        % Heading spacing control
+\usepackage{siunitx}         % Alignment in matrices
 \sisetup{
   table-align-text-post=false,
   table-number-alignment = center,
@@ -2413,10 +2416,93 @@
           \begin{enumerate}
               \item[a.] Show that $B$ and $B'$ are two bases of $\R^2$ and draw those basis vectors.
 
+                    \vspace{1em}
+
+                    We find
+                    \[
+                        \det \args{ [ \: \vect{b}_1 \;\; \vect{b}_2 \: ] } = -1
+                        \qquad
+                        \det \args{ [ \: \vect{b}'_1 \;\; \vect{b}'_2 \: ] } = 4
+                    \]
+
+                    so $\vect{b}_1$ and $\vect{b}_2$ are linearly independent, likewise $\vect{b}'_1$ and $\vect{b}'_2$,
+                    so both pairs of vectors span the whole space, and $B$ and $B'$ are bases of $\R^2$:
+
+                    \vspace{0.5em}
+                    \makebox[\linewidth][c]{%
+                        \begin{tikzpicture}[scale=0.8, >=stealth]
+
+                            % Axes
+                            \draw[->] (-2.5,0) -- (3.5,0) node[right] {$x$};
+                            \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+
+                            % Grid
+                            \draw[help lines, gray!30] (-2.5,-2.5) grid (3.5,2.5);
+
+                            % New basis vectors b1', b2'
+                            \draw[->, thick, white!10!green!60!black] (0,0) -- (2,-2) node[below right] {$\vect{b}'_1$};
+                            \draw[->, thick, white!10!green!60!black] (0,0) -- (1,1) node[above right] {$\vect{b}'_2$};
+
+                            % Original basis vectors b1, b2
+                            \draw[->, thick, white!20!blue!80!black] (0,0) -- (2,1) node[above right] {$\vect{b}_1$};
+                            \draw[->, thick, white!20!blue!80!black] (0,0) -- (-1,-1) node[below left] {$\vect{b}_2$};
+
+                            % Origin
+                            \fill (0,0) circle (2pt);
+
+                        \end{tikzpicture}
+                    }
+                    \vspace{0.1em}
+
               \item[b.] Compute the matrix $\mat{P}_1$ that performs a basis change from $B'$ to $B$.
 
-              \item[c.] We consider $\vect{c}_1, \vect{c}_2, \vect{c}_2$ three vectors of $\R^3$ defined in
-                    the standard basis of $\R^3$ as
+                    \vspace{1em}
+
+                    Denote $\mat{S}_B$ and $\mat{S}_{B'}$ as the change-of-basis matrices from $B$ and $B'$ to $E_2$,
+                    the standard basis of $\R^2$, respectively:
+                    \[
+                        \mat{S}_B =
+                        \begin{bmatrix}
+                            \begin{array}{@{\negthickspace}i{3}i{3}@{\;\;}}
+                                2 & -1 \\
+                                1 & -1 \\
+                            \end{array}
+                        \end{bmatrix}
+                        \qquad
+                        \mat{S}_{B'} =
+                        \begin{bmatrix}
+                            \begin{array}{@{\,}i{3}i{2}@{\;\;}}
+                                2  & 1 \\
+                                -2 & 1 \\
+                            \end{array}
+                        \end{bmatrix}
+                    \]
+                    Then
+                    \[
+                        \mat{P}_1 = \mat{S}_B^{-1} \mat{S}_{B'} =
+                        \begin{bmatrix}
+                            \begin{array}{@{\negthickspace}i{3}i{3}@{\;\;}}
+                                1 & -1 \\
+                                1 & -2 \\
+                            \end{array}
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            \begin{array}{@{\,}i{3}i{2}@{\;\;}}
+                                2  & 1 \\
+                                -2 & 1 \\
+                            \end{array}
+                        \end{bmatrix}
+                        =
+                        \begin{bmatrix}
+                            \begin{array}{@{\!\!}i{3}i{3}@{\;\;}}
+                                4 & 0  \\
+                                6 & -1 \\
+                            \end{array}
+                        \end{bmatrix}
+                    \]
+
+              \item[c.] Let $C = (\vect{c}_1, \vect{c}_2, \vect{c}_3)$, where $\vect{c}_1, \vect{c}_2, \vect{c}_2$ are three
+                    vectors of $\R^3$ defined in $E_3$, the standard basis of $\R^3$:
                     \[
                         \vect{c}_1 = \begin{bmatrix}
                             \begin{array}{@{\,}i{3}}
@@ -2436,14 +2522,61 @@
                             \end{array}
                         \end{bmatrix}
                     \]
-                    and we define $C = (\vect{c}_1, \vect{c}_2, \vect{c}_3)$.
 
                     \begin{enumerate}
                         \item[i.] Show that $C$ is a basis of $\R^3$ (for example, by using determinants).
 
+                              \vspace{1em}
+
+                              The matrix with columns $\vect{c}_1, \vect{c}_2, \vect{c}_3$ has full rank, so $C$
+                              is a basis of $\R^3$:
+                              \[
+                                  \det \args{
+                                      \begin{bmatrix}
+                                          \begin{array}{@{}i{3}i{3}i{3}@{\;\;}}
+                                              1  & 0  & 1  \\
+                                              2  & -1 & 0  \\
+                                              -1 & 2  & -1 \\
+                                          \end{array}
+                                      \end{bmatrix}
+                                  }
+                                  =
+                                  \det \args{
+                                      \begin{bmatrix}
+                                          \begin{array}{@{}i{3}i{3}@{\;\;}}
+                                              -1 & 0  \\
+                                              2  & -1 \\
+                                          \end{array}
+                                      \end{bmatrix}
+                                  }
+                                  +
+                                  \det \args{
+                                      \begin{bmatrix}
+                                          \begin{array}{@{}i{3}i{3}@{\;\;}}
+                                              2  & -1 \\
+                                              -1 & 2  \\
+                                          \end{array}
+                                      \end{bmatrix}
+                                  }
+                                  = 4
+                              \]
+
                         \item[ii.] Let us call $C' = (\vect{c}'_1, \vect{c}'_2, \vect{c}'_3)$ the standard basis of
                               $\R^3$.  Determine the matrix $\mat{P}_2$ that performs the change of basis from $C$ to
                               $C'$.
+
+                              \vspace{1em}
+                              $\mat{P}_2$ is exactly the matrix above, with columns $\vect{c}_1, \vect{c}_2, \vect{c}_3$:
+                              \[
+                                  \mat{P}_2 =
+                                  \begin{bmatrix}
+                                      \begin{array}{@{}i{3}i{3}i{3}@{\;\;}}
+                                          1  & 0  & 1  \\
+                                          2  & -1 & 0  \\
+                                          -1 & 2  & -1 \\
+                                      \end{array}
+                                  \end{bmatrix}
+                              \]
                     \end{enumerate}
 
               \item[d.] We consider a homomorphism $\Phi : \R^2 \rightarrow \R^3$, such that
@@ -2459,17 +2592,308 @@
                     Determine the transformation matrix $\mat{A}_\Phi$ of $\Phi$ with respect to the ordered
                     bases $B$ and $C$.
 
-              \item[e.] Determine $\mat{A}'$, the transformation matrix with respect to the bases $B'$ and $C'$.
+                    \vspace{0.5em}
+                    Reformulating, we have
+                    \[
+                        \mat{A}_\Phi
+                        \begin{bmatrix}
+                            \begin{array}{@{\;}c@{\;}}
+                                1 \\ 1
+                            \end{array}
+                        \end{bmatrix}_{\!B}
+                        = \begin{bmatrix}
+                            \begin{array}{@{\;}c@{\;}}
+                                0 \\ 1 \\ 1
+                            \end{array}
+                        \end{bmatrix}_{\!C}
+                        \quad
+                        \text{and}
+                        \quad
+                        \mat{A}_\Phi
+                        \begin{bmatrix}
+                            \begin{array}{@{\,}i{3}@{\;}}
+                                1 \\ -1
+                            \end{array}
+                        \end{bmatrix}_{\!B}
+                        = \begin{bmatrix}
+                            \begin{array}{@{\,}i{3}@{\;}}
+                                2 \\ -1 \\ 3
+                            \end{array}
+                        \end{bmatrix}_{\!C}
+                    \]
+                    which we combine and solve:
+                    \[
+                        \begin{aligned}
+                            \mat{A}_\Phi
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{2}i{3}@{\;\,}}
+                                    1 & 1  \\
+                                    1 & -1 \\
+                                \end{array}
+                            \end{bmatrix}
+                             & = \begin{bmatrix}
+                                     \begin{array}{@{}i{3}i{3}@{\;\,}}
+                                    0 & 2  \\
+                                    1 & -1 \\
+                                    1 & 3  \\
+                                \end{array}
+                                 \end{bmatrix}
+                            \\
+                            \iff \quad
+                            \mat{A}_\Phi
+                             & =
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{3}i{3}@{\;\,}}
+                                    0 & 2  \\
+                                    1 & -1 \\
+                                    1 & 3  \\
+                                \end{array}
+                            \end{bmatrix}
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{2}i{3}@{\;\,}}
+                                    1 & 1  \\
+                                    1 & -1 \\
+                                \end{array}
+                            \end{bmatrix}
+                            ^{-1}
+                            \\
+                             & =
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{3}i{3}@{\;\,}}
+                                    0 & 2  \\
+                                    1 & -1 \\
+                                    1 & 3  \\
+                                \end{array}
+                            \end{bmatrix}
+                            \begin{bmatrix}
+                                \begin{array}{cc}
+                                    \sfrac{1}{2} & \;\;\;\sfrac{1}{2} \\
+                                    \sfrac{1}{2} & \sfrac{-1}{2}      \\
+                                \end{array}
+                            \end{bmatrix}
+                            \\
+                             & =
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{3}i{3}@{\;\,}}
+                                    1 & -1 \\
+                                    0 & 1  \\
+                                    2 & -1 \\
+                                \end{array}
+                            \end{bmatrix}
+                        \end{aligned}
+                    \]
+
+              \item[e.] Determine $\mat{A}'_\Phi$, the transformation matrix with respect to the bases $B'$ and $C'$.
+
+                    \vspace{1em}
+
+                    We already computed $\mat{P}_1$, the change of basis matrix from $B'$ to $B$, and $\mat{P}_2$, the
+                    change of basis matrix from $C$ to $C'$, so composing these with $\mat{A}_\Phi$ we have
+                    \[
+                        \mat{A}'_\Phi = \mat{P}_2 \mat{A}_\Phi \mat{P}_1
+                    \]
+                    Spelling this out,
+                    \[
+                        \underbrace{
+                            [\vect{x}]_{B'}
+                        }_{\text{coords in } B'}
+                        \xrightarrow{\quad \text{\small $\mat{P}_1$} \quad}
+                        \underbrace{
+                            [\vect{x}]_B
+                        }_{\text{coords in } B}
+                        \xrightarrow{\quad \text{\small $\mat{A}_\Phi$} \quad}
+                        \underbrace{
+                            [\Phi(\vect{x})]_C
+                        }_{\text{coords in } C}
+                        \xrightarrow{\quad \text{\small $\mat{P}_2$} \quad}
+                        \underbrace{
+                            [\Phi(\vect{x})]_{C'}
+                        }_{\text{coords in } C'}
+                    \]
+
+                    We compute $\mat{A}'_\Phi$:
+                    \[
+                        \mat{A}'_\Phi =
+                        \begin{bmatrix}
+                            \begin{array}{@{}i{3}i{3}i{3}@{\;\;}}
+                                1  & 0  & 1  \\
+                                2  & -1 & 0  \\
+                                -1 & 2  & -1 \\
+                            \end{array}
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            \begin{array}{@{}i{3}i{3}@{\;\,}}
+                                1 & -1 \\
+                                0 & 1  \\
+                                2 & -1 \\
+                            \end{array}
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            \begin{array}{@{\!\!}i{3}i{3}@{\;\;}}
+                                4 & 0  \\
+                                6 & -1 \\
+                            \end{array}
+                        \end{bmatrix}
+                        =
+                        \begin{bmatrix}
+                            \begin{array}{@{\!}i{4}i{3}@{\;\,}}
+                                0   & 2  \\
+                                -10 & 3  \\
+                                12  & -4 \\
+                            \end{array}
+                        \end{bmatrix}
+                    \]
 
               \item[f.] Let us consider the vector $\vect{x} \in \R^2$, whose coordinates in $B'$ are
-                    $\begin{bmatrix}2 & 3\end{bmatrix}^{\top}$.  In other words, $\vect{x} = 2 \vect{b}'_1 + 3 \vect{b}'_2$.
+                    $
+                        \begin{bmatrix}
+                            \begin{array}{@{\;}c@{\;}}
+                                2 \\ 3
+                            \end{array}
+                        \end{bmatrix}
+                    $.
+
+                    In other words, $\vect{x} = 2 \vect{b}'_1 + 3 \vect{b}'_2$.
 
                     \begin{enumerate}
                         \item[i.] Calculate the coordinates of $\vect{x}$ in $B$.
+                              \[
+                                  [\vect{x}]_B = \mat{P}_1 [\vect{x}]_{B'} =
+                                  \begin{bmatrix}
+                                      \begin{array}{@{\!\!}i{3}i{3}@{\;\;}}
+                                          4 & 0  \\
+                                          6 & -1 \\
+                                      \end{array}
+                                  \end{bmatrix}
+                                  \begin{bmatrix}
+                                      \begin{array}{@{\;}c@{\;}}
+                                          2 \\ 3
+                                      \end{array}
+                                  \end{bmatrix}
+                                  =
+                                  \begin{bmatrix}
+                                      \begin{array}{@{\;}c@{\;}}
+                                          8 \\ 9
+                                      \end{array}
+                                  \end{bmatrix}
+                              \]
+
                         \item[ii.] Based on that, compute the coordinates of $\Phi(\vect{x})$ expressed in $C$.
+                              \[
+                                  [\Phi(\vect{x})]_C =
+                                  \mat{A}_\Phi [\vect{x}]_B =
+                                  \begin{bmatrix}
+                                      \begin{array}{@{}i{3}i{3}@{\;\,}}
+                                          1 & -1 \\
+                                          0 & 1  \\
+                                          2 & -1 \\
+                                      \end{array}
+                                  \end{bmatrix}
+                                  \begin{bmatrix}
+                                      \begin{array}{@{\;}c@{\;}}
+                                          8 \\ 9
+                                      \end{array}
+                                  \end{bmatrix}
+                                  =
+                                  \begin{bmatrix}
+                                      \begin{array}{@{}i{3}@{\;}}
+                                          -1 \\ 9 \\ 7
+                                      \end{array}
+                                  \end{bmatrix}
+                              \]
+
                         \item[iii.] Then write $\Phi(\vect{x})$ in terms of $\vect{c}'_1, \vect{c}'_2, \vect{c}'_3$.
-                        \item[iv.] Use the representation of $\vect{x}$ in $B'$ and the matrix $\mat{A}'$ to find this result directly.
+                              \[
+                                  [\Phi(\vect{x})]_{C'} =
+                                  \mat{P}_2 [\Phi(\vect{x})]_C =
+                                  \begin{bmatrix}
+                                      \begin{array}{@{}i{3}i{3}i{3}@{\;\;}}
+                                          1  & 0  & 1  \\
+                                          2  & -1 & 0  \\
+                                          -1 & 2  & -1 \\
+                                      \end{array}
+                                  \end{bmatrix}
+                                  \begin{bmatrix}
+                                      \begin{array}{@{}i{3}@{\;}}
+                                          -1 \\ 9 \\ 7
+                                      \end{array}
+                                  \end{bmatrix}
+                                  =
+                                  \begin{bmatrix}
+                                      \begin{array}{@{}i{4}@{\;}}
+                                          6 \\ -11 \\ 12
+                                      \end{array}
+                                  \end{bmatrix}
+                              \]
+
+                        \item[iv.] Use the representation of $\vect{x}$ in $B'$ and the matrix $\mat{A}'_\Phi$ to find this result directly.
+                              \[
+                                  [\Phi(\vect{x})]_{C'} =
+                                  \mat{A}'_\Phi [\vect{x}]_{B'} =
+                                  \begin{bmatrix}
+                                      \begin{array}{@{\!}i{4}i{3}@{\;\,}}
+                                          0   & 2  \\
+                                          -10 & 3  \\
+                                          12  & -4 \\
+                                      \end{array}
+                                  \end{bmatrix}
+                                  \begin{bmatrix}
+                                      \begin{array}{@{\;}c@{\;}}
+                                          2 \\ 3
+                                      \end{array}
+                                  \end{bmatrix}
+                                  =
+                                  \begin{bmatrix}
+                                      \begin{array}{@{}i{4}@{\;}}
+                                          6 \\ -11 \\ 12
+                                      \end{array}
+                                  \end{bmatrix}
+                              \]
+
                     \end{enumerate}
+
+                    \begin{figure}
+                        \centering
+                        \begin{tikzpicture}[
+                                ->,
+                                >=latex,
+                                thick,
+                                node distance=4em and 6em
+                            ]
+                            \tikzset{
+                                labelblue/.style = {text=blue!80!black},
+                                labelred/.style = {text=red!80!black}
+                            }
+
+                            % Vector spaces
+                            \node (R2) {$\R^2$};
+                            \node[right=of R2] (R3) {$\R^3$};
+                            \draw[->] (R2) -- node[above] {$\Phi$} (R3);
+
+                            % Left column (B, E_2, B')
+                            \node[below=1em of R2, labelblue] (B) {$B$};
+                            \node[below=3em of B, labelblue] (E2) {$E_2$};
+                            \node[below=3em of E2, labelblue] (Bp) {$B'$};
+
+                            \path (Bp) edge [bend left] node [left, labelred] {$\mat{S}_{B'}$} (E2);
+                            \path (E2) edge [bend left] node [right, labelred] {$\mat{S}_{B'}^{-1}$} (Bp);
+                            \path (B) edge [bend right] node [left, labelred] {$\mat{S}_B$} (E2);
+                            \path (E2) edge [bend right] node [right, labelred] {$\mat{S}_B^{-1}$} (B);
+                            \path (Bp) edge [bend left=90] node [left, labelred] {$\mat{P}_1$} (B);
+
+                            % Right column (C, E_3, C')
+                            \node[below=1em of R3, labelblue] (C) {$C$};
+                            \node[below=3em of C, labelblue] (Cp) {$C' = E_3$};
+
+                            \draw[->] (C) -- node[right, labelred] {$\mat{P}_2$} (Cp);
+
+                            % Transformations (rightward arrows)
+                            \draw[->] (B) -- node[above, labelred] {$\mat{A}_\Phi$} (C);
+                            \path (Bp) edge [bend right] node [below, labelred] {$\mat{A}'_\Phi$} (Cp);
+
+                        \end{tikzpicture}
+                        \caption{Bases and matrices in Exercise 2.20}
+                    \end{figure}
 
           \end{enumerate}
 
