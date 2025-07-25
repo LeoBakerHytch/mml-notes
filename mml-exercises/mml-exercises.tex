@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb, amsthm, amsfonts}
 \usepackage{mathtools}       % For extra math tools
+\usepackage{gensymb}         % Generic symbols
 \usepackage{bm}              % Bold math symbols
 \usepackage{enumitem}        % Better control over lists
 \usepackage{geometry}        % Better margins
@@ -44,8 +45,11 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\del}{\partial}
 
-\newcommand{\vect}[1]{\bm{#1}}      % Vector
 \newcommand{\mat}[1]{\mathbf{#1}}   % Matrix
+\newcommand{\vect}[1]{\bm{#1}}      % Vector
+\newcommand{\x}{\vect{x}}           % Vector x
+\newcommand{\y}{\vect{y}}           % Vector y
+\newcommand{\z}{\vect{z}}           % Vector z
 
 \newcommand{\abs}[1]{\left|#1\right|}                    % Absolute value
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}         % Norm
@@ -2894,6 +2898,357 @@
                         \end{tikzpicture}
                         \caption{Bases and matrices in Exercise 2.20}
                     \end{figure}
+
+          \end{enumerate}
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Analytic geometry}
+
+\begin{enumerate}
+
+    \item[3.1] Show that $\inner{\cdot}{\cdot}$ defined for all $\x = [x_1, x_2]^\top \in \R^2$ and
+          $\y = [y_1, y_2]^\top \in \R^2$ by
+          \[
+              \inner{\x}{\y} = x_1 y_1 - (x_1 y_2 + x_2 y_1) + 2 x_2 y_2
+          \]
+          is an inner product.
+
+          \vspace{1em}
+
+          An inner product must be:
+
+          \subsubsubsection{Symmetric}
+          \[
+              \forall \x, \y \in \R^2 : \inner{\x}{\y} = \inner{\y}{\x}
+          \]
+
+          \subsubsubsection{Bilinear}
+          \[
+              \forall \x, \y, \z \in \R^2, \;
+              \forall \lambda, \phi \in \R :
+              \begin{cases}
+                  \inner{ \lambda \x + \phi \y }{ \z } = \lambda \inner{\x}{\z} + \phi \inner{\y}{\z}, \\
+                  \inner{ \x }{ \lambda \y + \phi \z } = \lambda \inner{\x}{\y} + \phi \inner{\x}{\z}. \\
+              \end{cases}
+          \]
+
+          \subsubsubsection{Positive definite}
+          \[
+              \forall \x \in \R^2 \setminus \set{\vect{0}} :
+              \inner{\x}{\x} > 0,
+              \qquad
+              \inner{\vect{0}}{\vect{0}} = 0
+          \]
+
+          That the given $\inner{\cdot}{\cdot}$ is symmetric is obvious.  For bilinearity, consider that fixing
+          one argument while holding the other constant, there are only linear terms in the components of each (no
+          quadratic terms).  For positive definiteness, consider
+          \[
+              \begin{aligned}
+                  \inner{\x}{\x} & = x_1^2 - 2 x_1 x_2 + 2 x_2^2 \\
+                                 & = (x_1 - x_2)^2 + x_2^2
+              \end{aligned}
+          \]
+          which is always positive for non-zero $x_1, x_2$, and $\inner{\vect{0}}{\vect{0}} = 0$, as required.
+
+          This inner product may be represented with the following symmetric positive definite matrix:
+          \[
+              \begin{aligned}
+                  \mat{A} :=
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}i{3}@{\;\;}}
+                          1  & -1 \\
+                          -1 & 2  \\
+                      \end{array}
+                  \end{bmatrix}
+                  \qquad
+                  \inner{\x}{\y} = \x^\top \mat{A} \y
+              \end{aligned}
+          \]
+
+          \pagebreak
+
+    \item[3.2] Consider $\R^2$ with $\inner{\cdot}{\cdot}$ defined for all $\x, \y$ in $\R^2$ as
+          \[
+              \inner{\x}{\y} = \x^\top
+              \underbrace{
+                  \begin{bmatrix}
+                      2 & 0 \\
+                      1 & 2 \\
+                  \end{bmatrix}
+              }_{
+              \mat{A} :=
+              }
+              \y
+          \]
+          Is $\inner{\cdot}{\cdot}$ an inner product?
+
+          \vspace{1em}
+
+          No.  An inner product may only be defined by a symmetric positive definite matrix.  Since $\mat{A}$ is
+          not symmetric, $\inner{\cdot}{\cdot}$ is not symmetric in its arguments.
+
+    \item[3.3] Compute the distance between
+          \[
+              \x = \begin{bmatrix}
+                  \begin{array}{i{1}}
+                      1 \\ 2 \\ 3
+                  \end{array}
+              \end{bmatrix}
+              \qquad
+              \y = \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\,}}
+                      -1 \\ -1 \\ 0
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          \begin{enumerate}
+              \item[a.] Using $\inner{\x}{\y} = \x^\top \y$
+                    \[
+                        \x - \y = \begin{bmatrix}
+                            \begin{array}{i{1}}
+                                2 \\ 3 \\ 3
+                            \end{array}
+                        \end{bmatrix}
+                        \qquad
+                        \begin{aligned}
+                            d(\x, \y) & = \norm{ \x - \y }                    \\
+                                      & = \sqrt{\inner{ \x - \y }{ \x - \y }} \\
+                                      & = \sqrt{22}                           \\
+                                      & \approx 4.69
+                        \end{aligned}
+                    \]
+
+              \item[b.] Using $\inner{\x}{\y} = \x^\top \mat{A} \y, \quad \mat{A} :=
+                        \begin{bmatrix}
+                            \begin{array}{@{\;}i{1}i{3}i{3}@{\;}}
+                                2 & 1  & 0  \\
+                                1 & 3  & -1 \\
+                                0 & -1 & 2  \\
+                            \end{array}
+                        \end{bmatrix}
+                    $
+                    \[
+                        \mat{A} (\vect{x} - \vect{y}) =
+                        \begin{bmatrix}
+                            \begin{array}{i{1}}
+                                7 \\ 8 \\ 3
+                            \end{array}
+                        \end{bmatrix}
+                        \qquad
+                        (\vect{x} - \vect{y})^\top \mat{A} (\vect{x} - \vect{y}) = 47
+                        \qquad
+                        d(\x, \y) = \sqrt{47} \approx 6.86
+                    \]
+
+          \end{enumerate}
+
+    \item[3.4] Compute the angle between
+          \[
+              \x = \begin{bmatrix}
+                  \begin{array}{@{\;}i{1}@{\;}}
+                      1 \\ 2
+                  \end{array}
+              \end{bmatrix}
+              \qquad
+              \y = \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\,}}
+                      -1 \\ -1
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          \begin{enumerate}
+              \item[a.] Using $\inner{\x}{\y} = \x^\top \y$
+                    \[
+                        \cos \theta
+                        = \frac{ \inner{\x}{\y} }{ \norm{\x} \norm{\y} }
+                        \qquad
+                        \inner{\x}{\y} = -3
+                        \qquad
+                        \norm{\x} = \sqrt{5}
+                        \qquad
+                        \norm{\y} = \sqrt{2}
+                        \qquad
+                        \theta \approx 161.6\degree
+                    \]
+
+              \item[b.] Using $\inner{\x}{\y} = \x^\top \mat{B} \y, \quad \mat{B} :=
+                        \begin{bmatrix}
+                            \begin{array}{@{\;}i{1}i{1}@{\;}}
+                                2 & 1 \\
+                                1 & 3 \\
+                            \end{array}
+                        \end{bmatrix}
+                    $
+                    \[
+                        \mat{B} \x =
+                        \begin{bmatrix}
+                            \begin{array}{@{\,}i{1}@{\,}}
+                                4 \\ 7
+                            \end{array}
+                        \end{bmatrix}
+                        \quad
+                        \mat{B} \y =
+                        \begin{bmatrix}
+                            \begin{array}{@{}i{3}@{\,}}
+                                -3 \\ -4
+                            \end{array}
+                        \end{bmatrix}
+                        \quad \;\;
+                        \inner{\x}{\y} = -11
+                        \quad \;\;
+                        \norm{\x} = \sqrt{18}
+                        \quad \;\;
+                        \norm{\y} = \sqrt{7}
+                        \quad \;\;
+                        \theta \approx 168.5\degree
+                    \]
+          \end{enumerate}
+
+    \item[3.5] Consider the Euclidean vector space $\R^5$ with the dot product. A subspace $U \subseteq \R^5$ and
+          $\x \in \R^5$ are given by
+          \[
+              U = \Span \args{
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}@{\;}}
+                          0 \\ -1 \\ 2 \\ 0 \\ 2
+                      \end{array}
+                  \end{bmatrix}
+                  \! ,
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}@{\;}}
+                          1 \\ -3 \\ 1 \\ -1 \\ 2
+                      \end{array}
+                  \end{bmatrix}
+                  \! ,
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}@{\;}}
+                          -3 \\ 4 \\ 1 \\ 2 \\ 1
+                      \end{array}
+                  \end{bmatrix}
+                  \! ,
+                  \begin{bmatrix}
+                      \begin{array}{@{}i{3}@{\;}}
+                          -1 \\ -3 \\ 5 \\ 0 \\ 7
+                      \end{array}
+                  \end{bmatrix}
+              }
+              \qquad
+              \x =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      -1 \\ -9 \\ -1 \\ 4 \\ 1
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          \begin{enumerate}
+              \item[a.] Determine the orthogonal projection $\pi_U(\x)$ of $\x$ onto $U$.
+              \item[b.] Determine the distance $d(\x, U)$.
+
+                    \vspace{1em}
+
+
+                    Let $\mat{B} = [ \vect{b}_1 \; \vect{b}_2 \; \vect{b}_3 \; \vect{b}_4  ]$, where the respective
+                    $\vect{b}_i$ are the vectors in the span of $U$ as above, and let $\bm{\lambda} = [ \lambda_1 \;
+                        \lambda_2 \; \lambda_3 \; \lambda_4 ]^\top$, such that $\pi_U(\x) = \mat{B}\bm{\lambda}$, where
+                    $\bm{\lambda}$ gives the coordinates of the projection of $\x$ onto $U$, relative to the ordered
+                    basis of $U$.
+
+                    The residual, $\x - \mat{B} \bm{\lambda}$, must be orthogonal to each basis vector:
+                    \[
+                        \begin{array}{c}
+                            \inner{\vect{b}_1}{\x - \mat{B}\bm{\lambda}} = 0 \\ \vdots \\ [2pt]
+                            \inner{\vect{b}_4}{\x - \mat{B}\bm{\lambda}} = 0 \\
+                        \end{array}
+                    \]
+                    which, given bilinearity and our use of the standard dot product, is equivalently:
+                    \[
+                        \begin{array}{c}
+                            \inner{\vect{b}_1}{\mat{B}\bm{\lambda}} = \inner{\vect{b}_1}{\x} \\ \vdots \\ [2pt]
+                            \inner{\vect{b}_4}{\mat{B}\bm{\lambda}} = \inner{\vect{b}_4}{\x} \\
+                        \end{array}
+                        \quad
+                        \iff
+                        \quad
+                        \begin{array}{c}
+                            \vect{b}_1^\top \mat{B}\bm{\lambda}= \vect{b}_1^\top \x \\ \vdots \\ [2pt]
+                            \vect{b}_4^\top \mat{B}\bm{\lambda}= \vect{b}_4^\top \x \\
+                        \end{array}
+                        \quad
+                        \iff
+                        \quad
+                        \mat{B}^\top \mat{B} \bm{\lambda} = \mat{B}^\top \x \\ [2pt]
+                    \]
+
+                    Note, we find $\mat{B}$ is rank 3 — its columns are linearly dependent.  Consequently, its Gram
+                    matrix ($\mat{B}^\top \mat{B}$) is singular.  Below, we proceed to find $\bm{\lambda}'$ with
+                    Gaussian elimination, but note it may instead be computed directly by inverting the Gram matrix in
+                    the expression on the right above — though only if the Gram matrix is invertible.
+
+                    So, discarding $\vect{b}_4$ and $\lambda_4$, let $\mat{B}' = [\vect{b}_1  \; \vect{b}_2 \;
+                        \vect{b}_3]$, eliminate $[ \, \mat{B}'^\top \mat{B} \, \mid \, \mat{B}'^\top \x \, ]
+                        \rightsquigarrow [ \; \mat{I} \, \mid \, \bm{\lambda}' \; ]$, and finally find $\pi_U(\x) = \mat{B}
+                        \bm{\lambda}'$, and the corresponding residual:
+                    \[
+                        \begin{aligned}
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{3}i{4}i{4}|i{4}@{\;}}
+                                    9 & 9   & 0   & 9   \\
+                                    9 & 16  & -14 & 23  \\
+                                    0 & -14 & 31  & -25 \\
+                                \end{array}
+                            \end{bmatrix}
+                             & \rightsquigarrow
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{2}i{4}i{4}|i{4}@{\;}}
+                                    1 & 1   & 0   & 1   \\
+                                    0 & 7   & -14 & 14  \\
+                                    0 & -14 & 31  & -25 \\
+                                \end{array}
+                            \end{bmatrix}
+                            \\
+                             & \rightsquigarrow
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{2}i{4}i{4}|i{4}@{\;}}
+                                    1 & 1 & 0  & 1 \\
+                                    0 & 1 & -2 & 2 \\
+                                    0 & 0 & 3  & 3 \\
+                                \end{array}
+                            \end{bmatrix}
+                            \\
+                             & \rightsquigarrow
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{2}i{4}i{4}|i{4}@{\;}}
+                                    1 & 0 & 0 & -3 \\
+                                    0 & 1 & 0 & 4  \\
+                                    0 & 0 & 1 & 1  \\
+                                \end{array}
+                            \end{bmatrix}
+                        \end{aligned}
+                        \qquad
+                        \begin{aligned}
+                            \pi_U(\x)      & =
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{3}@{\;}}
+                                    1 \\ -5  \\ -1  \\ -2 \\ 3
+                                \end{array}
+                            \end{bmatrix}
+                            \\
+                            \x - \pi_U(\x) & =
+                            \begin{bmatrix}
+                                \begin{array}{@{}i{3}@{\;}}
+                                    -2 \\ -4  \\ 0 \\ 6 \\ -2
+                                \end{array}
+                            \end{bmatrix}
+                        \end{aligned}
+                    \]
+                    Compute the distance, $d(\x, U) = \norm{\x - \pi_U(\x)} = \sqrt{60} = 2 \sqrt{15} \approx 7.75$.
 
           \end{enumerate}
 
