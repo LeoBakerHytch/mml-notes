@@ -60,7 +60,6 @@
 \newcommand{\cls}[1]{\overline{#1}}                      % Congruence class
 
 \DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Img}{Im}
 \DeclareMathOperator{\Dom}{Dom}
 \DeclareMathOperator{\Null}{Null}
@@ -2088,7 +2087,7 @@
           \begin{enumerate}
               \item[a.] Find the transformation matrix $\mat{A}_\Phi$
               \item[b.] Determine $\rank(\mat{A}_\Phi)$
-              \item[c.] Compute the kernel and image of $\Phi$.  What are $\dim(\Ker(\Phi))$ and $\dim(\Img(\Phi))$?
+              \item[c.] Compute the kernel and image of $\Phi$.  What are $\dim(\ker(\Phi))$ and $\dim(\Img(\Phi))$?
           \end{enumerate}
 
           \[
@@ -2160,13 +2159,13 @@
                   \end{array}
               \end{aligned}
           \]
-          So $\mat{A}_\Phi$ has rank 3, $\Ker(\Phi) = \{\vect{0}\} \subset \R^3$.
+          So $\mat{A}_\Phi$ has rank 3, $\ker(\Phi) = \{\vect{0}\} \subset \R^3$.
 
           By the rank-nullity theorem,
           \[
-              \dim(\Dom \Phi) = \dim(\Img \Phi) + \dim(\Ker \Phi)
+              \dim(\Dom \Phi) = \dim(\Img \Phi) + \dim(\ker \Phi)
           \]
-          so $\dim(\Ker \Phi) = 0$ gives $\dim(\Img \Phi) = 3$.
+          so $\dim(\ker \Phi) = 0$ gives $\dim(\Img \Phi) = 3$.
 
           \pagebreak
 
@@ -2176,27 +2175,27 @@
 
           Show that:
           \begin{enumerate}
-              \item[a.] $\Ker(f) = \Ker(g \circ f)$
+              \item[a.] $\ker(f) = \ker(g \circ f)$
               \item[b.] $\Img(g) = \Img(g \circ f)$
-              \item[c.] $\Ker(f) \cap \Img(g) = \{ \vect{0}_E \}$
+              \item[c.] $\ker(f) \cap \Img(g) = \{ \vect{0}_E \}$
           \end{enumerate}
 
           Since $f \circ g = \id_E$, both $f$ and $g$ are invertible: $g = f^{-1}$ and $f = g^{-1}$.
 
           \begin{enumerate}
-              \item[a.] $\Ker(f) = \Ker(g \circ f)$
+              \item[a.] $\ker(f) = \ker(g \circ f)$
 
                     Since $f$ is invertible, it is surjective (maps onto all of $E$), so
                     \[
-                        \Ker(f) = \{ \vect{0}_E \}.
+                        \ker(f) = \{ \vect{0}_E \}.
                     \]
                     Similarly, $g \circ f = \id_E$, so
                     \[
-                        \Ker(g \circ f) = \Ker(\id_E) = \{ \vect{0}_E \}.
+                        \ker(g \circ f) = \ker(\id_E) = \{ \vect{0}_E \}.
                     \]
                     Therefore
                     \[
-                        \Ker(f) = \Ker(g \circ f) = \{ \vect{0}_E \}.
+                        \ker(f) = \ker(g \circ f) = \{ \vect{0}_E \}.
                     \]
 
               \item[b.] $\Img(g) = \Img(g \circ f)$
@@ -2214,11 +2213,11 @@
                         \Img(g) = \Img(g \circ f) = E.
                     \]
 
-              \item[c.] $\Ker(f) \cap \Img(g) = \{ \vect{0}_E \}$
+              \item[c.] $\ker(f) \cap \Img(g) = \{ \vect{0}_E \}$
 
                     Taking the results from a. and b.,
                     \[
-                        \Ker(f) \cap \Img(g) = \{ \vect{0}_E \} \cap E = \{ \vect{0}_E \}.
+                        \ker(f) \cap \Img(g) = \{ \vect{0}_E \} \cap E = \{ \vect{0}_E \}.
                     \]
           \end{enumerate}
 
@@ -2238,7 +2237,7 @@
           \]
 
           \begin{enumerate}
-              \item[a.] Determine $\Ker(\Phi)$ and $\Img(\Phi)$
+              \item[a.] Determine $\ker(\Phi)$ and $\Img(\Phi)$
 
                     $\mat{A}_\Phi$ row-reduces to $\mat{I} \in \R^3$:
                     \[
@@ -2272,7 +2271,7 @@
                             0 & 0 & 1 \\
                         \end{bmatrix}
                     \]
-                    Therefore $\Ker(\Phi) = \{ \vect{0} \} \in \R^3$ and $\Img(\Phi) = \R^3$
+                    Therefore $\ker(\Phi) = \{ \vect{0} \} \in \R^3$ and $\Img(\Phi) = \R^3$
 
               \item[b.] Determine the transformation matrix $\tilde{\mat{A}}_\Phi$ with respect to the basis
                     \[
@@ -3432,10 +3431,10 @@
                         \]
                     \end{proof}
 
-              \item[b.] Assume now that $\pi$ is a projection.  Calculate $\Img(\id_V - \pi)$ and $\Ker(\id_V
-                        - \pi)$ as a function of $\Img(\pi)$ and $\Ker(\pi)$.
+              \item[b.] Assume now that $\pi$ is a projection.  Calculate $\Img(\id_V - \pi)$ and $\ker(\id_V
+                        - \pi)$ as a function of $\Img(\pi)$ and $\ker(\pi)$.
                     \[
-                        \Img(\id_V - \pi) = \Ker(\pi)
+                        \Img(\id_V - \pi) = \ker(\pi)
                     \]
                     \begin{proof}
                         Let $\vect{v} \in \Img(\id_V - \pi)$, let $\vect{u} \in V$ be a preimage of $\vect{v}$ under $\id_V - \pi$, and consider:
@@ -3445,10 +3444,10 @@
                                               & = \vect{u} - \pi(\vect{u}),                 \\
                                 \pi(\vect{v}) & = \pi(\vect{u}) - \pi(\pi(\vect{u}))        \\
                                               & = \pi(\vect{u}) - \pi(\vect{u})             \\
-                                              & = \vect{0} \implies \vect{v} \in \Ker(\pi).
+                                              & = \vect{0} \implies \vect{v} \in \ker(\pi).
                             \end{aligned}
                         \]
-                        Then let $\vect{w} \in \Ker(\pi)$, and consider:
+                        Then let $\vect{w} \in \ker(\pi)$, and consider:
                         \[
                             \begin{aligned}
                                 \pi(\vect{w})           & = \vect{0},                                         \\
@@ -3459,10 +3458,10 @@
                     \end{proof}
 
                     \[
-                        \Ker(\id_V - \pi) = \Img(\pi)
+                        \ker(\id_V - \pi) = \Img(\pi)
                     \]
                     \begin{proof}
-                        Let $\vect{w} \in \Ker(\id_V - \pi)$, and consider:
+                        Let $\vect{w} \in \ker(\id_V - \pi)$, and consider:
                         \[
                             \begin{alignedat}{2}
                                          &  & (\id_V - \pi)(\vect{w}) & = \vect{w} - \pi(\vect{w}) = \vect{0} \\
@@ -3477,7 +3476,7 @@
                                 (\id_V - \pi)(\vect{v}) & = \vect{v} - \pi(\vect{v})                          \\
                                                         & = \pi(\vect{u}) - \pi(\pi(\vect{u}))                \\
                                                         & = \pi(\vect{u}) - \pi(\vect{u})                     \\
-                                                        & = \vect{0} \implies \vect{v} \in \Ker(\id_V - \pi).
+                                                        & = \vect{0} \implies \vect{v} \in \ker(\id_V - \pi).
                             \end{aligned}
                         \]
                     \end{proof}
