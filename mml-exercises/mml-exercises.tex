@@ -3259,6 +3259,229 @@
                     \]
                     Compute the distance, $d(\x, U) = \norm{\x - \pi_U(\x)} = \sqrt{60} = 2 \sqrt{15} \approx 7.75$.
 
+                    \pagebreak
+          \end{enumerate}
+
+    \item[3.6] Consider $\R^3$ with the inner product $\inner{\x}{\y} := \x^\top \mat{A} \y$, where
+          \[
+              \mat{A} :=
+              \begin{bmatrix}
+                  \begin{array}{@{}i{2}i{3}i{3}@{\;}}
+                      2 & 1  & 0  \\
+                      1 & 2  & -1 \\
+                      0 & -1 & 2  \\
+                  \end{array}
+              \end{bmatrix}
+          \]
+          Furthermore, define $\vect{e}_1, \vect{e}_2, \vect{e}_3$ to be the standard / canonical basis in
+          $\R^3$.
+
+          \begin{enumerate}
+              \item[a.] Determine the orthogonal projection $\pi_U(\vect{e}_2)$ of $\vect{e}_2$ onto
+                    \[
+                        U = \Span \args{\vect{e}_1, \vect{e}_3}.
+                    \]
+
+              \item[b.] Compute the distance $d(\vect{e}_2, U)$.
+
+              \item[c.] Draw the scenario, standard basis vectors and $\pi_U(\vect{e}_2)$.
+          \end{enumerate}
+
+          \vspace{1em}
+
+          Let $\mat{B} = [\vect{e}_1 \; \vect{e}_3]$, and let $\bm{\lambda} = [\lambda_1 \; \lambda_2]^\top$
+          be the coordinates of $\pi_U(\vect{e}_2)$ in the ordered basis of $U$, such that
+          $\pi_U(\vect{e}_2) = \mat{B} \bm{\lambda}$.  Then
+          \[
+              \begin{aligned}
+                  \inner{ \vect{e}_1 }{ \vect{e}_2 - \mat{B} \bm{\lambda} } = 0 \\
+                  \inner{ \vect{e}_3 }{ \vect{e}_2 - \mat{B} \bm{\lambda} } = 0 \\
+              \end{aligned}
+              \quad
+              \iff
+              \quad
+              \begin{aligned}
+                  \vect{e}_1^\top \mat{A} \vect{e}_2 = \vect{e}_1^\top \mat{A} \mat{B} \bm{\lambda} \\
+                  \vect{e}_3^\top \mat{A} \vect{e}_2 = \vect{e}_3^\top \mat{A} \mat{B} \bm{\lambda} \\
+              \end{aligned}
+              \quad
+              \iff
+              \quad
+              \mat{B}^\top \mat{A} \vect{e}_2 = \mat{B}^\top \mat{A} \mat{B} \bm{\lambda}
+          \]
+          Computing
+          \[
+              \mat{B}^\top \mat{A} \vect{e}_2 =
+              \mat{B}^\top \!
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      1 \\ 2 \\ -1
+                  \end{array}
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      1 \\ -1
+                  \end{array}
+              \end{bmatrix}
+              \qquad
+              \mat{B}^\top \mat{A} \mat{B} =
+              \mat{B}^\top
+              \begin{bmatrix}
+                  \begin{array}{@{}i{2}i{3}@{\;}}
+                      2 & 0  \\
+                      1 & -1 \\
+                      0 & 2  \\
+                  \end{array}
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                  \begin{array}{@{\;}i{1}i{1}@{\;}}
+                      2 & 0 \\
+                      0 & 2 \\
+                  \end{array}
+              \end{bmatrix}
+          \]
+          \[
+              \bm{\lambda} =
+              \begin{bmatrix}
+                  \begin{array}{@{\,}r}
+                      \sfrac{1}{2} \\ -\sfrac{1}{2}
+                  \end{array}
+              \end{bmatrix}
+              \qquad
+              \pi_U(\vect{e}_2) =
+              \begin{bmatrix}
+                  \begin{array}{@{\,}r}
+                      \sfrac{1}{2} \\ 0 \\ -\sfrac{1}{2}
+                  \end{array}
+              \end{bmatrix}
+              \qquad
+              \vect{e}_2 - \pi_U(\vect{e}_2) =
+              \begin{bmatrix}
+                  \begin{array}{@{\,}r}
+                      -\sfrac{1}{2} \\ 1 \\ \sfrac{1}{2}
+                  \end{array}
+              \end{bmatrix}
+          \]
+          Finally,
+          \[
+              \begin{aligned}
+                  d(\vect{e}_2, U) & = \norm{ \vect{e}_2 - \pi_U(\vect{e}_2) }                                                   \\
+                                   & = \sqrt{( \vect{e}_2 - \pi_U(\vect{e}_2) )^\top \mat{A} ( \vect{e}_2 - \pi_U(\vect{e}_2) )} \\
+                                   & = \sqrt{
+                      \begin{bmatrix}
+                          \begin{array}{@{\,}r}
+                              -\sfrac{1}{2} \\ 1 \\ \sfrac{1}{2}
+                          \end{array}
+                      \end{bmatrix}^\top
+                      \begin{bmatrix}
+                          \begin{array}{c}
+                              0 \\ 1 \\ 0
+                          \end{array}
+                      \end{bmatrix}
+                  }
+                  \\
+                                   & = 1.
+              \end{aligned}
+          \]
+
+          \vspace{1em}
+          \makebox[\linewidth][c]{%
+              \begin{tikzpicture}[>=stealth]
+                  \tikzset{
+                      labelred/.style = {text=red!80!black},
+                      labelgreen/.style = {text=green!70!black},
+                      labelblue/.style = {text=blue!80!black},
+                  }
+
+                  % Grid
+                  \draw[help lines, gray!40] (-1.5, -1.5) grid (1.5, 1.5);
+
+                  % U basis
+                  \draw[->, thick, black] (0, 0) -- (1, 0) node[right] {$\vect{e}_1$};
+                  \draw[->, thick, black] (0, 0) -- (0, 1) node[above] {$\vect{e}_3$};
+
+                  % Projection
+                  \draw[->, thick, black] (0, 0) -- (0.5, -0.5) node[below] {$\pi_U(\vect{e}_2)$};
+
+              \end{tikzpicture}
+          }
+
+          \pagebreak
+
+    \item[3.7] Let $V$ be a vector space and $\pi$ an endomorphism of $V$.
+
+          \begin{enumerate}
+              \item[a.] Prove that $\pi$ is a projection if and only if $\id_V - \pi$ is a projection, where $\id_V$
+                    is the identity endomorphism on $V$.
+
+                    \begin{proof}
+                        Define $\rho = \id_V - \pi$.  Then
+                        \[
+                            \rho^2 = \id_V - 2 \pi + \pi^2.
+                        \]
+                        \[
+                            \rho^2 = \rho
+                            \begin{aligned}
+                                 & \quad \iff \quad
+                                \id_V - 2 \pi + \pi^2 = \id_V - \pi \\
+                                 & \quad \iff \quad
+                                \pi^2 = \pi                         \\
+                            \end{aligned}
+                        \]
+                    \end{proof}
+
+              \item[b.] Assume now that $\pi$ is a projection.  Calculate $\Img(\id_V - \pi)$ and $\Ker(\id_V
+                        - \pi)$ as a function of $\Img(\pi)$ and $\Ker(\pi)$.
+                    \[
+                        \Img(\id_V - \pi) = \Ker(\pi)
+                    \]
+                    \begin{proof}
+                        Let $\vect{v} \in \Img(\id_V - \pi)$, let $\vect{u} \in V$ be a preimage of $\vect{v}$ under $\id_V - \pi$, and consider:
+                        \[
+                            \begin{aligned}
+                                \vect{v}      & = (\id_V - \pi)(\vect{u})                   \\
+                                              & = \vect{u} - \pi(\vect{u}),                 \\
+                                \pi(\vect{v}) & = \pi(\vect{u}) - \pi(\pi(\vect{u}))        \\
+                                              & = \pi(\vect{u}) - \pi(\vect{u})             \\
+                                              & = \vect{0} \implies \vect{v} \in \Ker(\pi).
+                            \end{aligned}
+                        \]
+                        Then let $\vect{w} \in \Ker(\pi)$, and consider:
+                        \[
+                            \begin{aligned}
+                                \pi(\vect{w})           & = \vect{0},                                         \\
+                                (\id_V - \pi)(\vect{w}) & = \vect{w} - \pi(\vect{w})                          \\
+                                                        & = \vect{w} \implies \vect{w} \in \Img(\id_V - \pi).
+                            \end{aligned}
+                        \]
+                    \end{proof}
+
+                    \[
+                        \Ker(\id_V - \pi) = \Img(\pi)
+                    \]
+                    \begin{proof}
+                        Let $\vect{w} \in \Ker(\id_V - \pi)$, and consider:
+                        \[
+                            \begin{alignedat}{2}
+                                         &  & (\id_V - \pi)(\vect{w}) & = \vect{w} - \pi(\vect{w}) = \vect{0} \\
+                                \iff     &  & \pi(\vect{w})           & = \vect{w}                            \\
+                                \implies &  & \vect{w} \in \Img(\pi)  & .
+                            \end{alignedat}
+                        \]
+                        Then let $\vect{v} \in \Img(\pi)$, let $\vect{u} \in V$ be a preimage of $\vect{v}$ under $\id_V - \pi$, and consider:
+                        \[
+                            \begin{aligned}
+                                \pi(\vect{u})           & = \vect{v},                                         \\
+                                (\id_V - \pi)(\vect{v}) & = \vect{v} - \pi(\vect{v})                          \\
+                                                        & = \pi(\vect{u}) - \pi(\pi(\vect{u}))                \\
+                                                        & = \pi(\vect{u}) - \pi(\vect{u})                     \\
+                                                        & = \vect{0} \implies \vect{v} \in \Ker(\id_V - \pi).
+                            \end{aligned}
+                        \]
+                    \end{proof}
+
           \end{enumerate}
 
 \end{enumerate}
