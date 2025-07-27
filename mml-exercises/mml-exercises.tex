@@ -13,6 +13,7 @@
 \usepackage[tracking=true]{microtype}
 \usepackage{xfrac}
 \usepackage{tikz}            % Plots
+\usepackage{tikz-3dplot}     % 3D plots
 \usetikzlibrary{arrows.meta, positioning}
 \usepackage{titlesec}        % Heading spacing control
 \usepackage{siunitx}         % Alignment in matrices
@@ -120,7 +121,70 @@
 \begin{document}
 
 \maketitle
-\vspace{1em}
+
+\vspace{-5em}
+\tdplotsetmaincoords{70}{0} % tilt and rotate the view
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+            tdplot_main_coords,
+            scale=2,
+            >=stealth
+        ]
+
+        \tikzset{
+            vec_r_f/.style = {thick, red!90!black},
+            vec_g_f/.style = {thick, green!80!black},
+            vec_b_f/.style = {thick, blue!20!cyan!50!blue!90!black},
+            vec_r_b/.style = {vec_r_f, dashed},
+            vec_g_b/.style = {vec_g_f, dashed},
+            vec_b_b/.style = {vec_b_f, dashed},
+        }
+
+        % Define three independent vectors (r, g, b)
+        \coordinate (O) at (0,0,0);
+        \coordinate (R) at (1.0, 0.3, 0.0);
+        \coordinate (G) at (0.3, 1.0, 0.0);
+        \coordinate (B) at (0.2, 0.3, 0.7);
+
+        % Compute other corners
+        \coordinate (RG) at ($(R)+(G)$);
+        \coordinate (RB) at ($(R)+(B)$);
+        \coordinate (GB) at ($(G)+(B)$);
+        \coordinate (RGB) at ($(R)+(G)+(B)$);
+
+        \fill[yellow!5] (O)--(R)--(RG)--(G)--cycle;
+        \fill[cyan!5] (O)--(B)--(GB)--(G)--cycle;
+        \fill[magenta!5] (G)--(GB)--(RGB)--(RG)--cycle;
+
+        % Back face
+        \draw[vec_g_b] (O)--(G);
+        \draw[vec_b_b] (G)--(GB);
+        \draw[vec_r_b] (G)--(RG);
+
+        % Top
+        \draw[vec_r_f] (GB)--(RGB);
+        \draw[vec_g_f] (B)--(GB);
+
+        \draw[vec_b_f] (RG)--(RGB) node[midway, right] {$\vect{b}$};
+
+        \draw[vec_g_f] (RB)--(RGB);
+        \draw[vec_r_f] (B)--(RB);
+
+        % Sides
+        \draw[vec_b_f] (O)--(B);
+
+        % Bottom front
+        \draw[vec_g_f] (R)--(RG) node[midway, right] {$\vect{g}$};
+        \draw[vec_r_f] (O)--(R) node[midway, below] {$\vect{r}$};
+
+        \draw[vec_b_f] (R)--(RB);
+
+        \fill (O) circle (0.7pt) node[left] {$\vect{0}$};
+
+    \end{tikzpicture}
+\end{figure}
+\vspace{-2em}
 
 \setcounter{section}{1}
 \section{Linear algebra}
