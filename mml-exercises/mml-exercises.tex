@@ -3480,7 +3480,149 @@
                             \end{aligned}
                         \]
                     \end{proof}
+          \end{enumerate}
 
+    \item[3.8] Using the Gram-Schmidt method, turn the basis $B = (\vect{b}_1, \vect{b}_2)$ of a two-dimensional
+          subspace $U \subseteq \R^3$ into an orthonormal basis, $C = (\vect{c}_1, \vect{c}_2)$ of $U$, where
+          \[
+              \vect{b}_1 :=
+              \begin{bmatrix}
+                  \begin{array}{@{\;}i{1}@{\;}}
+                      1 \\ 1 \\ 1
+                  \end{array}
+              \end{bmatrix} \! ,
+              \qquad
+              \vect{b}_2 :=
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      -1 \\ 2 \\ 0
+                  \end{array}
+              \end{bmatrix} \! .
+          \]
+          Let $\vect{u}_1 = \vect{b}_1$.  Then let $\vect{u}_2 = \vect{b}_2 - \pi_{\vect{u}_1}\!(\vect{b}_2)$, where
+          $\pi_{\vect{u}_1}$ is the projection operator onto the one-dimensional subspace spanned by $\vect{u}_1$.
+          Assuming the standard dot product,
+          \[
+              \pi_{\vect{u}_1}(\vect{b}_2)
+              = \frac{ \vect{u}_1 \vect{u}_1^\top }{ \norm{\vect{u}_1}^2 } \vect{b}_2
+              = \frac{1}{3}
+              \begin{bmatrix}
+                  \begin{array}{@{\;}i{1}i{1}i{1}@{\;}}
+                      1 & 1 & 1 \\
+                      1 & 1 & 1 \\
+                      1 & 1 & 1 \\
+                  \end{array}
+              \end{bmatrix}
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      -1 \\ 2 \\ 0
+                  \end{array}
+              \end{bmatrix}
+              =
+              \frac{1}{3} \!
+              \begin{bmatrix}
+                  \begin{array}{@{\;}i{1}@{\;}}
+                      1 \\ 1 \\ 1
+                  \end{array}
+              \end{bmatrix} \! ,
+              \qquad
+              \vect{u}_2 =
+              \frac{1}{3} \!
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      -4 \\ 5  \\ -1
+                  \end{array}
+              \end{bmatrix} \! .
+          \]
+          Normalizing each of $\vect{u}_1$ and $\vect{u}_2$, we define our orthonormal basis vectors to be:
+          \[
+              \vect{c}_1
+              := \frac{ \vect{u}_1 }{ \norm {\vect{u}_1} }
+              = \frac{\sqrt{3}}{3} \!
+              \begin{bmatrix}
+                  \begin{array}{@{\;}i{1}@{\;}}
+                      1 \\ 1 \\ 1
+                  \end{array}
+              \end{bmatrix} \! ,
+              \qquad
+              \vect{c}_2
+              := \frac{ \vect{u}_2 }{ \norm {\vect{u}_2} }
+              = \frac{\sqrt{42}}{42} \!
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      -4 \\ 5 \\ -1
+                  \end{array}
+              \end{bmatrix} \! .
+          \]
+
+          \pagebreak
+
+    \item[3.9] Let $n \in \N$ and let $a_1, \ldots, a_n > 0$ be $n$ positive real numbers so that $\sum_{i = 1}^n a_i =
+              1$.  Use the Cauchy-Schwarz inequality to show that:
+          \[
+              \text{a.} \; \sum_{i = 1}^n a_i^2 \geq \frac{1}{n}
+              \qquad \qquad
+              \text{b.} \; \sum_{i = 1}^n \frac{1}{a_i} \geq n^2
+          \]
+
+          \[
+              \lim_{k \rightarrow \infty} \left( \frac{(k - (n - 1))^2}{k^2} + \sum_{i=1}^{n-1} \frac{1}{k^2} \right)
+              = \lim_{k \rightarrow \infty} \left( \frac{(k - (n - 1))^2}{k^2} + \frac{n-1}{k^2} \right) = 1.
+          \]
+
+          \begin{enumerate}
+              \item[a.] Let $\x = [ a_1 \; \cdots \; a_n ]^\top$ and let $\y = [ 1 \; \cdots \; 1 ]^\top \in \R^n$.
+                    Then, using the standard inner product:
+                    \[
+                        \norm{\x}^2
+                        = \x^\top \x
+                        = \sum_{i = 1}^n a_i^2
+                        \qquad
+                        \norm{\y}^2
+                        = \y^\top \y
+                        = \sum_{i=1}^n 1 = n
+                    \]
+                    \[
+                        \inner{\x}{\y}
+                        = \x^\top \y
+                        = \sum_{i=1}^n a_i = 1
+                    \]
+                    Cauchy-Schwarz:
+                    \[
+                        \begin{aligned}
+                                       & \abs{\inner{\x}{\y}} \leq \norm{\x} \norm{\y} \\
+                            \iff \quad & \inner{\x}{\y}^2 \leq \norm{\x}^2 \norm{\y}^2 \\
+                        \end{aligned}
+                    \]
+                    Substituting:
+                    \[
+                        1 \leq n \sum_{i=1}^n a_i^2
+                        \quad \iff \quad
+                        \frac{1}{n} \leq \sum_{i=1}^n a_i^2.
+                    \]
+
+              \item[b.] Let $\x = \left [ \frac{1}{\sqrt{a_1}} \; \cdots \; \frac{1}{\sqrt{a_n}} \right ]^\top$ and let $\y = \left [ \sqrt{a_1} \; \cdots \; \sqrt{a_n} \right ]^\top$. Then:
+                    \[
+                        \norm{\x}^2
+                        = \x^\top \x
+                        = \sum_{i=1}^n \left ( \frac{1}{\sqrt{a_i}} \right )^2
+                        = \sum_{i=1}^n \frac{1}{a_i}
+                        \qquad
+                        \norm{\y}^2
+                        = \y^\top \y
+                        = \sum_{i=1}^n \left ( \sqrt{a_i} \right )^2
+                        = \sum_{i=1}^n a_i = 1
+                    \]
+                    \[
+                        \inner{\x}{\y}
+                        = \x^\top \y
+                        = \sum_{i=1}^n \frac{\left ( \sqrt{a_i} \right )^2}{a_i} = \sum_{i=1}^n 1 = n.
+                    \]
+                    Substituting:
+                    \[
+                        n^2
+                        \leq \sum_{i=1}^n \frac{1}{a_i}.
+                    \]
           \end{enumerate}
 
 \end{enumerate}
