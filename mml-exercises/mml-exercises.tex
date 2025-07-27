@@ -3388,12 +3388,6 @@
           \vspace{1em}
           \makebox[\linewidth][c]{%
               \begin{tikzpicture}[>=stealth]
-                  \tikzset{
-                      labelred/.style = {text=red!80!black},
-                      labelgreen/.style = {text=green!70!black},
-                      labelblue/.style = {text=blue!80!black},
-                  }
-
                   % Grid
                   \draw[help lines, gray!40] (-1.5, -1.5) grid (1.5, 1.5);
 
@@ -3403,7 +3397,6 @@
 
                   % Projection
                   \draw[->, thick, black] (0, 0) -- (0.5, -0.5) node[below] {$\pi_U(\vect{e}_2)$};
-
               \end{tikzpicture}
           }
 
@@ -3555,8 +3548,6 @@
               \end{bmatrix} \! .
           \]
 
-          \pagebreak
-
     \item[3.9] Let $n \in \N$ and let $a_1, \ldots, a_n > 0$ be $n$ positive real numbers so that $\sum_{i = 1}^n a_i =
               1$.  Use the Cauchy-Schwarz inequality to show that:
           \[
@@ -3601,6 +3592,8 @@
                         \frac{1}{n} \leq \sum_{i=1}^n a_i^2.
                     \]
 
+                    \pagebreak
+
               \item[b.] Let $\x = \left [ \frac{1}{\sqrt{a_1}} \; \cdots \; \frac{1}{\sqrt{a_n}} \right ]^\top$ and let $\y = \left [ \sqrt{a_1} \; \cdots \; \sqrt{a_n} \right ]^\top$. Then:
                     \[
                         \norm{\x}^2
@@ -3624,6 +3617,109 @@
                         \leq \sum_{i=1}^n \frac{1}{a_i}.
                     \]
           \end{enumerate}
+
+    \item[3.10] Rotate the following vectors by 30\degree:
+          \[
+              \x_1 :=
+              \begin{bmatrix}
+                  \begin{array}{@{\;}i{1}@{\;}}
+                      2 \\ 3
+                  \end{array}
+              \end{bmatrix}
+              \qquad
+              \x_2 :=
+              \begin{bmatrix}
+                  \begin{array}{@{}i{3}@{\;}}
+                      0 \\ -1
+                  \end{array}
+              \end{bmatrix}
+          \]
+          \[
+              \mat{R}_{30\degree}
+              =
+              \begin{bmatrix}
+                  \begin{array}{rr}
+                      \cos \sfrac{\pi}{6} & -\sin \sfrac{\pi}{6} \\
+                      \sin \sfrac{\pi}{6} & \cos \sfrac{\pi}{6}  \\
+                  \end{array}
+              \end{bmatrix}
+              =
+              \tfrac{1}{2}
+              \begin{bmatrix}
+                  \begin{array}{cc}
+                      \sqrt{3} & -1       \\
+                      1        & \sqrt{3} \\
+                  \end{array}
+              \end{bmatrix}
+          \]
+          \vspace{0.5em}
+          \[
+              \mat{R}_{30\degree} \x_1
+              =
+              \tfrac{1}{2}
+              \begin{bmatrix}
+                  \begin{array}{c}
+                      2 \sqrt{3} - 3 \\
+                      3 \sqrt{3} + 2 \\
+                  \end{array}
+              \end{bmatrix}
+              \approx
+              \begin{bmatrix}
+                  \begin{array}{c}
+                      0.23 \\
+                      3.60 \\
+                  \end{array}
+              \end{bmatrix}
+              \qquad
+              \mat{R}_{30\degree} \x_2
+              =
+              \tfrac{1}{2}
+              \begin{bmatrix}
+                  \begin{array}{c}
+                      1         \\
+                      -\sqrt{3} \\
+                  \end{array}
+              \end{bmatrix}
+              \approx
+              \begin{bmatrix}
+                  \begin{array}{@{\,}r}
+                      0.50  \\
+                      -0.87 \\
+                  \end{array}
+              \end{bmatrix}
+          \]
+
+          \vspace{1em}
+          \makebox[\linewidth][c]{%
+              \begin{tikzpicture}[
+                      scale=0.8,
+                      >=stealth,
+                  ]
+                  \tikzset{
+                      vec_p/.style = {thick, cyan!20!blue!80!black},
+                      vec_i/.style = {thick, cyan!60!blue!80!black},
+                  }
+
+                  % Axes
+                  \draw[->] (-0.8,0) -- (2.8,0);
+                  \draw[->] (0,-1.5) -- (0,3.8);
+
+                  % Grid
+                  \draw[help lines, gray!30] (-0.8,-1.5) grid (2.8,3.8);
+
+                  % New vectors x1', x2'
+                  \draw[->, vec_i] (0,0) -- (0.23,3.60) node[below right] {$\vect{x}'_1$};
+                  \draw[->, vec_i] (0,0) -- (0.5,-0.87) node[above right] {$\vect{x}'_2$};
+
+                  % Original vectors x1, x2
+                  \draw[->, vec_p] (0,0) -- (2,3) node[below right] {$\vect{x}_1$};
+                  \draw[->, vec_p] (0,0) -- (0,-1) node[above left] {$\vect{x}_2$};
+
+                  % Origin
+                  \fill (0,0) circle (2pt);
+
+              \end{tikzpicture}
+          }
 
 \end{enumerate}
 
