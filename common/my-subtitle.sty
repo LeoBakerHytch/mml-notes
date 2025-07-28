@@ -8,8 +8,15 @@
 \newcommand{\theSubtitle}{} % Default empty
 
 % Redefine maketitle to include subtitle
+
+\setlength{\droptitle}{-5em} % move title up (optional)
+\setlength{\parindent}{0pt}
+
+\renewcommand{\maketitlehooka}{} % removes extra pre-title space
+\renewcommand{\maketitlehookb}{} % removes extra post-title space
+
 \pretitle{\begin{center}\LARGE}
-\posttitle{\par\end{center}\begin{center}\normalfont\Large\theSubtitle\par\end{center}}
+\posttitle{\end{center}\vspace{-1.5em}\begin{center}\normalfont\Large\theSubtitle\end{center}\vspace{-5em}}
 
 \preauthor{\begin{center}\large}
 \postauthor{\par\end{center}}

@@ -13,12 +13,16 @@
 % Subtitle
 \usepackage{titling}
 
-% Palatino roman + math
-\usepackage{mathpazo}
+% Bitstream Charter
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[T1]{fontenc}
+
+% Revert mathcal to Computer Modern script font
+\let\mathcal\relax
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 
 % Mathematical typesetting
 \usepackage{amsmath} % Base
-\usepackage{amssymb} % Symbols
 \usepackage{amsthm} % Theorems
 \usepackage{mathtools} % Tools to use with amsmath
 \usepackage{xfrac} % Split-level fractions

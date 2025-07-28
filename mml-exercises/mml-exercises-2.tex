@@ -14,16 +14,7 @@
 
 \maketitle
 
-\vspace{-6em}
-\tdplotsetmaincoords{70}{0} % tilt and rotate the view
-\begin{figure}[h]
-    \centering
-    \input{./figures/parallelepiped.tex}
-\end{figure}
-\vspace{1em}
-
 \begin{enumerate}
-
     \item[2.1]
 
           We consider $\tuple{ \R \setminus \{-1\}, \star }$, where:
@@ -33,7 +24,7 @@
 
     \item[a.] Show that $\tuple{ \R \setminus \{-1\}, \star }$ is an Abelian group.
 
-          \subsubsection*{Neutral element}
+          \subsubsubsection{Neutral element}
 
           We have $0 \in \R \setminus \{-1\}$, and for all $a \in \R \setminus \{-1\}$:
           \[
@@ -43,7 +34,7 @@
               \end{aligned}
           \]
 
-          \subsubsection*{Commutativity}
+          \subsubsubsection{Commutativity}
 
           For all $a, b \in \R \setminus \{-1\}$, we have:
           \[
@@ -54,7 +45,7 @@
               \end{aligned}
           \]
 
-          \subsubsection*{Associativity}
+          \subsubsubsection{Associativity}
 
           For all $a, b, c \in \R \setminus \{-1\}$, we have:
           \[
@@ -67,7 +58,7 @@
               \end{aligned}
           \]
 
-          \subsubsection*{Existence of inverses}
+          \subsubsubsection{Existence of inverses}
 
           For all $a \in \R \setminus \{-1\}$, we require the existence of an element $b$ such that:
           \[
@@ -80,7 +71,7 @@
           \]
           This expression for $b$ is always defined, since $a$ cannot be $-1$, and the denominator is always non-zero.
 
-          \subsubsection*{Closure under $\star$}
+          \subsubsubsection{Closure under $\star$}
 
           For contradiction, assume that there exist $a, b \in \R \setminus \{-1\}$, such that:
           \[
@@ -97,8 +88,6 @@
           \[
               3 \star x \star x = 15.
           \]
-
-          \subsubsection*{Solution}
 
           We have
           \[
@@ -138,7 +127,7 @@
 
     \item[a.] Show that ($\Z_n, \oplus$) is a group. Is it Abelian?
 
-          \subsubsection*{Neutral element}
+          \subsubsubsection{Neutral element}
 
           We have $\cls{0} \in \Z_n$ such that:
           \[
@@ -148,7 +137,7 @@
               \end{aligned}
           \]
 
-          \subsubsection*{Commutativity}
+          \subsubsubsection{Commutativity}
 
           For all $\cls{a}, \cls{b} \in \Z_n$, we have:
           \[
@@ -159,7 +148,7 @@
               \end{aligned}
           \]
 
-          \subsubsection*{Associativity}
+          \subsubsubsection{Associativity}
 
           For all $a, b, c \in \Z_n$, we have:
           \[
@@ -172,8 +161,7 @@
               \end{aligned}
           \]
 
-          \subsubsection*{Existence of inverses}
-
+          \subsubsubsection{Existence of inverses}
 
           For all $\cls{a} \in \Z_n$, we require the existence of an element, $\cls{b} \in \Z_n$, such that:
           \[
@@ -192,7 +180,7 @@
           \]
           as required, and commutativity gives us $\cls{b} \oplus \cls{a} = \cls{0}$.
 
-          \subsubsection*{Closure under $\oplus$}
+          \subsubsubsection{Closure under $\oplus$}
 
           By definition, we have that
           \[

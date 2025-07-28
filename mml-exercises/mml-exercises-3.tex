@@ -11,10 +11,17 @@
 
 \maketitle
 
+\vspace{-4em}
+\tdplotsetmaincoords{70}{0} % tilt and rotate the view
+\begin{figure}[h]
+    \centering
+    \input{./figures/parallelepiped.tex}
+\end{figure}
+
 \begin{enumerate}
 
-    \item[3.1] Show that $\inner{\cdot}{\cdot}$, defined for all $\x = [x_1, x_2]^\top \in \R^2$ and
-          $\y = [y_1, y_2]^\top \in \R^2$ by
+    \item[3.1] Show that $\inner{\cdot}{\cdot}$, defined for all $\x = [x_1 \; x_2]^\top \in \R^2$ and
+          $\y = [y_1 \; y_2]^\top \in \R^2$ by
           \[
               \inner{\x}{\y} = x_1 y_1 - (x_1 y_2 + x_2 y_1) + 2 x_2 y_2,
           \]
@@ -22,11 +29,11 @@
 
           \vspace{1em}
 
-          An inner product must be:
+          An inner product must be all of:
 
           \subsubsubsection{Symmetric}
           \[
-              \forall \x, \y \in \R^2 : \inner{\x}{\y} = \inner{\y}{\x}
+              \forall \x, \y \in \R^2 : \inner{\x}{\y} = \inner{\y}{\x}.
           \]
 
           \subsubsubsection{Bilinear}
@@ -44,7 +51,7 @@
               \forall \x \in \R^2 \setminus \set{\vect{0}} :
               \inner{\x}{\x} > 0,
               \qquad
-              \inner{\vect{0}}{\vect{0}} = 0
+              \inner{\vect{0}}{\vect{0}} = 0.
           \]
 
           That the given $\inner{\cdot}{\cdot}$ is symmetric is obvious.  For bilinearity, consider that fixing
@@ -61,13 +68,11 @@
           This inner product may be represented with the following symmetric positive definite matrix:
           \[
               \begin{aligned}
-                  \mat{A} :=
-                  \begin{bmatrix}
-                      \begin{array}{@{}i{3}i{3}@{\;\;}}
-                          1  & -1 \\
-                          -1 & 2  \\
-                      \end{array}
-                  \end{bmatrix}
+                  \mat{A} \coloneq
+                  \begin{bmatrix*}[r]
+                      1  & -1 \\
+                      -1 & 2  \\
+                  \end{bmatrix*}
                   \qquad
                   \inner{\x}{\y} = \x^\top \mat{A} \y
               \end{aligned}
@@ -84,7 +89,7 @@
                       1 & 2 \\
                   \end{bmatrix}
               }_{
-              \mat{A} :=
+              \mat{A} \coloneq
               }
               \y
           \]
@@ -97,26 +102,23 @@
 
     \item[3.3] Compute the distance between
           \[
-              \x = \begin{bmatrix}
-                  \begin{array}{i{1}}
-                      1 \\ 2 \\ 3
-                  \end{array}
+              \x =
+              \begin{bmatrix}
+                  1 \\ 2 \\ 3
               \end{bmatrix}
               \qquad
-              \y = \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\,}}
-                      -1 \\ -1 \\ 0
-                  \end{array}
-              \end{bmatrix}
+              \y =
+              \begin{bmatrix*}[r]
+                  -1 \\ -1 \\ 0
+              \end{bmatrix*}
           \]
 
           \begin{enumerate}
               \item[a.] Using $\inner{\x}{\y} = \x^\top \y$
                     \[
-                        \x - \y = \begin{bmatrix}
-                            \begin{array}{i{1}}
-                                2 \\ 3 \\ 3
-                            \end{array}
+                        \x - \y =
+                        \begin{bmatrix}
+                            2 \\ 3 \\ 3
                         \end{bmatrix}
                         \qquad
                         \begin{aligned}
@@ -127,21 +129,17 @@
                         \end{aligned}
                     \]
 
-              \item[b.] Using $\inner{\x}{\y} = \x^\top \mat{A} \y, \quad \mat{A} :=
-                        \begin{bmatrix}
-                            \begin{array}{@{\;}i{1}i{3}i{3}@{\;}}
-                                2 & 1  & 0  \\
-                                1 & 3  & -1 \\
-                                0 & -1 & 2  \\
-                            \end{array}
-                        \end{bmatrix}
+              \item[b.] Using $\inner{\x}{\y} = \x^\top \mat{A} \y, \quad \mat{A} \coloneq
+                        \begin{bmatrix*}[r]
+                            2 & 1  & 0  \\
+                            1 & 3  & -1 \\
+                            0 & -1 & 2  \\
+                        \end{bmatrix*}
                     $
                     \[
                         \mat{A} (\vect{x} - \vect{y}) =
                         \begin{bmatrix}
-                            \begin{array}{i{1}}
-                                7 \\ 8 \\ 3
-                            \end{array}
+                            7 \\ 8 \\ 3
                         \end{bmatrix}
                         \qquad
                         (\vect{x} - \vect{y})^\top \mat{A} (\vect{x} - \vect{y}) = 47
@@ -153,16 +151,14 @@
 
     \item[3.4] Compute the angle between
           \[
-              \x = \begin{bmatrix}
-                  \begin{array}{@{\;}i{1}@{\;}}
-                      1 \\ 2
-                  \end{array}
+              \x =
+              \begin{bmatrix}
+                  1 \\ 2
               \end{bmatrix}
               \qquad
-              \y = \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\,}}
-                      -1 \\ -1
-                  \end{array}
+              \y =
+              \begin{bmatrix}
+                  -1 \\ -1
               \end{bmatrix}
           \]
 
@@ -181,27 +177,21 @@
                         \theta \approx 161.6\degree
                     \]
 
-              \item[b.] Using $\inner{\x}{\y} = \x^\top \mat{B} \y, \quad \mat{B} :=
+              \item[b.] Using $\inner{\x}{\y} = \x^\top \mat{B} \y, \quad \mat{B} \coloneq
                         \begin{bmatrix}
-                            \begin{array}{@{\;}i{1}i{1}@{\;}}
-                                2 & 1 \\
-                                1 & 3 \\
-                            \end{array}
+                            2 & 1 \\
+                            1 & 3 \\
                         \end{bmatrix}
                     $
                     \[
                         \mat{B} \x =
                         \begin{bmatrix}
-                            \begin{array}{@{\,}i{1}@{\,}}
-                                4 \\ 7
-                            \end{array}
+                            4 \\ 7
                         \end{bmatrix}
                         \quad
                         \mat{B} \y =
                         \begin{bmatrix}
-                            \begin{array}{@{}i{3}@{\,}}
-                                -3 \\ -4
-                            \end{array}
+                            -3 \\ -4
                         \end{bmatrix}
                         \quad \;\;
                         \inner{\x}{\y} = -11
@@ -218,37 +208,27 @@
           $\x \in \R^5$ are given by
           \[
               U = \Span \args{
-                  \begin{bmatrix}
-                      \begin{array}{@{}i{3}@{\;}}
-                          0 \\ -1 \\ 2 \\ 0 \\ 2
-                      \end{array}
-                  \end{bmatrix}
+                  \begin{bmatrix*}[r]
+                      0 \\ -1 \\ 2 \\ 0 \\ 2
+                  \end{bmatrix*}
                   \! ,
-                  \begin{bmatrix}
-                      \begin{array}{@{}i{3}@{\;}}
-                          1 \\ -3 \\ 1 \\ -1 \\ 2
-                      \end{array}
-                  \end{bmatrix}
+                  \begin{bmatrix*}[r]
+                      1 \\ -3 \\ 1 \\ -1 \\ 2
+                  \end{bmatrix*}
                   \! ,
-                  \begin{bmatrix}
-                      \begin{array}{@{}i{3}@{\;}}
-                          -3 \\ 4 \\ 1 \\ 2 \\ 1
-                      \end{array}
-                  \end{bmatrix}
+                  \begin{bmatrix*}[r]
+                      -3 \\ 4 \\ 1 \\ 2 \\ 1
+                  \end{bmatrix*}
                   \! ,
-                  \begin{bmatrix}
-                      \begin{array}{@{}i{3}@{\;}}
-                          -1 \\ -3 \\ 5 \\ 0 \\ 7
-                      \end{array}
-                  \end{bmatrix}
+                  \begin{bmatrix*}[r]
+                      -1 \\ -3 \\ 5 \\ 0 \\ 7
+                  \end{bmatrix*}
               }
               \qquad
               \x =
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\;}}
-                      -1 \\ -9 \\ -1 \\ 4 \\ 1
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[r]
+                  -1 \\ -9 \\ -1 \\ 4 \\ 1
+              \end{bmatrix*}
           \]
 
           \begin{enumerate}
@@ -301,7 +281,7 @@
                     \[
                         \begin{aligned}
                             \begin{bmatrix}
-                                \begin{array}{@{}i{3}i{4}i{4}|i{4}@{\;}}
+                                \begin{array}{rrr|r}
                                     9 & 9   & 0   & 9   \\
                                     9 & 16  & -14 & 23  \\
                                     0 & -14 & 31  & -25 \\
@@ -337,18 +317,14 @@
                         \qquad
                         \begin{aligned}
                             \pi_U(\x)      & =
-                            \begin{bmatrix}
-                                \begin{array}{@{}i{3}@{\;}}
-                                    1 \\ -5  \\ -1  \\ -2 \\ 3
-                                \end{array}
-                            \end{bmatrix}
+                            \begin{bmatrix*}[r]
+                                1 \\ -5  \\ -1  \\ -2 \\ 3
+                            \end{bmatrix*}
                             \\
                             \x - \pi_U(\x) & =
-                            \begin{bmatrix}
-                                \begin{array}{@{}i{3}@{\;}}
-                                    -2 \\ -4  \\ 0 \\ 6 \\ -2
-                                \end{array}
-                            \end{bmatrix}
+                            \begin{bmatrix*}[r]
+                                -2 \\ -4  \\ 0 \\ 6 \\ -2
+                            \end{bmatrix*}
                         \end{aligned}
                     \]
                     Compute the distance, $d(\x, U) = \norm{\x - \pi_U(\x)} = \sqrt{60} = 2 \sqrt{15} \approx 7.75$.
@@ -356,16 +332,14 @@
                     \pagebreak
           \end{enumerate}
 
-    \item[3.6] Consider $\R^3$ with the inner product $\inner{\x}{\y} := \x^\top \mat{A} \y$, where
+    \item[3.6] Consider $\R^3$ with the inner product $\inner{\x}{\y} \coloneq \x^\top \mat{A} \y$, where
           \[
-              \mat{A} :=
-              \begin{bmatrix}
-                  \begin{array}{@{}i{2}i{3}i{3}@{\;}}
-                      2 & 1  & 0  \\
-                      1 & 2  & -1 \\
-                      0 & -1 & 2  \\
-                  \end{array}
-              \end{bmatrix}
+              \mat{A} \coloneq
+              \begin{bmatrix*}[r]
+                  2 & 1  & 0  \\
+                  1 & 2  & -1 \\
+                  0 & -1 & 2  \\
+              \end{bmatrix*}
           \]
           Furthermore, define $\vect{e}_1, \vect{e}_2, \vect{e}_3$ to be the standard / canonical basis in
           $\R^3$.
@@ -407,56 +381,45 @@
           \[
               \mat{B}^\top \mat{A} \vect{e}_2 =
               \mat{B}^\top \!
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\;}}
-                      1 \\ 2 \\ -1
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[r]
+                  1 \\ 2 \\ -1
+              \end{bmatrix*}
               =
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\;}}
-                      1 \\ -1
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[r]
+                  1 \\ -1
+              \end{bmatrix*}
               \qquad
               \mat{B}^\top \mat{A} \mat{B} =
               \mat{B}^\top
-              \begin{bmatrix}
-                  \begin{array}{@{}i{2}i{3}@{\;}}
-                      2 & 0  \\
-                      1 & -1 \\
-                      0 & 2  \\
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[r]
+                  2 & 0  \\
+                  1 & -1 \\
+                  0 & 2  \\
+              \end{bmatrix*}
               =
               \begin{bmatrix}
-                  \begin{array}{@{\;}i{1}i{1}@{\;}}
-                      2 & 0 \\
-                      0 & 2 \\
-                  \end{array}
+                  2 & 0 \\
+                  0 & 2 \\
               \end{bmatrix}
           \]
           \[
               \vect{\lambda} =
-              \begin{bmatrix}
-                  \begin{array}{@{\,}r}
-                      \sfrac{1}{2} \\ -\sfrac{1}{2}
-                  \end{array}
-              \end{bmatrix}
+              \tfrac{1}{2}
+              \begin{bmatrix*}[r]
+                  1 \\ -1
+              \end{bmatrix*}
               \qquad
               \pi_U(\vect{e}_2) =
-              \begin{bmatrix}
-                  \begin{array}{@{\,}r}
-                      \sfrac{1}{2} \\ 0 \\ -\sfrac{1}{2}
-                  \end{array}
-              \end{bmatrix}
+              \tfrac{1}{2}
+              \begin{bmatrix*}[r]
+                  1 \\ 0 \\ -1
+              \end{bmatrix*}
               \qquad
               \vect{e}_2 - \pi_U(\vect{e}_2) =
-              \begin{bmatrix}
-                  \begin{array}{@{\,}r}
-                      -\sfrac{1}{2} \\ 1 \\ \sfrac{1}{2}
-                  \end{array}
-              \end{bmatrix}
+              \tfrac{1}{2}
+              \begin{bmatrix*}[r]
+                  -1 \\ 2 \\ 1
+              \end{bmatrix*}
           \]
           Finally,
           \[
@@ -464,15 +427,12 @@
                   d(\vect{e}_2, U) & = \norm{ \vect{e}_2 - \pi_U(\vect{e}_2) }                                                   \\
                                    & = \sqrt{( \vect{e}_2 - \pi_U(\vect{e}_2) )^\top \mat{A} ( \vect{e}_2 - \pi_U(\vect{e}_2) )} \\
                                    & = \sqrt{
+                      \tfrac{1}{2}
+                      \begin{bmatrix*}[r]
+                          -1 \\ 2 \\ 1
+                      \end{bmatrix*}^\top
                       \begin{bmatrix}
-                          \begin{array}{@{\,}r}
-                              -\sfrac{1}{2} \\ 1 \\ \sfrac{1}{2}
-                          \end{array}
-                      \end{bmatrix}^\top
-                      \begin{bmatrix}
-                          \begin{array}{c}
-                              0 \\ 1 \\ 0
-                          \end{array}
+                          0 \\ 1 \\ 0
                       \end{bmatrix}
                   }
                   \\
@@ -574,19 +534,15 @@
     \item[3.8] Using the Gram-Schmidt method, turn the basis $B = (\vect{b}_1, \vect{b}_2)$ of a two-dimensional
           subspace $U \subseteq \R^3$ into an orthonormal basis, $C = (\vect{c}_1, \vect{c}_2)$ of $U$, where
           \[
-              \vect{b}_1 :=
+              \vect{b}_1 \coloneq
               \begin{bmatrix}
-                  \begin{array}{@{\;}i{1}@{\;}}
-                      1 \\ 1 \\ 1
-                  \end{array}
+                  1 \\ 1 \\ 1
               \end{bmatrix} \! ,
               \qquad
-              \vect{b}_2 :=
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\;}}
-                      -1 \\ 2 \\ 0
-                  \end{array}
-              \end{bmatrix} \! .
+              \vect{b}_2 \coloneq
+              \begin{bmatrix*}[r]
+                  -1 \\ 2 \\ 0
+              \end{bmatrix*} \! .
           \]
           Let $\vect{u}_1 = \vect{b}_1$.  Then let $\vect{u}_2 = \vect{b}_2 - \pi_{\vect{u}_1}\!(\vect{b}_2)$, where
           $\pi_{\vect{u}_1}$ is the projection operator onto the one-dimensional subspace spanned by $\vect{u}_1$.
@@ -596,52 +552,40 @@
               = \frac{ \vect{u}_1 \vect{u}_1^\top }{ \norm{\vect{u}_1}^2 } \vect{b}_2
               = \frac{1}{3}
               \begin{bmatrix}
-                  \begin{array}{@{\;}i{1}i{1}i{1}@{\;}}
-                      1 & 1 & 1 \\
-                      1 & 1 & 1 \\
-                      1 & 1 & 1 \\
-                  \end{array}
+                  1 & 1 & 1 \\
+                  1 & 1 & 1 \\
+                  1 & 1 & 1 \\
               \end{bmatrix}
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\;}}
-                      -1 \\ 2 \\ 0
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[r]
+                  -1 \\ 2 \\ 0
+              \end{bmatrix*}
               =
               \frac{1}{3} \!
               \begin{bmatrix}
-                  \begin{array}{@{\;}i{1}@{\;}}
-                      1 \\ 1 \\ 1
-                  \end{array}
+                  1 \\ 1 \\ 1
               \end{bmatrix} \! ,
               \qquad
               \vect{u}_2 =
               \frac{1}{3} \!
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\;}}
-                      -4 \\ 5  \\ -1
-                  \end{array}
-              \end{bmatrix} \! .
+              \begin{bmatrix*}[r]
+                  -4 \\ 5  \\ -1
+              \end{bmatrix*} \! .
           \]
           Normalizing each of $\vect{u}_1$ and $\vect{u}_2$, we define our orthonormal basis vectors to be:
           \[
               \vect{c}_1
-              := \frac{ \vect{u}_1 }{ \norm {\vect{u}_1} }
+              \coloneq \frac{ \vect{u}_1 }{ \norm {\vect{u}_1} }
               = \frac{\sqrt{3}}{3} \!
               \begin{bmatrix}
-                  \begin{array}{@{\;}i{1}@{\;}}
-                      1 \\ 1 \\ 1
-                  \end{array}
+                  1 \\ 1 \\ 1
               \end{bmatrix} \! ,
               \qquad
               \vect{c}_2
-              := \frac{ \vect{u}_2 }{ \norm {\vect{u}_2} }
+              \coloneq \frac{ \vect{u}_2 }{ \norm {\vect{u}_2} }
               = \frac{\sqrt{42}}{42} \!
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\;}}
-                      -4 \\ 5 \\ -1
-                  \end{array}
-              \end{bmatrix} \! .
+              \begin{bmatrix*}[r]
+                  -4 \\ 5 \\ -1
+              \end{bmatrix*} \! .
           \]
 
     \item[3.9] Let $n \in \N$ and let $a_1, \ldots, a_n > 0$ be $n$ positive real numbers so that $\sum_{i = 1}^n a_i =
@@ -717,73 +661,57 @@
 
     \item[3.10] Rotate the following vectors by 30\degree:
           \[
-              \x_1 :=
+              \x_1 \coloneq
               \begin{bmatrix}
-                  \begin{array}{@{\;}i{1}@{\;}}
-                      2 \\ 3
-                  \end{array}
+                  2 \\ 3
               \end{bmatrix}
               \qquad
-              \x_2 :=
-              \begin{bmatrix}
-                  \begin{array}{@{}i{3}@{\;}}
-                      0 \\ -1
-                  \end{array}
-              \end{bmatrix}
+              \x_2 \coloneq
+              \begin{bmatrix*}[r]
+                  0 \\ -1
+              \end{bmatrix*}
           \]
           \[
               \mat{R}_{30\degree}
               =
-              \begin{bmatrix}
-                  \begin{array}{rr}
-                      \cos \sfrac{\pi}{6} & -\sin \sfrac{\pi}{6} \\
-                      \sin \sfrac{\pi}{6} & \cos \sfrac{\pi}{6}  \\
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[r]
+                  \cos \sfrac{\pi}{6} & -\sin \sfrac{\pi}{6} \\
+                  \sin \sfrac{\pi}{6} & \cos \sfrac{\pi}{6}  \\
+              \end{bmatrix*}
               =
               \tfrac{1}{2}
-              \begin{bmatrix}
-                  \begin{array}{cc}
-                      \sqrt{3} & -1       \\
-                      1        & \sqrt{3} \\
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[c]
+                  \sqrt{3} & -1       \\
+                  1        & \sqrt{3} \\
+              \end{bmatrix*}
           \]
           \vspace{0.5em}
           \[
               \mat{R}_{30\degree} \x_1
               =
               \tfrac{1}{2}
-              \begin{bmatrix}
-                  \begin{array}{c}
-                      2 \sqrt{3} - 3 \\
-                      3 \sqrt{3} + 2 \\
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[c]
+                  2 \sqrt{3} - 3 \\
+                  3 \sqrt{3} + 2 \\
+              \end{bmatrix*}
               \approx
-              \begin{bmatrix}
-                  \begin{array}{c}
-                      0.23 \\
-                      3.60 \\
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[r]
+                  0.23 \\
+                  3.60 \\
+              \end{bmatrix*}
               \qquad
               \mat{R}_{30\degree} \x_2
               =
               \tfrac{1}{2}
-              \begin{bmatrix}
-                  \begin{array}{c}
-                      1         \\
-                      -\sqrt{3} \\
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[c]
+                  1         \\
+                  -\sqrt{3} \\
+              \end{bmatrix*}
               \approx
-              \begin{bmatrix}
-                  \begin{array}{@{\,}r}
-                      0.50  \\
-                      -0.87 \\
-                  \end{array}
-              \end{bmatrix}
+              \begin{bmatrix*}[r]
+                  0.50  \\
+                  -0.87 \\
+              \end{bmatrix*}
           \]
 
           \vspace{1em}
