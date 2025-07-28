@@ -1,0 +1,20 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{my-theorem-envs}[Custom theorem environments]
+
+\RequirePackage{amsthm}
+
+% Definitions
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+% Theorems, etc.
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+
+% Remarks & examples
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}

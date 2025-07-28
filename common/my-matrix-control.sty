@@ -1,0 +1,14 @@
+
+\RequirePackage{siunitx}
+
+\sisetup{
+  table-align-text-post=false,
+  table-number-alignment = center,
+  table-space-text-post = none,
+  tight-spacing = true,
+  detect-weight = true,
+  detect-family = true
+}
+
+% Columns of right-aligned integers
+\newcolumntype{i}[1]{S[table-format=#1]}

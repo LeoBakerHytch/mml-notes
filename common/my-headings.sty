@@ -1,0 +1,27 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{my-headings}[Custom headings]
+
+% Heading spacing control
+\usepackage{titlesec}
+
+% Define a new heading level (subsubsubsection)
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
+
+% Set formatting: italic, own line, similar spacing
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+
+\titleformat{\subsubsubsection}
+  {\normalfont\itshape} % style: italics, normal font
+  {}                    % no label
+  {0pt}                 % no indentation before text
+  {}                    % no extra formatting before text
+
+\titlespacing*{\subsubsubsection}
+  {0pt}   % left margin
+  {0.75em plus 0.25em} % space before
+  {0.25em} % space after
+
+\makeatletter
+\newcommand{\toclevel@subsubsubsection}{-1} % negative = ignore
+\makeatother

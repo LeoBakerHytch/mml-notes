@@ -1,0 +1,51 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{my-math-macros}[Custom mathematics macros]
+
+\RequirePackage{amsmath}
+\RequirePackage{mathtools}
+\RequirePackage{mathpazo}
+
+% Fields
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+% Spaces and sets
+\newcommand{\Xcal}{\mathcal{X}}  % Input space
+\newcommand{\Ycal}{\mathcal{Y}}  % Output / label space
+\newcommand{\Hcal}{\mathcal{H}}  % Hypothesis space
+\newcommand{\Dcal}{\mathcal{D}}  % Distribution or dataset
+\newcommand{\Gcal}{\mathcal{G}}  % Generic set variable
+\newcommand{\Scal}{\mathcal{S}}  % Generic set variable
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\del}{\partial}
+
+% Matrices and vectors
+\newcommand{\mat}[1]{\mathbf{#1}}       % Matrix (upright)
+\newcommand{\vect}[1]{\mathbold{#1}}    % Vector (italic)
+\newcommand{\x}{\vect{x}}               % Vector x
+\newcommand{\y}{\vect{y}}               % Vector y
+\newcommand{\z}{\vect{z}}               % Vector z
+
+% Bracketing
+\newcommand{\set}[1]{\left\{#1\right\}}     % Generic set
+\newcommand{\args}[1]{\!\left(#1\right)}    % Generic arguments
+\newcommand{\tuple}[1]{\left(#1\right)}     % Generic tuple
+
+% Symbolic operators
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}                   % Absolute value
+\DeclarePairedDelimiterX{\inner}[2]{\langle}{\rangle}{#1,#2}    % Inner product
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}                  % Norm
+
+% Named operators
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\Null}{Null}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\id}{id}

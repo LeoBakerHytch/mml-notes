@@ -1,0 +1,18 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{my-subtitle}[Subtitle]
+
+\RequirePackage{titling}
+
+% Define a subtitle command
+\newcommand{\subtitle}[1]{\gdef\theSubtitle{#1}}
+\newcommand{\theSubtitle}{} % Default empty
+
+% Redefine maketitle to include subtitle
+\pretitle{\begin{center}\LARGE}
+\posttitle{\par\end{center}\begin{center}\normalfont\Large\theSubtitle\par\end{center}}
+
+\preauthor{\begin{center}\large}
+\postauthor{\par\end{center}}
+
+\predate{\begin{center}\small}
+\postdate{\par\end{center}}

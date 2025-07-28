@@ -1,0 +1,9 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{my-list-control}[Better list control]
+
+\RequirePackage{enumitem}
+
+\setlist{topsep=1em}    % Space between first item and preceding paragraph
+\setlist{partopsep=1em} % Extra space added to \topsep when environment starts a new paragraph
+\setlist{parsep=1em}    % Vertical space between paragraphs inside items
+\setlist{itemsep=0.5em} % Space between successive list items
