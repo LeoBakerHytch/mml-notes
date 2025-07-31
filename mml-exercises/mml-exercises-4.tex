@@ -1,0 +1,923 @@
+\documentclass[11pt]{article}
+
+\input{../common/my-preamble}
+
+\title{Mathematics for Machine Learning}
+\subtitle{Exercises 4: Matrix decompositions}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+    \item[4.1] Compute the determinant using the Laplace expansion (using the first row) and the
+          Sarrus rule for
+          \[
+              \mat{A} \coloneq
+              \begin{bmatrix}
+                  1 & 3 & 5 \\
+                  2 & 4 & 6 \\
+                  0 & 2 & 4 \\
+              \end{bmatrix} \! .
+          \]
+          \vspace{1em}
+          Using the Laplace expansion:
+          \[
+              \det(\mat{A})
+              = 1
+              \begin{vmatrix}
+                  4 & 6 \\
+                  2 & 4 \\
+              \end{vmatrix}
+              - 3
+              \begin{vmatrix}
+                  2 & 6 \\
+                  0 & 4 \\
+              \end{vmatrix}
+              + 5
+              \begin{vmatrix}
+                  2 & 4 \\
+                  0 & 2 \\
+              \end{vmatrix}
+              = (1 \cdot 4) + (-3 \cdot 8) + (5 \cdot 4)
+              = 0.
+          \]
+          Using the Sarrus rule:
+          \[
+              \begin{aligned}
+                  \det(\mat{A}) & = (1 \cdot 4 \cdot 4) + (2 \cdot 2 \cdot 5) + (0 \cdot 3 \cdot 6) \\
+                                & - (0 \cdot 4 \cdot 5) - (1 \cdot 2 \cdot 6) - (2 \cdot 3 \cdot 4) \\
+                                & = 16 + 20 + 0 - 0 - 12 - 24                                       \\
+                                & = 0.
+              \end{aligned}
+          \]
+
+    \item[4.2] Compute the following determinant efficiently:
+          \[
+              \begin{aligned}
+                  \begin{vmatrix}
+                      \begin{array}{rrrrr}
+                          2  & 0  & 1 & 2  & 0 \\
+                          2  & -1 & 0 & 1  & 1 \\
+                          0  & 1  & 2 & 1  & 2 \\
+                          -2 & 0  & 2 & -1 & 2 \\
+                          2  & 0  & 0 & 1  & 1 \\
+                      \end{array}
+                  \end{vmatrix}
+                  \; = \;
+                  \begin{vmatrix}
+                      \begin{array}{rrrrr}
+                          2 & 0  & 1  & 2  & 0  \\
+                          0 & -1 & -1 & -1 & 1  \\
+                          0 & 0  & 1  & 0  & 3  \\
+                          0 & 0  & 0  & 1  & -7 \\
+                          0 & 0  & 0  & 0  & -3 \\
+                      \end{array}
+                  \end{vmatrix}
+                  \; = \;
+                  6.
+              \end{aligned}
+          \]
+
+    \item[4.3] Compute the eigenspaces of
+          \[
+              \text{a.} \quad
+              \mat{A} \coloneq
+              \begin{bmatrix}
+                  1 & 0 \\
+                  1 & 1 \\
+              \end{bmatrix}
+              \qquad
+              \text{b.} \quad
+              \mat{B} \coloneq
+              \begin{bmatrix*}[r]
+                  -2 & 2 \\
+                  2 & 1 \\
+              \end{bmatrix*}
+          \]
+
+          \begin{enumerate}
+              \item [a.] Characteristic polynomial of $\mat{A}$:
+                    \[
+                        p_{\mat{A}}(\lambda)
+                        = \det(\mat{A} - \lambda \mat{I})
+                        = (\lambda - 1)^2
+                        = 0
+                        \quad \implies \quad
+                        \lambda \in \set{1}.
+                    \]
+                    Gives:
+                    \[
+                        E_1 = \set{ \x \in \R^2 \mid \mat{A} \x = \x } = \Span \args{
+                            \begin{bmatrix}
+                                0 \\ 1
+                            \end{bmatrix}
+                        }.
+                    \]
+
+              \item [b.] Characteristic polynomial of $\mat{B}$:
+                    \[
+                        \begin{aligned}
+                            p_{\mat{B}}(\lambda)
+                             & = \det(\mat{B} - \lambda \mat{I}) \\
+                             & = (-2 - \lambda)(\lambda - 1) - 4 \\
+                             & = \lambda^2 + \lambda - 6         \\
+                             & = (\lambda + 3)(\lambda - 2)      \\
+                             & = 0
+                        \end{aligned}
+                        \quad \implies \quad
+                        \lambda \in \set{2, -3}.
+                    \]
+                    Gives:
+                    \[
+                        \begin{aligned}
+                            E_2
+                            = \Span \args{
+                                \begin{bmatrix}
+                                    1 \\ 2
+                                \end{bmatrix}
+                            },
+                        \end{aligned}
+                        \quad
+                        \begin{aligned}
+                            E_{-3}
+                            = \Span \args{
+                                \begin{bmatrix*}[r]
+                                    2 \\ -1
+                                \end{bmatrix*}
+                            }.
+                        \end{aligned}
+                    \]
+          \end{enumerate}
+
+    \item[4.4] Compute all eigenspaces of:
+          \[
+              \mat{A} \coloneq
+              \begin{bmatrix*}[r]
+                  0 & -1 & 1 & 1 \\
+                  -1 & 1 & -2 & 3 \\
+                  2 & -1 & 0 & 0 \\
+                  1 & -1 & 1 & 0 \\
+              \end{bmatrix*}
+          \]
+
+          Characteristic polynomial:
+          \[
+              \det(\mat{A} - \lambda \mat{I}) = (\lambda - 2)(\lambda - 1)(\lambda + 1)^2 = 0
+              \quad \implies \quad
+              \lambda \in \set{2, 1, -1}.
+          \]
+          \[
+              E_2 = \Span \args{
+                  \begin{bmatrix}
+                      1 \\ 0 \\ 1 \\ 1
+                  \end{bmatrix}
+              }
+              , \quad
+              E_1 = \Span \args{
+                  \begin{bmatrix}
+                      1 \\ 1 \\ 1 \\ 1
+                  \end{bmatrix}
+              }
+              , \quad
+              E_{-1} = \Span \args{
+                  \begin{bmatrix}
+                      0 \\ 1 \\ 1 \\ 0
+                  \end{bmatrix}
+              }
+              .
+          \]
+
+    \item[4.5] Diagonalizability of a matrix is unrelated to its invertibility.  Determine for the
+          following four matrices whether they are diagonalizable and/or invertible:
+          \[
+              \mat{I_2} \coloneq
+              \begin{bmatrix}
+                  1 & 0 \\
+                  0 & 1 \\
+              \end{bmatrix}
+              \quad
+              \mat{B} \coloneq
+              \begin{bmatrix}
+                  1 & 0 \\
+                  0 & 0 \\
+              \end{bmatrix}
+              \quad
+              \mat{C} \coloneq
+              \begin{bmatrix}
+                  1 & 1 \\
+                  0 & 1 \\
+              \end{bmatrix}
+              \quad
+              \mat{D} \coloneq
+              \begin{bmatrix}
+                  0 & 1 \\
+                  0 & 0 \\
+              \end{bmatrix}
+          \]
+          \begin{enumerate}[align=left]
+              \item[$\mat{I}_2$] Invertible and diagonalizable (already diagonal).
+              \item[$\mat{B}$] Diagonalizable but not invertible (already diagonal).
+              \item[$\mat{C}$] Invertible but not diagonalizable (not a full basis of eigenvectors).
+              \item[$\mat{D}$] Neither invertible nor diagonalizable (not a full basis of eigenvectors).
+          \end{enumerate}
+
+          \pagebreak
+
+    \item[4.6] Compute the eigenspaces of the following transformation matrices.  Are they
+          diagonalizable?
+          \[
+              \mat{A} \coloneq
+              \begin{bmatrix}
+                  2 & 3 & 0 \\
+                  1 & 4 & 3 \\
+                  0 & 0 & 1 \\
+              \end{bmatrix}
+              \qquad
+              \mat{B} \coloneq
+              \begin{bmatrix}
+                  1 & 1 & 0 & 0 \\
+                  0 & 0 & 0 & 0 \\
+                  0 & 0 & 0 & 0 \\
+                  0 & 0 & 0 & 0 \\
+              \end{bmatrix}
+          \]
+          \begin{enumerate}
+              \item[a.] Characteristic polynomial of $\mat{A}:$
+                    \[
+                        \begin{aligned}
+                            p_{\mat{A}}(\lambda)
+                             & = \det(\mat{A} - \lambda \mat{I}_3)             \\
+                             & = (\lambda - 1)((\lambda - 2)(\lambda - 4) - 3) \\
+                             & = (\lambda - 1)(\lambda^2 - 6 \lambda + 5)      \\
+                             & = (\lambda - 1)^2(\lambda - 5)                  \\
+                             & = 0
+                        \end{aligned}
+                        \quad \implies \quad
+                        \lambda \in \set{5, 1}.
+                    \]
+                    \[
+                        \begin{aligned}
+                            E_5 = \set{ \x \in \R^3 \mid \mat{A} \x = 5 \x } = \Span \args{
+                                \begin{bmatrix}
+                                    1 \\ 1 \\ 0
+                                \end{bmatrix}
+                            }
+                            \! ,
+                            \\[1em]
+                            E_{1} = \set{ \x \in \R^3 \mid \mat{A} \x = \x } = \Span \args{
+                                \begin{bmatrix*}[r]
+                                    3 \\ -1 \\ 0
+                                \end{bmatrix*}
+                            }
+                            \! .
+                        \end{aligned}
+                    \]
+                    $\mat{A}$ is not diagonalizable, since it lacks a full basis of eigenvectors
+                    (specifically, $\rank(\mat{A} - \mat{I}) = 2$, so the geometric multiplicity of
+                    $\lambda_2 = 0$ is less than its algebraic multiplicity).
+
+              \item[b.] Characteristic polynomial of $\mat{B}$:
+                    \[
+                        \begin{aligned}
+                            p_{\mat{B}}
+                             & = \det(\mat{B} - \lambda \mat{I}_4)           \\
+                             & = (-\lambda)(-\lambda)(-\lambda)(\lambda - 1) \\
+                             & = \lambda^3 (\lambda - 1)                     \\
+                             & = 0
+                        \end{aligned}
+                        \quad \implies \quad
+                        \lambda \in \set{1, 0}.
+                    \]
+                    \[
+                        E_1 = \Span \args{
+                            \begin{bmatrix}
+                                1 \\ 0 \\ 0 \\ 0
+                            \end{bmatrix}
+                        }
+                        \! ,
+                        \qquad
+                        E_0 = \Span \args{
+                            \begin{bmatrix*}[r]
+                                1 \\ -1 \\ 0 \\ 0
+                            \end{bmatrix*}
+                            \! ,
+                            \begin{bmatrix}
+                                0 \\ 0 \\ 1 \\ 0
+                            \end{bmatrix}
+                            \! ,
+                            \begin{bmatrix}
+                                0 \\ 0 \\ 0 \\ 1
+                            \end{bmatrix}
+                        }
+                        \! .
+                    \]
+                    $\mat{B}$ is diagonalizable, since it has a full basis of eigenvectors:
+                    \[
+                        \mat{B} = \mat{P} \mat{D} \mat{P}^{-1} =
+                        \begin{bmatrix*}[r]
+                            1 & 1  & 0 & 0 \\
+                            0 & -1 & 0 & 0 \\
+                            0 & 0  & 1 & 0 \\
+                            0 & 0  & 0 & 1 \\
+                        \end{bmatrix*}
+                        \begin{bmatrix}
+                            1 & 0 & 0 & 0 \\
+                            0 & 0 & 0 & 0 \\
+                            0 & 0 & 0 & 0 \\
+                            0 & 0 & 0 & 0 \\
+                        \end{bmatrix}
+                        \begin{bmatrix*}[r]
+                            1 & 1  & 0 & 0 \\
+                            0 & -1 & 0 & 0 \\
+                            0 & 0  & 1 & 0 \\
+                            0 & 0  & 0 & 1 \\
+                        \end{bmatrix*}
+                        \! .
+                    \]
+          \end{enumerate}
+
+          \pagebreak
+
+    \item[4.7] Are the following matrices diagonalizable?  If yes, determine their diagonal
+          form, and a basis with respect to which the transformation matrices are diagonal.  If no,
+          give reasons why they are not diagonalizable.
+          \[
+              \mat{A} \coloneq
+              \begin{bmatrix*}[r]
+                  0 & 1 \\
+                  -8 & 4 \\
+              \end{bmatrix*}
+              \qquad
+              \mat{B} \coloneq
+              \begin{bmatrix}
+                  1 & 1 & 1 \\
+                  1 & 1 & 1 \\
+                  1 & 1 & 1 \\
+              \end{bmatrix}
+              \qquad
+              \mat{C} \coloneq
+              \begin{bmatrix*}[r]
+                  5 & 4 & 2 & 1 \\
+                  0 & 1 & -1 & -1 \\
+                  -1 & -1 & 3 & 0 \\
+                  1 & 1 & -1 & 2 \\
+              \end{bmatrix*}
+              \qquad
+              \mat{D} \coloneq
+              \begin{bmatrix*}[r]
+                  5  & -6 & -6 \\
+                  -1 & 4  & 2  \\
+                  3  & -6 & -4 \\
+              \end{bmatrix*}
+          \]
+
+          \begin{enumerate}[align=left]
+              \item[$\mat{A}$] Characteristic polynomial, $p_{\mat{A}}(\lambda) = \lambda^2 - 4
+                        \lambda + 8$, has no real roots, so $\mat{A}$ has no (non-trivial) eigenvectors, and is
+                    therefore not diagonalizable.
+
+              \item[$\mat{B}$] Characteristic polynomial has two real roots, $p_{\mat{B}}(\lambda) =
+                        \lambda^2(\lambda - 3) = 0 \implies \lambda \in \set{3, 0}$, with matching algebraic and
+                    geometric multiplicity, so $\mat{B}$ diagonalizes.
+                    \[
+                        E_3 = \Span \args{
+                            \begin{bmatrix*}[r]
+                                1 \\ 1 \\ 1
+                            \end{bmatrix*}
+                        }
+                        \! ,
+                        \qquad
+                        E_0 = \Span \args{
+                            \begin{bmatrix*}[r]
+                                1 \\ -1 \\ 0
+                            \end{bmatrix*}
+                            \! ,
+                            \begin{bmatrix*}[r]
+                                0 \\ 1 \\ -1
+                            \end{bmatrix*}
+                        }
+                        =\Span \args{
+                            \begin{bmatrix*}[r]
+                                1 \\ -1 \\ 0
+                            \end{bmatrix*}
+                            \! ,
+                            \begin{bmatrix*}[r]
+                                1 \\ 1 \\ -2
+                            \end{bmatrix*}
+                        }
+                        \! .
+                    \]
+                    These eigenvectors are mutually orthogonal, so we can normalize them:
+                    \[
+                        \mat{Q} \coloneq
+                        \begin{bmatrix*}[r]
+                            \sfrac{\sqrt{3}}{3} & \sfrac{\sqrt{2}}{2}  & \sfrac{\sqrt{6}}{6}  \\
+                            \sfrac{\sqrt{3}}{3} & \sfrac{-\sqrt{2}}{2} & \sfrac{\sqrt{6}}{6}  \\
+                            \sfrac{\sqrt{3}}{3} & 0                    & \sfrac{-\sqrt{6}}{3} \\
+                        \end{bmatrix*}
+                        \!,
+                        \quad
+                        \mat{\Lambda} \coloneq
+                        \begin{bmatrix}
+                            3 & 0 & 0 \\
+                            0 & 0 & 0 \\
+                            0 & 0 & 0 \\
+                        \end{bmatrix}
+                        \!,
+                        \quad
+                        \mat{B} = \mat{Q} \mat{\Lambda} \mat{Q}^\top.
+                    \]
+
+              \item[$\mat{C}$] Characteristic polynomial has three real roots, $p_\mat{C} = (\lambda
+                        - 4)^2(\lambda - 2)(\lambda - 1) \implies \lambda \in \set{4, 2, 1}$.  The
+                    corresponding eigenspaces are:
+                    \[
+                        E_4 = \Span \args{
+                            \begin{bmatrix*}[r]
+                                1 \\ 0 \\ -1 \\ 1
+                            \end{bmatrix*}
+                        }
+                        \! , \quad
+                        E_2 = \Span \args{
+                            \begin{bmatrix*}[r]
+                                1 \\ -1 \\ 0 \\ 1
+                            \end{bmatrix*}
+                        }
+                        \! , \quad
+                        E_1 = \Span \args{
+                            \begin{bmatrix*}[r]
+                                -1 \\ 1 \\ 0 \\ 0
+                            \end{bmatrix*}
+                        }.
+                    \]
+                    Since $\lambda_1 = 4$ has algebraic multiplicity 2, but geometric multiplicity
+                    of only 1, $\mat{C}$ does not diagonalize (it lacks a full basis of
+                    eigenvectors).
+
+                    \pagebreak
+
+              \item[$\mat{D}$] Characteristic polynomial has two real roots, $p_{\mat{D}} = (\lambda - 2)^2 (\lambda -
+                        1) = 0 \implies \lambda \in \set{2, 1}$.  The corresponding eigenspaces are:
+                    \[
+                        E_2 = \Span \args{
+                            \begin{bmatrix}
+                                2 \\ 1 \\ 0
+                            \end{bmatrix}
+                            \! ,
+                            \begin{bmatrix}
+                                2 \\ 0 \\ 1
+                            \end{bmatrix}
+                        }
+                        \! , \quad
+                        E_1 = \Span \args{
+                            \begin{bmatrix*}[r]
+                                3 \\ -1 \\ 3
+                            \end{bmatrix*}
+                        }
+                        \! .
+                    \]
+                    Using Gram-Schmidt, we can orthonormalize the eigenvectors:
+                    \[
+                        \begin{alignedat}{3}
+                             &
+                            \vect{e}_1
+                            \coloneq
+                            \begin{bmatrix}
+                                2 \\ 1 \\ 0
+                            \end{bmatrix}
+                            \! ,
+                            \qquad
+                             &   &
+                            \vect{u}_1
+                            \coloneq
+                            \vect{e}_1
+                             &   &
+                            \vect{q}_1
+                            \coloneq
+                            \frac{\vect{u_1}}{\norm{\vect{u_1}}}
+                            ,
+                            \\[1em]
+                             &
+                            \vect{e}_2
+                            \coloneq
+                            \begin{bmatrix}
+                                2 \\ 0 \\ 1
+                            \end{bmatrix}
+                            \! ,
+                            \qquad
+                             &   &
+                            \vect{u}_2
+                            \coloneq
+                            \vect{e}_2
+                            -
+                            \frac{ \vect{u}_1 \vect{u}_1^\top }{ \norm{\vect{u}_1}^2 }
+                            \vect{e}_2
+                            ,
+                            \qquad
+                             &   &
+                            \vect{q}_2
+                            \coloneq
+                            \frac{\vect{u}_2}{\norm{\vect{u}_2}}
+                            ,
+                            \\[1em]
+                             &
+                            \vect{e}_3
+                            \coloneq
+                            \begin{bmatrix*}[r]
+                                3 \\ -1 \\ 3
+                            \end{bmatrix*}
+                            \! ,
+                            \qquad
+                             &   &
+                            \vect{u}_3
+                            \coloneq
+                            \vect{e}_3
+                            -
+                            \frac{ \vect{u}_1 \vect{u}_1^\top }{ \norm{\vect{u}_1}^2 }
+                            \vect{e}_3
+                            -
+                            \frac{ \vect{u}_1 \vect{u}_1^\top }{ \norm{\vect{u}_1}^2 }
+                            \vect{e}_3
+                            ,
+                            \qquad
+                             &   &
+                            \vect{q}_3
+                            \coloneq
+                            \frac{\vect{u}_3}{\norm{\vect{u}_3}}
+                            .
+                            \\[1em]
+                        \end{alignedat}
+                    \]
+                    Concatenating the resulting vectors, $\vect{q}_i$, into the matrix $\mat{Q}$, gives us:
+                    \[
+                        \mat{Q}
+                        \coloneq
+                        \begin{bmatrix*}[r]
+                            \sfrac{2 \sqrt{5}}{5} & \sfrac{2 \sqrt{15}}{15} & \sfrac{-1}{3} \\
+                            \sfrac{\sqrt{5}}{5}   & \sfrac{-4\sqrt{5}}{15}  & \sfrac{2}{3} \\
+                            0                     & \sfrac{\sqrt{5}}{3}     & \sfrac{2}{3} \\
+                        \end{bmatrix*}
+                        \! ,
+                        \quad
+                        \mat{\Lambda}
+                        \coloneq
+                        \begin{bmatrix}
+                            2 & 0 & 0 \\
+                            0 & 2 & 0 \\
+                            0 & 0 & 1 \\
+                        \end{bmatrix}
+                        ,
+                        \quad
+                        \mat{D} \neq \mat{Q} \mat{\Lambda} \mat{Q}^\top.
+                    \]
+                    \dots aaand this does not work at all!
+
+                    $\mat{D}$ is not a symmetric matrix.  Its eigenvectors are \emph{not} orthogonal
+                    (unlike those of $\mat{B}$ earlier, which only required normalizing to form an
+                    ONB).  Gram-Schmidt changes the directions of the basis, so the eigenvectors are
+                    no longer eigenvectors.
+
+                    Defining instead the eigenbasis matrix, $\mat{P}$, we have:
+                    \[
+                        \mat{P}
+                        \coloneq
+                        \begin{bmatrix*}[r]
+                            2 & 2 & 3 \\
+                            1 & 0 & -1 \\
+                            0 & 1 & 3 \\
+                        \end{bmatrix*}
+                        \! ,
+                        \qquad
+                        \mat{D} = \mat{P} \mat{\Lambda} \mat{P}^{-1}
+                        =
+                        \begin{bmatrix*}[r]
+                            5  & -6 & -6 \\
+                            -1 & 4  & 2  \\
+                            3  & -6 & -4 \\
+                        \end{bmatrix*}
+                        \! .
+                    \]
+
+          \end{enumerate}
+
+          \begin{center}
+              \scriptsize
+              \makebox[\textwidth][c]{%
+                  \renewcommand{\arraystretch}{1.5}
+                  \begin{tabular}{|c|c|c|c|c|}
+                      \hline
+                      Decomp.                                                  & $\mat{A} =$ & Conditions & Factor properties & Use case \\
+                      \hline
+                      Spectral                                                 &
+                      $\mat{Q} \mat{\Lambda} \mat{Q}^\top$                     &
+                      $\mat{A}$ symmetric                                      &
+                      $\mat{Q}^\top \mat{Q} = \mat{I}, \; \mat{\Lambda}$ diag. &
+                      PCA, covariance, normal matrices                                                                                   \\
+                      \hline
+                      Eigen                                                    &
+                      $\mat{P} \! \mat{\Lambda} \mat{P}^{-1}$                  &
+                      $\mat{A}$ diagonalizable                                 &
+                      $\mat{P}$ invertible (\emph{not} orth.)                  &
+                      General diagonalization                                                                                            \\
+                      \hline
+                      Schur                                                    &
+                      $\mat{Q} \mat{T} \mat{Q}^\top$                           &
+                      Any square $\mat{A}$                                     &
+                      $\mat{Q}$ orth., $\mat{T}$ upper tri.                    &
+                      Numerical stability, QR algorithm                                                                                  \\
+                      \hline
+                      SVD                                                      &
+                      $\mat{U} \mat{\Sigma} \mat{V}^\top$                      &
+                      Any $m \times n$                                         &
+                      $\mat{U}, \mat{V}$ orth., $\mat{\Sigma}$ diag. ($\ge 0$) &
+                      Data comp., low-rank approx.                                                                                       \\
+                      \hline
+                      QR                                                       &
+                      $\mat{Q} \mat{R}$                                        &
+                      Any full-rank $m \times n$                               &
+                      $\mat{Q}^\top \mat{Q} = \mat{I}, \; \mat{R}$ upper tri.  &
+                      Least squares, solving $\mat{A}\vect{x}=\vect{b}$                                                                  \\
+                      \hline
+                      LU                                                       &
+                      $\mat{L} \mat{U}$                                        &
+                      Any square, non-sing. $\mat{A}$                          &
+                      $\mat{L}$ l-tri. (unit diag.), $\mat{U}$ u-tri.          &
+                      Fast solves for multiple $\vect{b}$, basis updates                                                                 \\
+                      \hline
+                      Cholesky                                                 &
+                      $\mat{L} \mat{L}^\top$                                   &
+                      $\mat{A}$ symmetric positive definite                    &
+                      $\mat{L}$ lower tri.                                     &
+                      Cov. matrices, Gaussian procs, optim.                                                                              \\
+                      \hline
+                  \end{tabular}%
+              }
+          \end{center}
+
+          \pagebreak
+
+          Let's instead do a QR decomposition, $\mat{D} = \mat{Q} \mat{R}$, where $\mat{Q}$ is
+          orthogonal and $\mat{R}$ is upper-triangular.  Normalizing the $\vect{q}_i$ as we go, the
+          squared norm denominator disappears (since by construction $\norm{\vect{q}_i}^2 = 1$).
+          Also, in the projection, we avoid an intermediate $3 \times 3$ matrix ($\vect{q}_i
+              \vect{q}_i^\top$), by computing the residual coefficients $r_{ij}$ (which we store at the
+          specified indices in $\mat{R}$, which is initialized with all zeros).  The normalized
+          column vectors $\vect{q}_i$ are concatenated, $\mat{Q} = [ \vect{q}_1 \; \vect{q}_2 \;
+              \vect{q}_3 ]$.
+
+          We compute the following in floating-point arithmetic, rather than exactly, since the
+          normalization results in nested roots that quickly become extremely unwieldy:
+          \[
+              \begin{alignedat}{3}
+                   &
+                  \vect{d}_1
+                  \coloneq
+                  \begin{bmatrix*}[r]
+                      5 \\ -1 \\ 3
+                  \end{bmatrix*}
+                  \! ,
+                  \qquad
+                   &   &
+                  \begin{aligned}{}
+                       &
+                      \vect{u}_1
+                      \coloneq
+                      \vect{d}_1,
+                      \\
+                       &
+                      r_{11} \coloneq \norm{\vect{u_1}},
+                  \end{aligned}
+                   &   &
+                  \vect{q}_1
+                  \coloneq
+                  \frac{\vect{u_1}}{r_{11}}
+                  ,
+                  \\[1em]
+                   &
+                  \vect{d}_2
+                  \coloneq
+                  \begin{bmatrix*}[r]
+                      -6 \\ 4 \\ -6
+                  \end{bmatrix*}
+                  \! ,
+                  \qquad
+                   &   &
+                  \begin{aligned}
+                       &
+                      r_{12} \coloneq \vect{q}_1^\top \vect{d}_2,
+                      \\
+                       &
+                      \vect{u}_2
+                      \coloneq
+                      \vect{d}_2
+                      - r_{12} \vect{q}_1,
+                      \\
+                       &
+                      r_{22} \coloneq \norm{\vect{u}_2},
+                  \end{aligned}
+                  \qquad
+                   &   &
+                  \vect{q}_2
+                  \coloneq
+                  \frac{\vect{u}_2}{r_{22}}
+                  ,
+                  \\[1em]
+                   &
+                  \vect{d}_3
+                  \coloneq
+                  \begin{bmatrix*}[r]
+                      -6 \\ 2 \\ -4
+                  \end{bmatrix*}
+                  \! ,
+                  \qquad
+                   &   &
+                  \begin{aligned}
+                       &
+                      r_{13} \coloneq \vect{q}_1^\top \vect{d}_3,
+                      \quad
+                      r_{23} \coloneq \vect{q}_2^\top \vect{d}_3,
+                      \\
+                       &
+                      \vect{u}_3
+                      \coloneq
+                      \vect{d}_3
+                      - r_{13} \vect{q}_1
+                      - r_{23} \vect{q}_2,
+                      \\
+                       &
+                      r_{33} \coloneq \norm{\vect{u}_3},
+                  \end{aligned}
+                  \qquad
+                   &   &
+                  \vect{q}_3
+                  \coloneq
+                  \frac{\vect{u}_3}{r_{33}}
+                  .
+                  \\[1em]
+              \end{alignedat}
+          \]
+          We find,
+          \[
+              \mat{Q} \approx
+              \begin{bmatrix*}[r]
+                  -0.8452 & -0.4359 & -0.3094 \\
+                  0.1690 & -0.7671 & 0.6189 \\
+                  -0.5071 & 0.4707 & 0.7220 \\
+              \end{bmatrix*}
+              \! ,
+              \qquad
+              \mat{R} \approx
+              \begin{bmatrix*}[r]
+                  -5.9161 & 8.7896 & 7.4374 \\
+                  0 & -3.2776 & -0.8020 \\
+                  0 & 0 & 0.2063 \\
+              \end{bmatrix*}
+              \! .
+          \]
+          Computing $\mat{R} \mat{Q}$ is the first step of the QR algorithm, and we see the
+          eigenvalues start to emerge on the diagonal (compare to those we calculated exactly
+          before):
+          \[
+              \mat{R} \mat{Q} \approx
+              \begin{bmatrix*}[r]
+                  2.71  & -0.66 & 12.64 \\
+                  -0.15 & 2.14  & -2.61 \\
+                  -0.10 & 0.10  & 0.15
+              \end{bmatrix*}
+              \! .
+          \]
+          Since $\mat{R} \mat{Q} = \mat{Q}^\top \mat{D} \mat{Q}$, and we know $\mat{Q}$ is
+          orthogonal by construction, this result is \emph{similar} to $\mat{D}$: it has the same
+          eigenvalues.
+
+          \pagebreak
+
+    \item[4.8] Find the singular value decomposition (SVD) of the matrix
+          \[
+              \mat{A} \coloneq
+              \begin{bmatrix*}[r]
+                  3 & 2 & 2 \\
+                  2 & 3 & -2 \\
+              \end{bmatrix*}
+          \]
+
+          Compute the Gram matrix in the domain space:
+          \[
+              \mat{A}^\top \mat{A} =
+              \begin{bmatrix*}[r]
+                  13 & 12 & 2 \\
+                  12 & 13 & -2 \\
+                  2 & -2 & 8 \\
+              \end{bmatrix*}
+          \]
+          Solve the characteristic polynomial:
+          \[
+              \begin{aligned}
+                             & \det(\mat{A}^\top \mat{A} - \lambda \mat{I}) = 0 \\
+                  \iff \quad & \lambda (\lambda - 9)(\lambda - 25) = 0          \\
+                  \iff \quad & \lambda \in \set{25, 9, 0}.
+              \end{aligned}
+          \]
+          Gram matrix eigenvalues are the squared singular values, $\sigma_i$, so
+          \[
+              \sigma_1 = 5,
+              \quad
+              \sigma_2 = 3,
+              \quad
+              \sigma_3 = 0.
+          \]
+          Normalizing the Gram matrix eigenvectors gives the right singular vectors, $\vect{v}_i$,
+          \[
+              \vect{v}_1 =
+              \begin{bmatrix}
+                  \sfrac{\sqrt{2}}{2} \\ \sfrac{\sqrt{2}}{2} \\ 0
+              \end{bmatrix} \! ,
+              \quad
+              \vect{v}_2 =
+              \begin{bmatrix*}[r]
+                  \sfrac{\sqrt{2}}{6} \\ \sfrac{-\sqrt{2}}{6} \\ \sfrac{2\sqrt{2}}{3}
+              \end{bmatrix*} \! ,
+              \quad
+              \vect{v}_3 =
+              \begin{bmatrix*}[r]
+                  \sfrac{2}{3} \\ \sfrac{-2}{3} \\ \sfrac{-1}{3}
+              \end{bmatrix*} \! .
+          \]
+          Given $\mat{A} = \mat{U} \mat{\Sigma} \mat{V}^\top$, find the left singular vectors,
+          \[
+              \mat{U} = \mat{A} \mat{V} \mat{\Sigma}^+ =
+              \begin{bmatrix*}[r]
+                  3 & 2 & 2 \\
+                  2 & 3 & -2 \\
+              \end{bmatrix*}
+              \begin{bmatrix*}[r]
+                  \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{6}  & \sfrac{2}{3}  \\
+                  \sfrac{\sqrt{2}}{2} & \sfrac{-\sqrt{2}}{6} & \sfrac{-2}{3} \\
+                  0                   & \sfrac{2\sqrt{2}}{3} & \sfrac{-1}{3} \\
+              \end{bmatrix*}
+              \begin{bmatrix*}[c]
+                  \sfrac{1}{5} & 0 \\
+                  0 & \sfrac{1}{3} \\
+                  0 & 0 \\
+              \end{bmatrix*}
+              =
+              \begin{bmatrix*}[r]
+                  \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} \\
+                  \sfrac{\sqrt{2}}{2} & \sfrac{-\sqrt{2}}{2} \\
+              \end{bmatrix*}
+          \]
+          So the full decomposition,
+          \[
+              \mat{A} = \mat{U} \mat{\Sigma} \mat{V}^\top =
+              \begin{bmatrix*}[r]
+                  \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} \\
+                  \sfrac{\sqrt{2}}{2} & \sfrac{-\sqrt{2}}{2} \\
+              \end{bmatrix*}
+              \begin{bmatrix}
+                  5 & 0 & 0 \\
+                  0 & 3 & 0 \\
+              \end{bmatrix}
+              \begin{bmatrix*}[r]
+                  \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2}  & 0 \\
+                  \sfrac{\sqrt{2}}{6} & \sfrac{-\sqrt{2}}{6} & \sfrac{2\sqrt{2}}{3} \\
+                  \sfrac{2}{3}        & \sfrac{-2}{3}        & \sfrac{-1}{3} \\
+              \end{bmatrix*}
+              \! .
+          \]
+
+          \pagebreak
+
+    \item[4.9] Find the SVD of
+          \[
+              \mat{A} \coloneq
+              \begin{bmatrix*}[r]
+                  2 & 2 \\
+                  -1 & 1 \\
+              \end{bmatrix*}
+          \]
+
+    \item[4.10] Find the rank-1 approximation of
+          \[
+              \mat{A} \coloneq
+              \begin{bmatrix*}[r]
+                  3 & 2 & 2 \\
+                  2 & 3 & -2 \\
+              \end{bmatrix*}
+          \]
+
+    \item[4.11] Show that for any $\mat{A} \in \R^{m \times n}$ the matrices $\mat{A}^\top
+              \mat{A}$ and $\mat{A} \mat{A}^\top$ possess the same non-zero eigenvalues.
+
+    \item[4.12] Show that for $\vect{x} \neq 0$, Theorem 4.24 holds.  That is,
+          \[
+              \max_{\vect{x}} \frac{ \norm{\mat{A} \vect{x}}_2 }{ \norm{\vect{x}}_2 } = \sigma_1,
+          \]
+          where $\sigma_1$ is the largest singular value of $\mat{A} \in \R^{m \times n}$.
+
+\end{enumerate}
+
+\end{document}
