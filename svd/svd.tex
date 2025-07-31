@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{xcolor}
+\usepackage{amsmath}
+% \usepackage[bitstream-charter]{mathdesign}
+\usepackage[T1]{fontenc}
+
+\definecolor{softgreen}{RGB}{34,170,34}  % muted forest green
+\definecolor{softred}{RGB}{220,50,47}    % softer red (Solarized)
+\definecolor{softblue}{RGB}{38,120,210}  % softer blue (Solarized)
+
+% Define color macros for U, Sigma, V
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\Amat}{\mat{A}}
+\newcommand{\Umat}{\textcolor{softgreen}{\mat{U}}}
+\newcommand{\Sigmat}{\textcolor{softred}{\mat{\Sigma}}}
+\newcommand{\Vmat}{\textcolor{softblue}{\mat{V}}}
+
+\newcommand{\sig}{\textcolor{softred}{\sigma}}
+
+\begin{document}
+
+\[
+    \Large
+    \begin{aligned}
+        \Amat                                                        & = \Umat \,\Sigmat\, \Vmat^\top      \\
+        \Amat^\top                                                   & = \Vmat \,\Sigmat\, \Umat^\top      \\[1em]
+        \Amat^{-1}                                                   & = \Vmat \,\Sigmat^{-1}\, \Umat^\top \\
+        (\Amat^\top)^{-1} = (\Amat^{-1})^\top                        & = \Umat \,\Sigmat^{-1}\, \Vmat^\top \\[1em]
+        \Amat^\top \Amat                                             & = \Vmat \,\Sigmat^2\, \Vmat^\top    \\
+        \Amat \Amat^\top                                             & = \Umat \,\Sigmat^2\, \Umat^\top    \\[1em]
+        (\Amat^\top \Amat)^{-1} = \Amat^{-1}(\Amat^{-1})^\top        & = \Vmat \,\Sigmat^{-2}\, \Vmat^\top \\
+        (\Amat \Amat^\top)^{-1} = (\Amat^{-1})^\top \Amat^{-1}       & = \Umat \,\Sigmat^{-2}\, \Umat^\top \\[1em]
+        \Amat^+                 = (\Amat^\top \Amat)^{-1} \Amat^\top & = \Vmat \,\Sigmat^{-1}\, \Umat^\top \\
+                                                                     & = \Vmat \,\Sigmat^{+}\, \Umat^\top  \\
+                                                                     & \text{\small (strictly speaking)}
+    \end{aligned}
+\]
+The last expression here is the Moore-Penrose pseudo-inverse.  $\Sigmat^{-1}$ is only defined if all
+the singular values, $\sig_i$, are positive (when $\Amat$ is invertible).  $\Sigmat^+$, on
+the other hand, reciprocates only the positive singular values.
+
+\end{document}
