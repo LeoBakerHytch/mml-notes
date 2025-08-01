@@ -429,7 +429,7 @@
                         \end{bmatrix}
                         \!,
                         \quad
-                        \mat{B} = \mat{Q} \mat{\Lambda} \mat{Q}^\top.
+                        \mat{B} = \mat{Q} \mat{\Lambda} \mat{Q}^{\T}.
                     \]
 
               \item[$\mat{C}$] Characteristic polynomial has three real roots, $p_\mat{C} = (\lambda
@@ -514,7 +514,7 @@
                             \coloneq
                             \vect{e}_2
                             -
-                            \frac{ \vect{u}_1 \vect{u}_1^\top }{ \norm{\vect{u}_1}^2 }
+                            \frac{ \vect{u}_1 \vect{u}_1^{\T} }{ \norm{\vect{u}_1}^2 }
                             \vect{e}_2
                             ,
                             \qquad
@@ -537,10 +537,10 @@
                             \coloneq
                             \vect{e}_3
                             -
-                            \frac{ \vect{u}_1 \vect{u}_1^\top }{ \norm{\vect{u}_1}^2 }
+                            \frac{ \vect{u}_1 \vect{u}_1^{\T} }{ \norm{\vect{u}_1}^2 }
                             \vect{e}_3
                             -
-                            \frac{ \vect{u}_1 \vect{u}_1^\top }{ \norm{\vect{u}_1}^2 }
+                            \frac{ \vect{u}_1 \vect{u}_1^{\T} }{ \norm{\vect{u}_1}^2 }
                             \vect{e}_3
                             ,
                             \qquad
@@ -572,7 +572,7 @@
                         \end{bmatrix}
                         ,
                         \quad
-                        \mat{D} \neq \mat{Q} \mat{\Lambda} \mat{Q}^\top.
+                        \mat{D} \neq \mat{Q} \mat{\Lambda} \mat{Q}^{\T}.
                     \]
                     \dots aaand this does not work at all!
 
@@ -613,9 +613,9 @@
                       Decomp.                                                  & $\mat{A} =$ & Conditions & Factor properties & Use case \\
                       \hline
                       Spectral                                                 &
-                      $\mat{Q} \mat{\Lambda} \mat{Q}^\top$                     &
+                      $\mat{Q} \mat{\Lambda} \mat{Q}^{\T}$                     &
                       $\mat{A}$ symmetric                                      &
-                      $\mat{Q}^\top \mat{Q} = \mat{I}, \; \mat{\Lambda}$ diag. &
+                      $\mat{Q}^{\T} \mat{Q} = \mat{I}, \; \mat{\Lambda}$ diag. &
                       PCA, covariance, normal matrices                                                                                   \\
                       \hline
                       Eigen                                                    &
@@ -625,13 +625,13 @@
                       General diagonalization                                                                                            \\
                       \hline
                       Schur                                                    &
-                      $\mat{Q} \mat{T} \mat{Q}^\top$                           &
+                      $\mat{Q} \mat{T} \mat{Q}^{\T}$                           &
                       Any square $\mat{A}$                                     &
                       $\mat{Q}$ orth., $\mat{T}$ upper tri.                    &
                       Numerical stability, QR algorithm                                                                                  \\
                       \hline
                       SVD                                                      &
-                      $\mat{U} \mat{\Sigma} \mat{V}^\top$                      &
+                      $\mat{U} \mat{\Sigma} \mat{V}^{\T}$                      &
                       Any $m \times n$                                         &
                       $\mat{U}, \mat{V}$ orth., $\mat{\Sigma}$ diag. ($\ge 0$) &
                       Data comp., low-rank approx.                                                                                       \\
@@ -639,7 +639,7 @@
                       QR                                                       &
                       $\mat{Q} \mat{R}$                                        &
                       Any full-rank $m \times n$                               &
-                      $\mat{Q}^\top \mat{Q} = \mat{I}, \; \mat{R}$ upper tri.  &
+                      $\mat{Q}^{\T} \mat{Q} = \mat{I}, \; \mat{R}$ upper tri.  &
                       Least squares, solving $\mat{A}\vect{x}=\vect{b}$                                                                  \\
                       \hline
                       LU                                                       &
@@ -649,7 +649,7 @@
                       Fast solves for multiple $\vect{b}$, basis updates                                                                 \\
                       \hline
                       Cholesky                                                 &
-                      $\mat{L} \mat{L}^\top$                                   &
+                      $\mat{L} \mat{L}^{\T}$                                   &
                       $\mat{A}$ symmetric positive definite                    &
                       $\mat{L}$ lower tri.                                     &
                       Cov. matrices, Gaussian procs, optim.                                                                              \\
@@ -664,7 +664,7 @@
           orthogonal and $\mat{R}$ is upper-triangular.  Normalizing the $\vect{q}_i$ as we go, the
           squared norm denominator disappears (since by construction $\norm{\vect{q}_i}^2 = 1$).
           Also, in the projection, we avoid an intermediate $3 \times 3$ matrix ($\vect{q}_i
-              \vect{q}_i^\top$), by computing the residual coefficients $r_{ij}$ (which we store at the
+              \vect{q}_i^{\T}$), by computing the residual coefficients $r_{ij}$ (which we store at the
           specified indices in $\mat{R}$, which is initialized with all zeros).  The normalized
           column vectors $\vect{q}_i$ are concatenated, $\mat{Q} = [ \vect{q}_1 \; \vect{q}_2 \;
               \vect{q}_3 ]$.
@@ -708,7 +708,7 @@
                    &   &
                   \begin{aligned}
                        &
-                      r_{12} \coloneq \vect{q}_1^\top \vect{d}_2,
+                      r_{12} \coloneq \vect{q}_1^{\T} \vect{d}_2,
                       \\
                        &
                       \vect{u}_2
@@ -737,9 +737,9 @@
                    &   &
                   \begin{aligned}
                        &
-                      r_{13} \coloneq \vect{q}_1^\top \vect{d}_3,
+                      r_{13} \coloneq \vect{q}_1^{\T} \vect{d}_3,
                       \quad
-                      r_{23} \coloneq \vect{q}_2^\top \vect{d}_3,
+                      r_{23} \coloneq \vect{q}_2^{\T} \vect{d}_3,
                       \\
                        &
                       \vect{u}_3
@@ -790,9 +790,9 @@
               \end{bmatrix*}
               \! .
           \]
-          Since $\mat{R} \mat{Q} = \mat{Q}^\top \mat{D} \mat{Q}$, and we know $\mat{Q}$ is
-          orthogonal by construction, this result is \emph{similar} to $\mat{D}$: it has the same
-          eigenvalues.
+          Since $\mat{R} \mat{Q} = \mat{Q}^{\T} \mat{D} \mat{Q}$, and we know $\mat{Q}$ is
+          orthogonal by construction, this result is \emph{similar} to $\mat{D}$. That is, it has
+          the same eigenvalues.  This is the first iteration of the QR algorithm.
 
           \pagebreak
 
@@ -807,7 +807,7 @@
 
           Compute the Gram matrix in the domain space:
           \[
-              \mat{A}^\top \mat{A} =
+              \mat{A}^{\T} \mat{A} =
               \begin{bmatrix*}[r]
                   13 & 12 & 2 \\
                   12 & 13 & -2 \\
@@ -817,7 +817,7 @@
           Solve the characteristic polynomial:
           \[
               \begin{aligned}
-                             & \det(\mat{A}^\top \mat{A} - \lambda \mat{I}) = 0 \\
+                             & \det(\mat{A}^{\T} \mat{A} - \lambda \mat{I}) = 0 \\
                   \iff \quad & \lambda (\lambda - 9)(\lambda - 25) = 0          \\
                   \iff \quad & \lambda \in \set{25, 9, 0}.
               \end{aligned}
@@ -847,7 +847,7 @@
                   \sfrac{2}{3} \\ \sfrac{-2}{3} \\ \sfrac{-1}{3}
               \end{bmatrix*} \! .
           \]
-          Given $\mat{A} = \mat{U} \mat{\Sigma} \mat{V}^\top$, find the left singular vectors,
+          Given $\mat{A} = \mat{U} \mat{\Sigma} \mat{V}^{\T}$, find the left singular vectors,
           \[
               \mat{U} = \mat{A} \mat{V} \mat{\Sigma}^+ =
               \begin{bmatrix*}[r]
@@ -872,7 +872,7 @@
           \]
           So the full decomposition,
           \[
-              \mat{A} = \mat{U} \mat{\Sigma} \mat{V}^\top =
+              \mat{A} = \mat{U} \mat{\Sigma} \mat{V}^{\T} =
               \begin{bmatrix*}[r]
                   \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} \\
                   \sfrac{\sqrt{2}}{2} & \sfrac{-\sqrt{2}}{2} \\
@@ -898,6 +898,69 @@
                   2 & 2 \\
                   -1 & 1 \\
               \end{bmatrix*}
+              \! .
+          \]
+          First compute the covariance matrix:
+          \[
+              \mat{A}^{\T} \mat{A} =
+              \begin{bmatrix*}[r]
+                  5 & 3 \\
+                  3 & 5 \\
+              \end{bmatrix*}.
+          \]
+          Then find its eigendecomposition.  Solving the characteristic polynomial we have:
+          \[
+              \begin{aligned}
+                  p_{\mat{A}^{\!{\T}} \! \mat{A}} & = \det(\mat{A}^{\T} \mat{A} - \lambda \mat{I}) \\
+                                                  & = (5 - \lambda)^2 - 9                          \\
+                                                  & = \lambda^2 - 10 \lambda + 16                  \\
+                                                  & = (\lambda - 8)(\lambda - 2)                   \\
+                                                  & = 0
+              \end{aligned}
+              \quad \implies \quad
+              \lambda \in \set{8, 2}.
+          \]
+          Then we have the eigenvectors:
+          \[
+              E_8 = \set{
+                  \begin{bmatrix*}[r]
+                      1 \\ -1
+                  \end{bmatrix*}
+              },
+              \qquad
+              E_2 =  \set{
+                  \begin{bmatrix}
+                      1 \\ 1
+                  \end{bmatrix}
+              }
+          \]
+          Normalizing gives us the right singular vectors, which we concatenate to form $\mat{V}$,
+          and find the singular values by taking square roots of the covariance matrix eigenvalues:
+          \[
+              \mat{V} =
+              \begin{bmatrix*}[r]
+                  \sfrac{\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} \\
+                  \sfrac{-\sqrt{2}}{2} & \sfrac{\sqrt{2}}{2} \\
+              \end{bmatrix*}
+              \! ,
+              \qquad
+              \mat{\Sigma}
+              =
+              \begin{bmatrix*}[r]
+                  \sqrt{8} & 0 \\
+                  0 & \sqrt{2} \\
+              \end{bmatrix*}
+              \! .
+          \]
+          The left singular values can be obtained like so, completing the decomposition:
+          \[
+              \mat{U} = \mat{A} \mat{V} \mat{\Sigma}^+
+              =
+              \begin{bmatrix*}[r]
+                  1 & 0 \\
+                  0 & -1 \\
+              \end{bmatrix*}
+              \! .
           \]
 
     \item[4.10] Find the rank-1 approximation of
@@ -907,10 +970,74 @@
                   3 & 2 & 2 \\
                   2 & 3 & -2 \\
               \end{bmatrix*}
+              \! .
           \]
 
-    \item[4.11] Show that for any $\mat{A} \in \R^{m \times n}$ the matrices $\mat{A}^\top
-              \mat{A}$ and $\mat{A} \mat{A}^\top$ possess the same non-zero eigenvalues.
+          This is the same matrix that we decomposed in 4.9.  The rank-1 approximation can be found
+          as follows, where: $\sigma_1$ is the largest singular value; $\vect{u}_1$ and $\vect{v}_1$
+          are the corresponding left and right singular vectors, respectively:
+          \[
+              \tilde{\mat{A}}_1 = \sigma_1 \vect{u}_1 \vect{v}_1^{\T}
+              =
+              \frac{1}{2}
+              \begin{bmatrix}
+                  5 & 5 & 0 \\
+                  5 & 5 & 0 \\
+              \end{bmatrix}
+              \! .
+          \]
+
+          \pagebreak
+
+    \item[4.11] Show that for any $\mat{A} \in \R^{m \times n}$ the matrices $\mat{A}^{\T} \mat{A}$ and $\mat{A} \mat{A}^{\T}$ possess the same non-zero eigenvalues.
+
+          \vspace{1em}
+
+          Consider the singular value decomposition of the matrix $\mat{A}$ (which is guaranteed to exist):
+          \[
+              \mat{A} = \mat{U} \mat{\Sigma} \mat{V}^{\T}.
+          \]
+          Rewriting the Gram matrices $\mat{A}^{\T} \mat{A}$ and $\mat{A} \mat{A}^{\T}$ in terms of
+          this decomposition, we have:
+          \[
+              \begin{aligned}
+                  \mat{A}^{\T} \mat{A} & = (\mat{U} \mat{\Sigma} \mat{V}^{\T})^\top (\mat{U} \mat{\Sigma} \mat{V}^\top) \\
+                                       & = \mat{V} \mat{\Sigma} \mat{U}^{\T} \mat{U} \mat{\Sigma} \mat{V}^{\T}          \\
+                                       & = \mat{V} \mat{\Sigma}^2 \mat{V}^{\T},
+              \end{aligned}
+              \qquad
+              \begin{aligned}
+                  \mat{A} \mat{A}^{\T} & = (\mat{U} \mat{\Sigma} \mat{V}^{\T}) (\mat{U} \mat{\Sigma} \mat{V}^{\T})^\top \\
+                                       & = \mat{U} \mat{\Sigma} \mat{V}^{\T} \mat{V} \mat{\Sigma} \mat{U}^{\T}          \\
+                                       & = \mat{U} \mat{\Sigma}^2 \mat{U}^{\T}.
+              \end{aligned}
+          \]
+          Since $\mat{U}$ and $\mat{V}$ are both orthogonal, it should already be obvious that these
+          matrices have the same eigenvalues, and that they must at least be positive.  Continuing,
+          rearrange as follows:
+          \[
+              \mat{\Sigma}^2 = \mat{U}^{\T} \mat{A} \mat{A}^{\T} \mat{U}.
+          \]
+          Substituting:
+          \[
+              \begin{aligned}
+                  \mat{A}^{\T} \mat{A} & = \mat{V} \mat{\Sigma}^2 \mat{V}^{\T}                               \\
+                                       & = \mat{V} \mat{U}^{\T} (\mat{A} \mat{A}^{\T}) \mat{U} \mat{V}^{\T}.
+              \end{aligned}
+          \]
+
+          Then let $\mat{R} = \mat{V} \mat{U}^{\T}$, and therefore $\mat{R}^{\T} =
+              \mat{U}\mat{V}^{\T}$.  As the product of two orthogonal matrices, $\mat{R}$ must also be
+          orthogonal, and so $\mat{R}^{-1} = \mat{R}^{\T}$.  Finally,
+          \[
+              \mat{A}^{\T} \mat{A} = \mat{R}^{-1} (\mat{A} \mat{A}^{\T}) \mat{R},
+          \]
+          from which we conclude that $\mat{A}^{\T} \mat{A}$ and $\mat{A} \mat{A}^{\T}$ are
+          similar (they have the same eigenvalues).
+
+          That the eigenvalues are non-zero follows by considering how the two matrices are
+          constructed, and that they must necessarily be symmetrical, which implies that they are
+          both positive definite.
 
     \item[4.12] Show that for $\vect{x} \neq 0$, Theorem 4.24 holds.  That is,
           \[
