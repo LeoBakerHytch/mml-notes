@@ -1,0 +1,772 @@
+\documentclass[11pt]{article}
+
+\input{../common/my-preamble}
+
+\usepackage{../common/my-list-control}
+
+\title{Calculus}
+\subtitle{Exercises 1: Basic properties of numbers}
+\author{}
+\date{}
+
+% List spacing
+\setlist{itemsep=1em}
+\setlist{parsep=0.8em}
+% \setlength{\jot}{8pt}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+
+    \item[1.] Prove the following:
+
+    \item[(i)] If $ax = a$ for some number $a \neq 0$, then $x = 1$.
+          \[
+              \begin{alignedat}{2}
+                             &  & ax           & = a          \\
+                  \iff \quad &  & (a^{-1}) a x & = (a^{-1}) a \\
+                  \iff \quad &  & 1 \cdot x    & = 1          \\
+                  \iff \quad &  & x            & = 1.
+              \end{alignedat}
+          \]
+
+    \item[(ii)]
+          \[
+              \begin{aligned}
+                  x^2 - y^2 & = (x - y)(x + y)        \\
+                            & = x (x + y) - y (x + y) \\
+                            & = x^2 + xy - yx - y^2   \\
+                            & = x^2 + xy - xy - y^2   \\
+                            & = x^2 - y^2.
+              \end{aligned}
+          \]
+
+    \item[(iii)] If $x^2 = y^2$, then $x = y$ or $x = -y$.
+
+          \vspace{6pt}
+          Taking the square root of both sides:
+          \[
+              \begin{aligned}
+                             & \sqrt{x^2} = \sqrt{y^2} \\
+                  \iff \quad & \abs{x} = \abs{y}.
+              \end{aligned}
+          \]
+
+    \item[(iv)]
+          \[
+              \begin{aligned}
+                  x^3 - y^3 & = (x - y)(x^2 + xy + y^2)               \\
+                            & = x(x^2 + xy + y^2) - y(x^2 + xy + y^2) \\
+                            & = x^3 + x^2y + xy^2 - (x^2 + xy + y^2)y \\
+                            & = x^3 + x^2y + xy^2 - x^2y + xy^2 + y^3 \\
+                            & = x^3 + y^3.
+              \end{aligned}
+          \]
+
+    \item[(v)]
+          \[
+              \begin{aligned}
+                  x^n - y^n & = (x - y)(x^{n - 1} + x^{n - 2} y + \dots + xy^{n - 2} + y^{n - 1})                                \\[6pt]
+                            & = x (x^{n - 1} + x^{n - 2}y + \dots + xy^{n - 2} + y^{n - 1})                                      \\
+                            & - y (x^{n - 1} + x^{n - 2}y + \dots + xy^{n - 2} + y^{n - 1})                                      \\[6pt]
+                            & \begin{alignedat}{3}
+                                   & = x^{n} & +  \, &  &  & x^{n - 1}y + x^{n - 2}y^2 + \dots + x^2y^{n - 2} + xy^{n - 1}           \\
+                                   &         & - (   &  &  & x^{n - 1}y + x^{n - 2}y^2 + \dots + x^2y^{n - 2} + xy^{n - 1} ) - y^{n} \\
+                              \end{alignedat}
+                  \\[6pt]
+                            & = x^n - y^n.
+              \end{aligned}
+          \]
+          More succinctly:
+          \[
+              x^n - y^n = (x - y)
+              \sum_{i=1}^{n} x^{n - i} y^{i - 1}
+          \]
+
+    \item[(vi)] Taking the result that:
+          \[
+              x^3 - y^3 = (x - y)(x^2 + xy + y^2),
+          \]
+          substitute $(-y)$ for $y$, which gives us:
+          \[
+              \begin{aligned}
+                             & x^3 - (-y)^3 = (x - (-y))(x^2 + x(-y) + (-y)^2), \\
+                  \iff \quad & x^3 + y^3 = (x + y)(x^2 - xy + y^2).
+              \end{aligned}
+          \]
+
+          Making the same substitution into the result from (v), we have:
+          \[
+              x^n + y^n = (x + y)
+              \sum_{i = 1}^{n} (-1)^{i - 1} x^{n - i} y^{i - 1}
+              \quad
+              \text{for odd $n$}.
+          \]
+
+    \item[2.] In the `proof' that $2 = 1$, since $x = y$ by definition, dividing out the factor $(x
+              - y)$ is equivalent to dividing by zero, the result of which is not defined.
+
+    \item[3.]
+
+    \item[(-i)] Prove $a^{-1} b^{-1} = (ab)^{-1}$.
+
+          By the definition of inverses,
+          \[
+              \begin{alignedat}{2}
+                             &  & ab \cdot (ab)^{-1}              & = 1              \\
+                  \iff \quad &  & a^{-1} \cdot ab \cdot (ab)^{-1} & = a^{-1}         \\
+                  \iff \quad &  & b \cdot (ab)^{-1}               & = a^{-1}         \\
+                  \iff \quad &  & b^{-1} \cdot b \cdot (ab)^{-1}  & = b^{-1} a^{-1}  \\
+                  \iff \quad &  & (ab)^{-1}                       & = a^{-1} b^{-1}. \\
+              \end{alignedat}
+          \]
+
+    \item[(i)] Prove:
+          \[
+              \frac{a}{b} = \frac{ac}{bc}, \quad \text{if $b, c \neq 0$}.
+          \]
+          \vspace{6pt}
+          \[
+              \frac{a}{b}
+              = a \cdot \frac{1}{b}
+              = a \cdot \frac{c}{c} \cdot \frac{1}{b}
+              = a \cdot c \cdot \frac{1}{c} \cdot \frac{1}{b}
+              = ac \cdot \frac{1}{bc}
+              = \frac{ac}{bc}.
+          \]
+
+    \item[(ii)] Prove:
+          \[
+              \frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}, \quad \text{if $b, d \neq 0$}.
+          \]
+          \vspace{6pt}
+          \[
+              \begin{aligned}
+                  \frac{a}{b} + \frac{c}{d}
+                  = \frac{a}{b} \cdot \frac{d}{d} + \frac{b}{b} \cdot \frac{c}{d}
+                  = \frac{ad}{bd} + \frac{bc}{bd}
+                  = ad \cdot \frac{1}{bd} + bc \cdot \frac{1}{bd}
+                  = (ad + bc) \cdot \frac{1}{bd}
+                  = \frac{ad + bc}{bd}.
+              \end{aligned}
+          \]
+
+    \item[(iii)] See (-i).
+
+    \item[(iv)]
+          \[
+              \frac{a}{b} \cdot \frac{c}{d}
+              = a \cdot \frac{1}{b} \cdot c \cdot \frac{1}{d}
+              = ac \cdot \frac{1}{d} \cdot \frac{1}{b}
+              = ac \cdot \frac{1}{db}
+              = \frac{ac}{db}.
+          \]
+
+    \item[(v)]
+          \[
+              \dfrac{a}{b} \, \bigg/ \, \dfrac{c}{d} = \dfrac{ad}{bc}, \quad \text{ if } b,c,d \neq 0.
+          \]
+          \vspace{6pt}
+          \[
+              \begin{alignedat}{3}
+                  \dfrac{a}{b} \, \bigg/ \, \dfrac{c}{d}
+                   & = \dfrac{a}{b} \cdot \left(c \cdot \dfrac{1}{d}\right)^{-1}              & \qquad & \text{(definition of division)}        \\
+                   & = a \cdot \dfrac{1}{b} \cdot c^{-1} \cdot \left(\dfrac{1}{d}\right)^{-1} &        & \text{(by (iii) inverse of a product)} \\
+                   & = a \cdot \dfrac{1}{b} \cdot \dfrac{1}{c} \cdot d                        &        & \text{(definition of inverses)}        \\
+                   & = ad \cdot \dfrac{1}{bc}                                                 &        & \text{(commutativity \& grouping)}     \\
+                   & = \dfrac{ad}{bc}.                                                        &        & \text{(definition of division)}
+              \end{alignedat}
+          \]
+
+    \item[(vi)] If $b, d \neq 0$, then $\dfrac{a}{b} = \dfrac{c}{d}$ if and only if $ad = bc$. Also determine when $\dfrac{a}{b} = \dfrac{b}{a}$.
+          \[
+              \begin{alignedat}{3}
+                             &  & \frac{a}{b}                 & = \frac{c}{d}                  & \qquad &                                                \\
+                  \iff \quad &  & a \cdot \frac{1}{b}         & = c \cdot \frac{1}{d}          &        & \text{(definition of division)}                \\
+                  \iff \quad &  & a \cdot \frac{1}{b} \cdot b & = c \cdot \frac{1}{d} \cdot b  &        & \text{(multiply by $b$)}                       \\
+                  \iff \quad &  & a \cdot 1                   & = b \cdot c \cdot \frac{1}{d}  &        & \text{(multiplicative inverse; commutativity)} \\
+                  \iff \quad &  & ad                          & = bc \cdot \frac{1}{d} \cdot d &        & \text{(multiply by $d$)}                       \\[4pt]
+                  \iff \quad &  & ad                          & = bc.                          &        & \text{(multiplicative inverse)}
+              \end{alignedat}
+          \]
+
+          Therefore, we find that
+          \[
+              \frac{a}{b} = \frac{b}{a} \quad \iff \quad a^2 = b^2,
+          \]
+
+          which from (iii) holds when either $a = b$ or $a = -b$.
+
+    \item[4.] Find all numbers for which
+
+    \item[(i)]
+          \[
+              \setcond{ x \in \R }{ 4 - x < 3 - 2x} = (-\infty, -1).
+          \]
+
+    \item[(ii)]
+          \[
+              \setcond{ x \in \R }{ 5 - x^2 < 8} = \R.
+          \]
+
+    \item[(iii)]
+          \[
+              \setcond{ x \in \R }{ 5 - x^2 < -2 }
+              =
+              \left( -\infty, -\sqrt{7} \right)
+              \cup
+              \left( \sqrt{7}, \infty \right).
+          \]
+
+    \item[(iv)]
+          \[
+              \setcond{ x \in \R }{ (x - 1)(x - 3) > 0 } = (-\infty, 1) \cup (3, \infty).
+          \]
+
+    \item[(v)]
+          \[
+              \setcond{ x \in \R }{ x^2 - 2x + 2 > 0 } = \R.
+          \]
+
+    \item[(vi)]
+          \[
+              \setcond{ x \in \R }{ x^2 + x + 1 > 2 } =
+              \left(-\infty, \tfrac{-1 - \sqrt{5}}{2}\right)
+              \cup
+              \left(\tfrac{-1 + \sqrt{5}}{2}, \infty\right).
+          \]
+
+
+    \item[(vii)]
+          \[
+              \setcond{ x \in \R }{ x^2 - x + 10 > 16 }
+              = (-\infty, -2) \cup (3, \infty).
+          \]
+
+    \item[(viii)]
+          \[
+              \setcond{ x \in \R }{ x^2 + x + 1 > 0 } = \R.
+          \]
+
+    \item[(ix)]
+          \[
+              \setcond{ x \in \R }{ (x - \pi)(x + 5)(x - 3) > 0 }
+              = (-5, 3) \cup (\pi, \infty).
+          \]
+
+    \item[(x)]
+          \[
+              \setcond{ x \in \R }{ (x - \sqrt[3]{2})(x - \sqrt{2}) > 0 }
+              = (-\infty, \sqrt[3]{2}) \cup (\sqrt{2}, \infty).
+          \]
+
+    \item[(xi)]
+          \[
+              \setcond{ x \in \R }{ 2^x < 8 } = (-\infty, 3).
+          \]
+
+    \item[(xii)]
+          \[
+              \setcond{ x \in \R }{ x + 3^x < 4 } = (-\infty, 1).
+          \]
+
+    \item[(xiii)]
+          \[
+              \setcond{ x \in \R }{ \dfrac{1}{x} + \dfrac{1}{1 - x} > 0 } = (0, 1).
+          \]
+
+    \item[(xiv)]
+          \[
+              \setcond{ x \in \R }{ \dfrac{x - 1}{x + 1} > 0 } = (-\infty, -1) \cup (1, \infty).
+          \]
+
+    \item[5.] Prove the following:
+
+    \item[(i)] If $a < b$ and $c < d$, then $a + c < b + d$.
+
+          \[
+              \begin{aligned}
+                  \text{Since \quad}     & a < b \iff (a - b) < 0, \\
+                  \text{and \quad}       & c < b \iff (c - d) < 0, \\
+                  \text{then \quad}      & (a - b) + (c - d) < 0,  \\
+                  \text{therefore \quad} & a + c - d < b,          \\
+                  \text{finally \quad}   & a + c < b + d.
+              \end{aligned}
+          \]
+
+    \item[7.] Prove that if $0 < a < b$, then
+          \[
+              a < \sqrt{ab} < \frac{a + b}{2} < b.
+          \]
+          \begin{proof}
+              Since $a, b > 0$, from $a < b$ find (multiplying by $a$ resp. $b$ preserves sign):
+              \[
+                  \begin{aligned}
+                      a^2 < ab \implies a < \sqrt{ab}, \\
+                      ab < b^2 \implies \sqrt{ab} < b. \\
+                  \end{aligned}
+              \]
+              Thus, the geometric mean, $a < \sqrt{ab} < b$.  For the arithmetic mean,
+              consider:
+              \[
+                  \begin{alignedat}{3}
+                      a < b & \iff &  & 2a < a + b & \iff & a < \frac{a + b}{2}, \\
+                      a < b & \iff &  & a + b < 2b & \iff & \frac{a + b}{2} < b. \\
+                  \end{alignedat}
+              \]
+              So $a < \tfrac{a + b}{2} < b$.  Finally, to compare the two means:
+              \[
+                  \begin{alignedat}{3}
+                                 &  & \sqrt{ab} & < \frac{a + b}{2} \\
+                      \iff \quad &  & 4ab       & < (a + b)^2       \\
+                      \iff \quad &  & 0         & < a^2 - 2ab + b^2 \\
+                      \iff \quad &  & 0         & < (b - a)^2,      \\
+                  \end{alignedat}
+              \]
+              which holds since $a \neq b$.  Thus, as claimed,
+              \[
+                  a < \sqrt{ab} < \frac{a + b}{2} < b.
+              \]
+          \end{proof}
+
+          \begin{proof}[Proof (terse)]
+              For $a,b > 0$ with $a < b$:
+              \[
+                  a^2 < ab \implies a < \sqrt{ab},
+                  \qquad
+                  ab < b^2 \implies \sqrt{ab} < b,
+              \]
+              so $a < \sqrt{ab} < b$. Similarly,
+              \[
+                  2a < a + b < 2b \implies a < \frac{a+b}{2} < b.
+              \]
+              Finally,
+              \[
+                  \sqrt{ab} < \frac{a+b}{2}
+                  \iff 0 < (b-a)^2,
+              \]
+              which is true since $a < b$. Hence
+              \[
+                  a < \sqrt{ab} < \frac{a+b}{2} < b.
+              \]
+          \end{proof}
+
+          \pagebreak
+
+    \item[9.] Express each of the following with at least one less pair of absolute value
+          signs:
+
+    \item[(i)] $\abs{\sqrt{2} + \sqrt{3} - \sqrt{5} + \sqrt{7}} = \sqrt{2} + \sqrt{3} - \sqrt{5} + \sqrt{7}$.
+
+    \item[(ii)] $\abs{(\abs{a + b} - \abs{a} - \abs{b})} = \abs{a} + \abs{b} - \abs{a + b}$.
+
+    \item[(iii)] $\abs{(\abs{a + b} + \abs{c} - \abs{a + b + c})}$ = $\abs{a + b} + \abs{c} - \abs{a + b + c}$.
+
+    \item[(iv)] $\abs{x^2 - 2xy + y^2} = (x-y)^2$.
+
+    \item[(v)] $\abs{(\abs{\sqrt{2} + \sqrt{3}} - \abs{\sqrt{5} - \sqrt{7}})} = \sqrt{2} + \sqrt{3} + \sqrt{5} - \sqrt{7}$.
+
+          \vspace{1em}
+
+    \item[10.] Express each of the following without absolute value signs, treating various cases
+          separately when necessary.
+
+    \item[(i)] $
+              \abs{a + b} - \abs{b} =
+              \begin{cases}
+                  a       & b \geq 0,\ a \geq -b, \\
+                  -a - 2b & b \geq 0,\ a < -b,    \\
+                  -a      & b < 0,\ a < -b,       \\
+                  a + 2 b & b < 0,\ a \geq -b.    \\
+              \end{cases}
+          $
+
+    \item[(ii)] $
+              \abs{(\abs{x} - 1)} =
+              \begin{cases}
+                  -x - 1 & -1 \leq x,     \\
+                  x + 1  & -1 < x \leq 0, \\
+                  -x + 1 & 0 < x \leq 1,  \\
+                  x - 1  & 1 < x.
+              \end{cases}
+          $
+
+    \item[(iii)] $
+              \abs{x} - \abs{x^2} =
+              \begin{cases}
+                  -x - x^2 & x < 0,    \\
+                  x - x^2  & x \geq 0.
+              \end{cases}
+          $
+
+    \item[(iv)] $
+              a - \abs{(a - \abs{a})} =
+              \begin{cases}
+                  3a & a < 0,    \\
+                  a  & a \geq 0.
+              \end{cases}
+          $
+
+    \item[11.] Find all numbers for which:
+
+    \item[(i)] $
+              \abs{x - 3} = 8
+              \implies x \in \set{-5, 11}.
+          $
+
+    \item[(ii)] $
+              \abs{x - 3} < 8
+              \implies x \in (-5, 11).
+          $
+
+    \item[(iii)] $
+              \abs{x + 4} < 2
+              \implies x \in (-6, -2).
+          $
+
+    \item[(iv)] $
+              \abs{x - 1} + \abs{x - 2} > 1
+              \implies
+              x \in (-\infty, 1) \cup (2, \infty)
+          $
+          \[
+              \abs{x - 1} + \abs{x - 2} - 1 =
+              \begin{cases}
+                  -2x + 2 & x \leq 1,     \\
+                  -1      & 1 < x \leq 2, \\
+                  2x - 4  & 2 < x.
+              \end{cases}
+          \]
+
+    \item[(v)] $
+              \abs{x - 1} + \abs{x - 2} < 2
+              \implies x \in
+              \left(-\infty, \tfrac{1}{2} \right)
+              \cup
+              \left(\tfrac{5}{2}, \infty \right)
+          $
+          \[
+              \abs{x - 1} + \abs{x - 2} - 2 =
+              \begin{cases}
+                  -2x + 1 & x \leq 1,     \\
+                  -1      & 1 < x \leq 2, \\
+                  2x - 5  & 2 < x.
+              \end{cases}
+          \]
+
+    \item[(vi)] $
+              \abs{x - 1} + \abs{x + 1} < 1
+              \implies x \in \text{\O}.
+          $
+          \[
+              \abs{x - 1} + \abs{x + 1} - 1 =
+              \begin{cases}
+                  -2x - 1 & x < -1,           \\
+                  1       & -1 \leq x \leq 1, \\
+                  2x -1   & x > 1.            \\
+              \end{cases}
+          \]
+
+    \item[(vii)] $
+              \abs{x - 1} \cdot \abs{x + 1} = 0
+              \implies x \in \set{-1, 1}.
+          $
+
+
+    \item[(viii)] $
+              \abs{x - 1} \cdot \abs{x + 2} = 3
+              \implies x \in \set{
+                  \frac{-1 \pm \sqrt{21}}{2}
+              }.
+          $
+
+    \item[($\star$)] Given $a < b$ and $k \geq 0$, solve for x:
+          \[
+              \abs{x - a} \cdot \abs{x - b} = k.
+          \]
+
+          This divides the number line into three segments:
+          \[
+              (-\infty, a], [a, b], [b, \infty).
+          \]
+          Analysing piecewise:
+          \[
+              \abs{x - a} \cdot \abs{x - b} - k =
+              \begin{cases}
+                  -x^2 + (a - b)x - (ab + k) & a \leq x \leq b,  \\
+                  x^2 - (a + b)x + ab - k    & \text{otherwise}. \\
+              \end{cases}
+          \]
+
+
+          Evaluate at the midpoint of the interior interval, $\tfrac{1}{2}(a + b)$:
+          \[
+              \begin{aligned}
+                  \mathcal{D} = & \abs{\tfrac{1}{2}(a + b) - a} \cdot \abs{\tfrac{1}{2}(a + b) - b} \\
+                  =             & \abs{\tfrac{1}{2}(b - a)} \cdot \abs{\tfrac{1}{2}(a - b)}         \\
+                  =             & \tfrac{1}{4} (b - a)^2.
+              \end{aligned}
+          \]
+          So, for $k > \mathcal{D}$, the interior interval has no solutions; for $k = \mathcal{D}$,
+          one repeated solution; for $0 \leq k < \mathcal{D}$, two distinct solutions; and for $k <
+              0$ there are no solutions at all, since the entire function lies above the line $y = k$
+          (if we plot the function).
+
+          Solving for $a \leq x \leq b$:
+          \[
+              \tfrac{1}{2} \left( a - b \pm \sqrt{a^2 + b^2 - 6ab - 4k} \right).
+          \]
+          Solving for $x < a$ and $b < x$:
+          \[
+              \tfrac{1}{2} \left( a + b \pm \sqrt{a^2 + b^2 - 2ab - 4k} \right).
+          \]
+
+    \item[12.] Prove the following:
+
+    \item[(i)] $\abs{xy} = \abs{x} \cdot \abs{y}$.
+          \begin{proof}
+              For any real number, $t$, we have $\abs{t}^2 = t^2$.  Consider,
+              \[
+                  \abs{xy}^2 = x^2 y^2 = \abs{x}^2 \cdot \abs{y}^2.
+              \]
+              Since both sides are non-negative, taking square roots gives:
+              \[
+                  \abs{xy} = \abs{x} \cdot \abs{y}.
+              \]
+          \end{proof}
+
+    \item[(ii)] $\left\lvert \dfrac{1}{x} \right\rvert = \dfrac{1}{\abs{x}}$, if $x \neq 0$.
+          \begin{proof}
+              As before, for any real number, $t$, we have $\abs{t}^2 = t^2$. Therefore,
+              \[
+                  \left\lvert \dfrac{1}{x} \right\rvert^2
+                  = \dfrac{1}{x^2}
+                  = \dfrac{1}{\abs{x}^2}.
+              \]
+              Once again, both sides are non-negative; taking square roots gives the desired result:
+              \[
+                  \left\lvert \dfrac{1}{x} \right\rvert
+                  = \dfrac{1}{\abs{x}}.
+              \]
+          \end{proof}
+
+    \item[(iii)] $\dfrac{\abs{x}}{\abs{y}} = \left\lvert \dfrac{x}{y} \right\rvert$, if $y \neq 0$.
+          \begin{proof}
+              \[
+                  \left\lvert \dfrac{x}{y} \right\rvert^2 =
+                  \dfrac{x^2}{y^2} =
+                  \dfrac{\abs{x}^2}{\abs{y}^2}.
+              \]
+
+              Since both sides are non-negative, taking square roots gives:
+              \[
+                  \left\lvert \dfrac{x}{y} \right\rvert = \dfrac{\abs{x}}{\abs{y}}.
+              \]
+          \end{proof}
+
+          \pagebreak
+
+    \item[(iv)] $\abs{x - y} \leq \abs{x} + \abs{y}$.
+          \begin{proof}
+              By definition, $\pm x \leq \abs{x}$ and $\pm y \leq \abs{y}$.  Then, since addition
+              preserves inequality order:
+              \[
+                  \begin{aligned}
+                                       &  & x - y             & \leq \abs{x} + \abs{y}, \\
+                      \text{and} \quad &  & \mathord{-}(x -y) & \leq \abs{x} + \abs{y},
+                  \end{aligned}
+              \]
+              which bounds $x - y$ from above and below:
+              \[
+                  -(\abs{x} + \abs{y}) \leq x - y \leq \abs{x} + \abs{y}.
+              \]
+              Since $\abs{a} \leq b$ is equivalent to $-b \leq a \leq b$, we have:
+              \[
+                  \abs{x - y} \leq \abs{x} + \abs{y}.
+              \]
+          \end{proof}
+
+    \item[(v)] $\abs{x} - \abs{y} \leq \abs{x - y}$.
+          \begin{proof}
+              From (iv), $\abs{a - b} \leq \abs{a} + \abs{b}$, or equivalently $\abs{a - b} -
+                  \abs{b} \leq \abs{a}$.  Let $x = a - b$ and let $y = b$.  Then $\abs{x} - \abs{y} \leq
+                  \abs{x - y}$, as desired.
+          \end{proof}
+
+    \item[(vi)] $\big\lvert\, \abs{x} - \abs{y} \,\big\rvert \leq \abs{x - y}$.
+          \begin{proof}
+              From (v), $\abs{x} - \abs{y} \leq \abs{x - y}$.  Multiplying by $-1$, reversing the
+              direction of the inequality, permuting $x$ and $y$, and noting that $\abs{y - x} =
+                  \abs{x - y}$, we have
+              \[
+                  -\abs{x - y} \leq \abs{x} - \abs{y}.
+              \]
+              As before, since $\abs{a} \leq b$ is equivalent to $-b \leq a \leq b$, and $\abs{x} -
+                  \abs{y}$ is bounded from above and below, we find
+              \[
+                  \big\lvert\, \abs{x} - \abs{y} \,\big\rvert \leq \abs{x - y}.
+              \]
+          \end{proof}
+
+    \item[(vii)] $\abs{x + y + z} \leq \abs{x} + \abs{y} + \abs{z}$.
+          \begin{proof}
+              Since $\pm a \leq \abs{a}$,
+              \[
+                  \begin{aligned}
+                       &
+                       &
+                      x + y + z
+                       &
+                      \; \leq \; \abs{x} + y + z
+                      \; \leq \; \abs{x} + \abs{y} + z
+                      \; \leq \; \abs{x} + \abs{y} + \abs{z}, \\
+                      \text{and} \quad
+                       &
+                       &
+                      -x - y - z
+                       &
+                      \; \leq \; \abs{x} - y - z
+                      \; \leq \; \abs{x} + \abs{y} - z
+                      \; \leq \; \abs{x} + \abs{y} + \abs{z}.
+                  \end{aligned}
+              \]
+              So $x + y + z$ is bounded from above and below, or equivalently
+              \[
+                  \abs{x + y + z} \leq \abs{x} + \abs{y} + \abs{z}.
+              \]
+          \end{proof}
+
+          If and only if $x, y, z \leq 0$, or $x, y, z \geq 0$, then $\abs{x + y + z} = \abs{x} +
+              \abs{y} + \abs{z}$.
+          \begin{proof}
+              For non-negative $x, y, z$, $\abs{x} = x$, $\abs{y} = y$, $\abs{z} = z$, so
+              \[
+                  \abs{x} + \abs{y} + \abs{z} = x + y + z = \abs{x + y + z}.
+              \]
+              For non-positive $x, y, z$, $\abs{x} = -x$, $\abs{y} = -y$, $\abs{z} = -z$, so
+              \[
+                  \abs{x} + \abs{y} + \abs{z} = -(x + y + z) = \abs{x + y + z}.
+              \]
+              For only if, consider non-negative $x, y$ but negative $z$,
+              \[
+                  \abs{x} + \abs{y} + \abs{z} = x + y - z < \abs{x + y + z}.
+              \]
+              The same inequality holds for any other permutation where the signs of $x, y, z$ are
+              not all the same.
+          \end{proof}
+
+    \item[($\star$)] $\abs{x_1 + \dots + x_n} \leq \abs{x_1} + \dots + \abs{x_n}$.
+
+          \pagebreak
+
+    \item[13.] The maximum of two numbers $x$ and $y$ is denoted by $\max(x, y)$.  The minimum of
+          $x$ and $y$ is denoted by $\min(x, y)$.
+
+          $\max(x, y) = \frac{1}{2} \left( x + y + \abs{y - x} \right)$.
+          \begin{proof}
+              If $x > y$, then
+              \[
+                  \begin{aligned}
+                      \max(x, y) & = x                                  \\
+                                 & = \tfrac{1}{2} (x + y + \abs{y - x}) \\
+                                 & = \tfrac{1}{2} (x + y + x - y)       \\
+                                 & = x.
+                  \end{aligned}
+              \]
+              Since $\abs{x - y} = \abs{y - x}$, the corresponding result holds for the second
+              argument.  In the case $x = y$, the equality above holds.
+          \end{proof}
+
+          $\min(x, y) = \frac{1}{2} \left( x + y - \abs{y - x} \right)$.
+          \begin{proof}
+              If $x < y$, then
+              \[
+                  \begin{aligned}
+                      \min(x, y) & = x                                  \\
+                                 & = \tfrac{1}{2} (x + y - \abs{y - x}) \\
+                                 & = \tfrac{1}{2} (x + y - y + x)       \\
+                                 & = x.
+                  \end{aligned}
+              \]
+              Since $\abs{x - y} = \abs{y - x}$, the corresponding result again holds for the second
+              argument.  Likewise, in the case $x = y$, the equality above holds.
+          \end{proof}
+
+          Derive a formula for $\max(x, y, z)$ and $\min(x, y, z)$.
+
+          \[
+              \begin{aligned}
+                  \max(x, y, z)
+                   &
+                  = \max(x, \max(y, z))
+                  \\ &
+                  = \tfrac{1}{2} ( x + \max(y, z) + \abs{ \max(y, z) - x } )
+                  \\ &
+                  = \tfrac{1}{2} \left(
+                  x
+                  + \tfrac{1}{2}(y + z + \abs{z - y})
+                  + \big\lvert
+                  \tfrac{1}{2}(y + z + \abs{z - y})
+                  - x
+                  \big\rvert \right)
+                  \\ &
+                  = \tfrac{1}{4} \left(
+                  2x + y + z + \abs{z - y}
+                  +
+                  \big\lvert
+                  y + z + \abs{z - y} - 2x
+                  \big\rvert \right)
+              \end{aligned}
+          \]
+
+          \pagebreak
+
+    \item[14.]
+
+    \item[(a)] Prove that $\abs{a} = \abs{-a}$. (The trick is not to become confused by too many
+          cases.  First prove the statement for $a \geq 0$.  Why is it then obvious for $a \leq 0$)?
+
+    \item[(b)] Prove that $-b \leq a \leq b$ if and only if $\abs{a} \leq b$.  In particular it follows that $-\abs{a} \leq a \leq \abs{a}$.
+
+    \item[(c)] Use this fact to give a new proof that $\abs{a + b} \leq \abs{a} + \abs{b}$.
+
+          \pagebreak
+
+    \item[*15.] Prove that if $x$ and $y$ are not both $0$, then
+          \[
+              \begin{aligned}
+                  x^2 + xy + y^2 > 0, \\
+                  x^4 + x^3y + x^2y^2 + xy^3 + y^4 > 0.
+              \end{aligned}
+          \]
+
+          \pagebreak
+
+    \item[*16.]
+
+    \item[(a)] Show that
+          \[
+              \begin{aligned}
+                  (x + y)^2 & = x^2 + y^2 \quad \text{only when $x = 0$ or $y = 0$,}           \\
+                  (x + y)^3 & = x^3 + y^3 \quad \text{only when $x = 0$, $y = 0$ or $x = -y.$} \\
+              \end{aligned}
+          \]
+
+    \item[(b)] Using the fact that
+          \[
+              x^2 + 2xy + y^2 = (x + y)^2 \geq 0,
+          \]
+          show that $4x^2 + 6xy + 4y^2 > 0$ unless $x$ and $y$ are both $0$.
+
+    \item[(c)] Use part (b) to find out when $(x + y)^4 = x^4 + y^4$.
+
+    \item[(d)] Find out when $(x + y)^5 = x^5 + y^5$.
+
+          Hint: From the assumption $(x + y)^5 = x^5 + y^5$ you should be able to derive the equation $x^3
+              + 2x^2y + 2xy^2 +y^3 = 0$, if $xy \ne 0$.  This implies that $(x + y)^3 = x^2y + xy^2 = xy(x +
+              y)$.
+
+          You should now be able to make a good guess as to when $(x + y)^n = x^n + y^n$.
+
+\end{enumerate}
+\end{document}
